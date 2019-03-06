@@ -1,0 +1,27 @@
+15 concept doc
+35 design doc
+50 sprints até milestone A
+
+70 sprints até final
+20 organização do projeto
+10 press kit
+
+1203 entrega doc
+1903 concept
+
+
+
+duet
+funzion fren com fraco, medio, forte
+cenario escuro e luz no jogador
+slow motion
+magicka multiplayer arena laser espelhado e combinado
+move or die
+nidhogg avançar salas e impedir que oponente avance
+overcooked
+sniper vs ladrao
+stick fight the game
+pong com mapa criado espelhado (ultimate chicken horse)
+pingar posições
+ver camera do outro
+camuflar

@@ -1,0 +1,20 @@
+21/03 apresentação do planejamento dos projetos de AR
+18/04 apresentação final protótipos AR, entrega projeto e código, apresentação de relatório de desenvolvimento
+09/05 apresentação do planejamento dos projetos de VR
+20/06 apresentação final protótipos VR, entrega projeto e código, apresentação relatório de desenvolvimento
+04/07 grau c
+
+planejamento 20%		pdf
+desenvolvimento 30%		app android zipado recomendado unity3d+vuforia
+apresentação final 30%		pdf e APK
+desenvolvimento pessoal 20%	avaliação da participação
+
+planejamento 20%		pdf
+desenvolvimento 30%		zipado
+apresentação final 30%		pdf e VR executável
+desenvolvimento pessoal 20%	avaliação da participação
+
+unity archive
+
+cadastrar no site do vuforia
+file > build settings > player settings > XR support installers
