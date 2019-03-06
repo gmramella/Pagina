@@ -1,0 +1,33 @@
+ALFABETO
+
+a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,s,w,x,y,z
+
+PRONOMES REFLEXIVOS
+
+me, te, se, nous, vous, se
+
+NÚMEROS
+
+10x et un,10x-y
+
+PREPOSIÇÕES COM LUGARES
+
+aller/être à cidade -> venir de cidade
+aller/être à la/au lugar -> venir de la/de l'/du lugar
+
+CARTA
+
+Cidade, dia dd
+
+Saudação nome,
+
+Texto
+
+Despedido.
+
+Nome
+--------------
+Nome sobrenome
+número, rua
+cep cidade
+país

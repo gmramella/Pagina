@@ -1,0 +1,250 @@
+ALFABETO
+
+a,ê,i,ó,u
+b,c,d,g,p,t,v (*i)
+f,h,l,m,n,r,s (x**y)
+q,z
+j,k,w,x,y
+
+SUBSTANTIVOS
+
+o -> i
+e -> i
+a -> e
+
+ARTIGOS
+
+il                          ->   i ->  un ->   del ->   dei
+l'              [a,e,i,o,u] -> gli ->  un -> dell' -> degli
+lo  [gn,pn,ps,s+cons,x,y,z] -> gli -> uno -> dello -> degli
+la                          ->  le -> una -> della -> delle
+l'              [a,e,i,o,u] ->  le -> un' -> dell' -> delle
+
+PRONOMES REFLEXIVOS
+
+mi,ti,si,ci,vi,si
+
+NÚMEROS CARDINAIS
+
+zero,uno,due,trê,quattro,cinque,séi,sétte,ótto,nóve,diéci
+undici,dôdici,trêdici,quattôrdici,quindici,sêdici,diciassétte,diciótto,diciannóve
+vênti
+trênta
+quaránta
+cinquánta
+sessánta
+setánta
+ottánta
+novanta
+cento
+duecento
+trecento
+quattrocento
+cinquecento
+seicento
+settecento
+ottocento
+novecento
+mille
+duemila
+
+NÚMEROS ORDINAIS
+
+primo,secondo,terzo,quarto,quinto,sesto,settimo,ottavo,nono,decimo
+undicesimo,dodicesimo,quattordicesimo,quindicesimo,sedicesimo,diciassettesimo,diciottesimo,diciannovesimo
+ventesimo,ventunesimo,ventiduesimo,ventitreesimo,ventiquattresimo,venticinquesimo
+
+CONSOANTES DUPLAS
+
+cc,ff,gg,ll,mm,nn,rr,tt
+
+ADJETIVOS
+
+libro vecchio-libri vecchi
+casa vecchia-case vecchie
+libro/casa interessante-libri/case interessanti
+
+SER/HAVER
+
+sono,séi,è,siamo,siête,sono
+hó,hai,ha,abbiámo,avête,hánno
+
+VERBOS
+
+are: o,i,a,iamo,ate,ano
+ere: o,i,e,iamo,ete,ono
+ cc: o,i,e,iamo,ite,ono
+ vc: isco,isci,isce,iamo,ite,iscono
+
+andare: vado, vai, va, andiamo, andate, vanno
+dare: do, dai, dà, diamo, date, danno
+dovere: devo, devi, deve, dobbiamo, dovete, devono *
+fare: faccio, fai, fa, facciano, fate, fanno
+giocare: gioco, giochi, gioca, giochiamo, giocate, giocano
+potere: posso, puoi, può, possiamo, potete, possono *
+sapere: so, sai, sa, sappiamo, sapete, sanno
+stare: sto, stai, sta, stiamo, state, stanno
+uscire: esco, esci, esce, usciamo, uscite, escono
+venire: vengo, vieni, viene, veniamo, venite, vengono
+volere: voglio, vuoi, vuole, vogliamo, volete, vogliono *
+
+* = infinitivo
+
+CUMPRIMENTO/DESPEDIDA
+
+cumprimento formal: Buongiorno!/Buon pomeriggio!/Buonasera!/Buonanotte!
+cumprimento informal: Ciao!/Salve!
+despedida formal: ArrivederLa!
+despedida informal: Arrivederci!/Ci vediamo!
+
+PEDIR INFORMAÇÃO / DAR INFORMAÇÃO
+
+Per arrivare/andare ...? ... e scendi dopo ... fermate.
+Da quanto tempo sei qui? Sono in Italia da 2 anni.
+Abiti qui vicino? Sì, in via ..., al numero ...
+
+CONVIDAR/ACEITAR/RECUSAR
+
+Vieni ...?/Vuoi venire ...?/Andiamo ...?/Che ne dici di ...?
+Si, grazie!/Con piacere!/Certo!/Volentieri!/D'accordo!/Perché no?/È una bella idea
+Mi dispiace, ma non posso./Purtroppo non posso./No, grazie, devo ...
+
+CARACTERÍSTICAS
+
+è: brutto/bello
+ha i capelli: corti/lunghi, biondi/bruni/rossi
+ha gli occhi: azzurri/castani/neri/verdi
+è/sembra: allegro/triste, gentile/scortese
+
+i capelli, la testa, la fronte
+l'occhio, il naso, la bocca (il viso)
+il braccio, la mano, il dito
+
+LUGARES DA CASA
+
+bagno
+balcone (sacada)
+camera dal letto
+cucina
+ripostiglio (depósito)
+sala da pranzo
+soggiorno/salotto
+studio
+
+HORAS
+
+00: è mezzanotte
+01: è l'una
+02: sono le due
+03: sono le tre
+04: sono le quattro
+05: sono le cinque
+06: sono le sei
+07: sono le siete
+08: sono le otto
+09: sono le nove
+10: sono le dieci
+11: sono le undici
+12: è mezzogiorno/sono le dodici
+13: 
+14: 
+15: 
+16: 
+17: 
+18: 
+19: 
+20: 
+21: 
+22: 
+23: 
+
+00: (in punto) 05: e cinque
+10: e dieci 15: e un quarto
+20: e venti 25: e venticinque
+30: e trenta/mezza/mezzo 35: e trentacinque
+40: e quaranta/meno venti 45: e quarantacinque/meno un quarto
+50: e cinquanta/meno dieci 55: e cinquantacinque/meno cinque
+
+DIAS
+
+lunedì,martedì,mercoledì,giovedì,venerdì,sabato,domenica
+
+COMUNICAÇÃO
+
+buca delle lettere (caixa de correio)
+busta (envelope)
+cellulare
+francobollo (selo)
+posta
+posta elettronica (e-mail)
+
+PREPOSIÇÕES
+
+  a: andare cidade, artigo+lugar específico, infinitivo, a pé, a cavalo/venir cidade, lugar
+con: artigo+transporte específico
+ da: andare pessoa/venir cidade, pessoa, vengo da solo/partire região
+ di: 
+fra: 
+ in: andare país, região, lugar, artigo+lugar específico, transporte/venir país, transporte/partire transporte, mês
+per: partire cidade, país
+ su: 
+tra = fra
+
+PREPOSIÇÕES ARTICULADA
+
+ a ->  a
+da -> da
+di -> de
+in -> ne
+su -> su
+
+  i ->   i
+gli -> gli
+ il ->  l
+ l' -> ll'
+ la -> lla
+ le -> lle
+ lo -> llo
+
+ADVÉRBIOS DE LUGAR
+
+advérbio + artigo
+
+accanto a
+davanti a
+intorno a
+ vicino a
+
+   dentro
+   dietro
+    sopra
+    sotto
+       su
+      tra
+
+PRONOMES INTERROGATIVOS
+
+che (cosa) *
+chi *
+come *
+(da) dove
+perché
+quale *
+quando
+(per) quanto *
+
+PRONOMES POSSESSIVOS
+
+artigo + pronome
+
+mio,mia,miei,mie
+tuo,tua,tuoi,tue
+suo,sua,suoi,sue
+nostro,nostra,nostri,nostre
+vostro,vostra,vostri,vostre
+loro,loro,loro,loro
+
+AGRADECIMENTO E RESPOSTA
+
+Grazie (mille, tante)!, Ti ringrazio!
+Prego!, Non c'è di che!, Di niente!, Figurati! (informal)
