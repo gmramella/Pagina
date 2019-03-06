@@ -1,0 +1,85 @@
+Faltam:
+
+DIV = \X. X;
+REM = \X. X;
+POT = \X. X;
+RAIZQ = \X. X;
+RAIZQAUX = \X. X;
+
+ISNOTZERO = \X. X;
+MAIOR = \X. X;
+=INT = \X. X;
+IMPAR = \X. X;
+PAR = \X. X;
+=BOOL = \X. X;
+E = \X. X;
+OU = \X. X;
+XOU = \X. X;
+
+Exemplo de comando de entrada:
+
+-- Comentarios
+true = \a b. a;
+false = \a b. b;
+not = \a. if a false true;
+>> not true
+--------------------------------------------------------------------------
+true = \a b. a;
+false = \a b. b;
+
+if = \t a b. t a b;
+
+not = \a.if a false true;
+and = \a b.if a b false;
+or = \a b.if a true b;
+xor = \a b. (or (and a (not b)) (and (not a) b));
+nand = (\a b. not (and a b));
+nor = (\a b. not (or a b));
+xnor = \a b. (or (and a b) (and (not a) (not b)));
+
+succ = \n f x.f (n f x);
+zero = \f x. x;
+pred = \n f x. n (\g h. h (g f)) (\u. x) (\u. u);
+
+add = \m n f x.m f (n f x);
+sub = \m n. (n pred)  m;
+mult = \m n f x. m (n f) x;
+exp = \m n. n (\m. mult m) (\f x. f x);
+
+NEG = (\A B. SUB (SUB A B));
+neg = (\a b. sub (sub a b));
+
+DIV = \X. X;
+REM = \X. X;
+POT = \X. X;
+RAIZQ = \X. X;
+RAIZQAUX = \X. X;
+
+iszero = \n. n (\x. false) true;
+
+ISNOTZERO = \X. X;
+MAIOR = \X. X;
+=INT = \X. X;
+IMPAR = \X. X;
+PAR = \X. X;
+=BOOL = \X. X;
+E = \X. X;
+OU = \X. X;
+XOU = \X. X;
+
+pair = \x y z. z x y;
+
+fst = \p. p (\x y. x);
+snd = \p. p (\x y. y);
+
+nil = pair true true;
+isnil = fst;
+
+cons = \h t. pair false (pair h t);
+head = \z. fst (snd z);
+tail = \z. snd (snd z);
+
+leq = \m n. iszero (sub n m);
+equal = \m n. and (leq m n) (leq n m);
+
+inc = \g h. h (g f);

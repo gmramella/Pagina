@@ -1,0 +1,72 @@
+A matéria é dividida em 3 provas:
+
+Sistema de Equações
+Quer-se otimizar uma função linear restrita a inequações.
+max / min cTx s.a.
+Ax <= / >= / = b
+Forma Normal
+Na forma normal, o sistema fica:
+max cTx s.a.
+Ax <= b
+x >= 0
+x <= y == x+w = y
+x >= y == x-w = y
+x = y == x <= y e x >= y == x+w1 = y e x-w2 = y
+Dicionário
+O dicionário equivalente ao sistema na forma normal é:
+z=0+cTx
+w=b-Ax
+O vetor c é formado pelas variáveis não-básicas e o vetor b é formado pelas variáveis básicas.
+Valor das variáveis em um dicionário
+z=n+cTN: z=n, N=0
+B=b-Ax: B=b
+O valor da solução objetivo atual é n, as variáveis não-básicas têm valor 0 e as variáveis básicas têm valor b.
+Simplex
+z=n+cTx
+w=b-Ax
+Heurística usada: enquanto existir cT > 0, entra max(cT, cT > 0) e sai min(b/A, b >= 0, A > 0 no sistema), observar que A tem sinal trocado no dicionário.
+Quando cT <= 0, b >= 0, a solução é ótima e tem valor n. (Dica: uma vez que b>=0, nunca ficará < 0 no dicionário seguinte)
+Sistema Infactível
+Dois casos que eu saiba: depois de escolher max(cT, cT > 0), a coluna de A abaixo deste cT é <= 0 no sistema (A >= 0 no dicionário)
+Ao terminar a fase I do sistema ilimitado, x0 != 0.
+Sistema Ilimitado
+O potitopo formado pelas restrições tem uma face aberta. Pode ser factível ou não.
+Sistema Degenerado
+min(b/A) = 0, isto é, b = 0, com isso, z não aumenta de valor. Usar regra de Bland.
+Regra de Bland
+Heurística usada: enquanto existir cT > 0, entra first(cT, cT > 0) e sai min(b/A, b >= 0, A > 0 no sistema), em caso de empate, sai first(min(b/A, b >= 0, A > 0 no sistema)).
+
+Dualidade
+Origina-se de se querer saber um menor valor máximo que a função objetivo poderia alcançar, mas talvez não alcance, para se ter uma idéia da grandeza do valor ótimo.
+Primal
+max cTx s.a.
+Ax <= b
+x >= 0
+Dual
+min bTy s.a.
+ATy >= c
+y >= 0
+Dual Padrão
+max -bTy s.a.
+-ATy <= -c
+y >= 0
+O dual é o transposto negado do primal. Dualidade Fraca
+Se x é uma solução viável do primal e y é uma solução viável do dual, x <= y.
+Dualidade Forte
+Se x é uma solução ótima do primal, existe uma solução ótima y do dual e cTx = bTy.
+Equivalências Primal-para-Dual (bobagem)
+z=n+cTx
+w=b-Ax
+-w=-n+bTy
+z=c-ATy
+z -> -w, w -> z, x -> y
+Dual Simplex
+Heurística usada: enquanto existir b < 0, sai min(b, b < 0) e entra min(cT/A, A < 0 no sistema), observar que A tem sinal trocado no dicionário.
+Quando cT <= 0, b >= 0, a solução é ótima e tem valor n.
+Análise de Sensibilidade.
+
+Matrizes TU
+Heurística
+Planos de Corte
+Apresentar a equação de corte somente em termos das variáveis originais (x1 ... xn)
+Branch & Bound.
