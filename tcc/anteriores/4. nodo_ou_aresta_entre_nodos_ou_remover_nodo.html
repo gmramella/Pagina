@@ -1,0 +1,107 @@
+<!--Code based on: http://koyamatch.com/d3js/d3js11.html-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="funcoes2.js"></script>
+		<style>
+			body {
+				-webkit-app-region: drag;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+		var coords1, coords2;
+		var nodes = [], edges = [];
+		var nodesCounter = 0, edgesCounter = 0;
+		
+		function printNodes() {
+			var output = "";
+			for (var i = 0; i < nodes.length; i++) {
+				output = output+"["+nodes[i][0]+" "+nodes[i][1]+" "+nodes[i][2]+"]"+"\n";
+			}
+			return output;
+		}
+		
+		function printEdges() {
+			var output = "";
+			for (var i = 0; i < edges.length; i++) {
+				output = output+"["+edges[i][0]+" "+edges[i][1]+" "+edges[i][2]+" "+edges[i][3]+"]"+"\n";
+			}
+			return output;
+		}
+		
+		// x,y is the point to test
+		// cx, cy is circle center, and radius is circle radius
+		function pointInCircle(x, y, cx, cy, radius) {
+			var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+			return distancesquared <= radius * radius;
+		}
+
+		function pointInSomeCircle(coords) {
+			for (var i = 0; i < nodes.length; i++) {
+				//alert("xc="+coords[0]+" yc="+coords[1]+" xn="+nodes[i][0]+" yn="+nodes[i][1]+" r="+nodes[i][2]);
+				if(pointInCircle(coords[0], coords[1], nodes[i][0], nodes[i][1], nodes[i][2])) {
+					return i;
+				}
+			}
+			return -1;
+		}
+		
+		
+		//Removal functions
+		function remove(id) {
+			d3.select("#"+id).remove();
+		}
+		
+		var svg = d3.select("body").append("svg").attr("width", 1500).attr("height", 768);
+		svg.on("mousedown",function() {
+			coords1=d3.mouse(this);
+		});
+		svg.on("mouseup",function() {
+			coords2=d3.mouse(this);
+			var nodeId1=pointInSomeCircle(coords1);
+			var nodeId2=pointInSomeCircle(coords2);
+			if(nodeId1 != -1 && nodeId2 != -1) {
+				svg.append("line").attr("x1", coords1[0]).attr("y1", coords1[1]).attr("x2", coords2[0]).attr("y2", coords2[1]).attr("stroke", "black").attr("stroke-width", "5").attr("id", "edge"+edgesCounter);
+				var newEdge = [coords1[0], coords1[1], coords2[0], coords2[1], "edge"+edgesCounter];
+				edges.push(newEdge);
+				edgesCounter++;
+			} else {
+				svg.append("circle").attr("cx", coords1[0]).attr("cy", coords1[1]).attr("r", "50").attr("fill", "red").attr("id", "node"+nodesCounter);
+				var newNode = [coords1[0], coords1[1], 50, "node"+nodesCounter];
+				nodes.push(newNode);
+				nodesCounter++;
+			}
+		});
+		svg.on("dblclick",function(){
+			var coords=d3.mouse(this);
+			var nodeId=pointInSomeCircle(coords);
+			for (var i = 0; i < nodes.length; i++) {
+				if(pointInCircle(coords[0], coords[1], nodes[i][0], nodes[i][1], nodes[i][2])) {
+					remove(nodes[i][3]);
+				}
+			}
+		});
+		svg.call(drag);
+
+		var drag = d3.behavior.drag().origin(function(d) {return d;}).on("dragstart", dragstarted).on("drag", dragged).on("dragend", dragended);               
+		 
+		function dragstarted(d) {
+			d3.event.sourceEvent.stopPropagation();
+			d3.select(this).classed("dragging", true);
+			//return true;
+		}
+
+		function dragged(d) {
+			d3.select(this).attr("x", d.x = d3.event.x).attr("y", d.y = d3.event.y);
+		}
+
+		function dragended(d) {
+			d3.select(this).classed("dragging", false);
+		}
+		</script>
+	</body>
+</html>

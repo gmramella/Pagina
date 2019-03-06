@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<script src="http://d3js.org/d3.v3.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<input type="button" value="Write" onclick="writeElementsTSVs()">
+		</form>
+		<script>
+		//https://stackoverflow.com/questions/22550858/how-to-write-csv-file-using-javascript
+		function writeTSV(tsvRows, fileName) {
+			var a         = document.createElement("a");
+			a.href        = "data:attachment/tsv;charset=utf-8," + encodeURIComponent(tsvRows.join("\r\n"));
+			a.target      = "_blank";
+			a.download    = fileName;
+			document.body.appendChild(a);
+			a.click();
+		}
+		function writeObjectsTSV() {
+			var objectsAttributes = ["id", "label", "x", "y", "radius", "selected", "visible", "endomorphisms"];
+			var objectsHeader = "";
+			for (var i = 0; i < objectsAttributes.length - 1; i++) {
+				objectsHeader += objectsAttributes[i] + "\t";
+			}
+			objectsHeader += objectsAttributes[objectsAttributes.length - 1];
+			var objects =	[
+								{id: 0, label: "A", x: 100, y: 400, radius: 30, selected: false, visible: true, endomorphisms: "idA"}, 
+								{id: 1, label: "B", x: 400, y: 100, radius: 30, selected: false, visible: true, endomorphisms: "idB"}
+							];
+			tsvRows = [];
+			tsvRows.push(objectsHeader);
+			for (var i = 0; i < objects.length; i++) {
+				tsvRows.push(objects[i].id+"\t"+objects[i].label+"\t"+objects[i].x+"\t"+objects[i].y+"\t"+objects[i].radius+"\t"+objects[i].selected+"\t"+objects[i].visible+"\t"+objects[i].endomorphisms);
+			}
+			writeTSV(tsvRows, "objects.tsv");
+		}
+		function writeMorphismsTSV() {
+			var morphismsAttributes = ["id", "label", "source", "target", "width", "type", "isIdEndomorphism", "selected", "visible", "p0", "p1", "p2", "curve", "handle"];
+			var morphismsHeader = "";
+			for (var i = 0; i < morphismsAttributes.length - 1; i++) {
+				morphismsHeader += morphismsAttributes[i] + "\t";
+			}
+			morphismsHeader += morphismsAttributes[morphismsAttributes.length - 1];
+			var morphisms =	[
+								{id: 0, label: "idA", source: 0, target: 0, width: 4, type: "endomorphism", isIdEndomorphism: true, selected: false, visible: true, p0: null, p1: null, p2: null, curve: null, handle: null}, 
+								{id: 1, label: "idB", source: 1, target: 1, width: 4, type: "endomorphism", isIdEndomorphism: true, selected: false, visible: true, p0: null, p1: null, p2: null, curve: null, handle: null}, 
+							];
+			tsvRows = [];
+			tsvRows.push(morphismsHeader);
+			for (var i = 0; i < morphisms.length; i++) {
+				tsvRows.push(morphisms[i].id+"\t"+morphisms[i].label+"\t"+morphisms[i].source+"\t"+morphisms[i].target+"\t"+morphisms[i].width+"\t"+morphisms[i].type+"\t"+morphisms[i].isIdEndomorphism+"\t"+morphisms[i].selected+"\t"+morphisms[i].visible+"\t"+morphisms[i].p0+"\t"+morphisms[i].p1+"\t"+morphisms[i].p2+"\t"+morphisms[i].curve+"\t"+morphisms[i].handle);
+			}
+			writeTSV(tsvRows, "morphisms.tsv");
+		}
+		function writeElementsTSVs() {
+			writeObjectsTSV();
+			writeMorphismsTSV();
+		}
+		</script>
+	</body>
+</html>

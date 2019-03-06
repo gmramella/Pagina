@@ -1,0 +1,58 @@
+<!--Code based on: https://bl.ocks.org/mbostock/f705fc55e6f26df29354-->
+<!--http://www.inf.ufrgs.br/~gmramella/tcc/d3.html-->
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+<style>
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+</style>
+
+	<title>Teste com D3</title>
+	<script src="jquery-1.12.0.min.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<svg width="960" height="500">
+  <rect style="fill:#fff;" width="100%" height="100%"></rect>
+</svg>
+<script>
+
+var activeLine;
+
+var renderPath = d3.svg.line()
+    .x(function(d) { return d[0]; })
+    .y(function(d) { return d[1]; })
+    .interpolate("basis");
+
+var svg = d3.select("svg")
+    .call(d3.behavior.drag()
+      .on("dragstart", dragstarted)
+      .on("drag", dragged)
+      .on("dragend", dragended));
+
+function dragstarted() {
+  activeLine = svg.append("path").datum([]).attr("class", "line");
+}
+
+function dragged() {
+  activeLine.datum().push(d3.mouse(this));
+  activeLine.attr("d", renderPath);
+}
+
+function dragended() {
+  activeLine = null;
+}
+
+</script>	
+</body>
+</html>

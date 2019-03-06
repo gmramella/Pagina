@@ -1,0 +1,36 @@
+Variáveis
+Tipos Básicos de Dados
+Inicialização
+Constantes
+Modificadores
+Variáveis Locais
+Variáveis Globais
+Cast
+Operadores Aritméticos
+Operador Atribuição
+Operadores Relacionais e Lógicos
+Operadores bit a bit
+If-else
+?:
+Switch
+For
+While
+Do-while
+Ponteiros
+Operações com ponteiros
+Array
+Matriz
+String
+Manipulação de memória
+Funções
+Return
+Prototipação de funções
+Goto
+Break
+Continue
+Chamada por valor
+Chamada por referência
+Recursão
+Struct
+Arquivos binários
+Arquivos de texto

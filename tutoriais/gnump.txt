@@ -1,0 +1,55 @@
+INSTALA플O
+
+wget ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-4.3.2.tar.bz2
+bunzip2 gmp-4.3.2.tar.bz2
+tar xvf gmp-4.3.2.tar
+cd gmp-4.3.2
+./configure --disable-shared --enable-static --prefix=/tmp/gcc
+make && make check && make install
+---------------------------------------------------------------
+EXEMPLO EM C
+
+#include <stdio.h>
+#include <gmp.h>
+
+int main(void) {
+	mpz_t x,y,result;
+
+	mpz_init_set_str(x, "7612058254738945", 10);
+	mpz_init_set_str(y, "9263591128439081", 10);
+	mpz_init(result);
+
+	mpz_mul(result, x, y);
+	gmp_printf("%Zd * %Zd = %Zd\n", x, y, result);
+
+	/* free used memory */
+	mpz_clear(x);
+	mpz_clear(y);
+	mpz_clear(result);
+
+	return 0;
+}
+---------------------------------------------------------------
+COMPILA플O E EXECU플O
+
+gcc -o executavel fonte.c -lgmp
+./executavel
+---------------------------------------------------------------
+EXEMPLO EM C++
+
+#include <iostream>
+#include <gmpxx.h>
+
+int main() {
+	mpz_class x("7612058254738945");
+	mpz_class y("9263591128439081");
+
+	std::cout << x << "*" << y << "=" << x * y << "\n";
+
+	return 0;
+}
+---------------------------------------------------------------
+COMPILA플O E EXECU플O
+
+g++ -o executavel fonte.cpp -lgmpxx -lgmp
+./executavel

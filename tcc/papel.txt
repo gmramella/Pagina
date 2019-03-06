@@ -1,0 +1,23 @@
+arrumar no papel:
+	ctrl+clique vai pra ctrl with ...
+	space a qualquer momento
+	atual ctrl with..., ctrl+a vai pra ctrl with ...
+	idle + mousedown = rect start
+	shift + mousedown = object create start
+	object create start + mousemove = idle
+	object create start + mouseup = object create stop
+	delete vai pra "idle"
+
+adicionar no papel:
+	endomorphism update
+	endomorphism select start
+	endomorphism select stop
+	object delete no double-click
+	select handle
+	ctrl+shift+s
+	ctrl+o
+	ctrl+p
+
+release:
+	trocar no config pra abrir a pagina de help ao iniciar
+	tirar círculos

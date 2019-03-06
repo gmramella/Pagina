@@ -1,0 +1,45 @@
+Existem vários SGBDs que têm dialetos diferentes mas têm SQL padrão como semelhança entre eles.
+Primeiro é necessário saber o que são: index, view
+Em seguida é necessário aprender a usar as instruções SQL padrão.
+Por fim, se aprende os dialetos (MYSQL, ORACLE, SQL SERVER, POSTGRESQL etc).
+
+Linguagem de definição de dados (DDL)
+
+	CREATE, ALTER, DROP
+
+		CREATE DATABASE
+		CREATE INDEX
+		CREATE TABLE
+		CREATE VIEW
+		ALTER INDEX
+		ALTER TABLE
+		ALTER VIEW
+		DROP INDEX
+		DROP TABLE
+		DROP VIEW
+
+	Linguagem de Manipulação de Dados (DML)
+
+		INSERT, UPDATE, DELETE
+
+			INSERT INTO TABLE
+			UPDATE TABLE
+			DELETE FROM TABLE
+
+	Linguagem de controle de dados (DCL)
+
+		GRANT, REVOKE
+		GRANT
+		REVOKE
+
+	Linguagem de controle de transação (TCL)
+
+		COMMIT, ROLLBACK, SAVEPOINT
+		COMMIT
+		ROLLBACK
+		SAVEPOINT
+
+	Linguagem de query de dados (DQL)
+
+		SELECT
+		SELECT FROM WHERE GROUP BY HAVING ORDER BY

@@ -1,0 +1,915 @@
+Sistema web
+
+Sistema web
+	Cliente
+		Navegador (IE, Chrome, Firefox)
+	Servidor
+		Banco de Dados (MySQL, Oracle, SQl Server, Postgres)
+		Serviço HTTP (PHP, ASP, Java)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Ferramentas necessárias
+
+Editor de texto.
+Banco de dados.
+Ferramenta de administração de banco de dados.
+Serviço do servidor HTTP.
+Para isso, baixar Notepad++ e XAMPP (MySQL, PhpMyAdmin e Apache).
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Formulários
+
+<form name="executar" action="processaForm.php" method="post">
+	Nome: <input type="text" name="nome"><br/>
+	<br/>
+	<input type="radio" name="sexo" value="m">Masculino<br/>
+	<input type="radio" name="sexo" value="f">Feminino<br/>
+	<br/>
+	<input type="checkbox" name="animaisQueTem">Cachorro<br/>
+	<input type="checkbox" name="animaisQueTem">Gato<br/>
+	<br/>
+	<select name="animalFavorito">
+	<option value="cachorro">Cachorro
+	<option value="gato">Gato
+	</select>
+	<br/>
+	<input type="submit" name="submit" value"gravar">
+</form>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Codigo HTML/PHP base
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Titulo da pagina</title>
+	</head>
+	<body>
+		<?php
+		?>
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Receber variavel de post
+
+$var = $_POST["nome"];
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Tabela
+
+<table>
+	<tr>
+		<td>1,1</td><td>1,2</td>
+	</tr>
+	<tr>
+		<td>2,1</td><td>2,2</td>
+	</tr>
+</table>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Display
+
+echo (nao tem retorno)
+print (tem retorno)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Variaveis
+
+Declaracao (pode nao ter valor inicial)
+	$var = "texto"; (string)
+	$var = digitos; (int)
+	$var = digitos.digitos; (double)
+Uso
+	$var
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Operadores
+
+Concatenacao
+	str1 . str2
+
+Matematicos
+	=, +, -, *, /, %, **, ++, --
+
+Relacionais
+	==, != ou <>, >, <, >=, <=
+
+Logicos
+	and ou &&, or ou ||, !
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Array
+
+$var = array("val1", "val2", "val3");
+echo $var[0] . ", " . $var[1] . " e " . $var[2] . ".";
+------------------------------------------------------------------------------------------------------------------------------------------------------
+If
+
+if(condicao){
+	comando;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------
+If Else
+
+if(condicao){
+	comando1;
+}
+else{
+	comando2;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Switch
+
+switch($var){
+	case "val":
+		comando1;
+		break;
+	case "val":
+		comando2;
+		break;
+	default:
+		comando3;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------
+For
+
+for($var=val;condicao;op){
+	comando;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------
+While
+
+while(condicao){
+	comando;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Do While
+
+do{
+	comando;
+}while(condicao);
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Funcoes de verificacao
+
+gettype($var) //"boolean", "integer", "double", "string", "array", "object", "resource", "NULL", "unknown type"
+is_array(), is_bool(), is_float(), is_int(), is_null(), is_numeric() //numero ou string numerica, is_object(), is_resource(), is_scalar(), is_string()
+function_exists()
+method_exists()
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Links com PHP
+
+Simples
+<a href="<?php echo "pagina.php"; ?>">Link com PHP</a>
+
+Utilizando uma imagem como hiperlink
+<a href="<?php echo "pagina.php"; ?>"><img src="nome_imagem.jpg" /></a>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Inclusão
+
+include e require (causam warning e error, respectivamente);
+
+pagina1.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Página 1</title>
+	</head>
+	<body>
+		<?php 
+			$var = 1;
+		?>
+	</body>
+</html>
+
+pagina2.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Página 2</title>
+	</head>
+	<body>
+		<?php
+			
+			include("pagina1.php");
+			
+			echo "$var";
+			
+		?>
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Criação de base de dados giuseppe para testes
+
+localhost/phpmyadmin
+CREATE DATABASE giuseppe COLLATE = latin1_general_ci;
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Criação de tabela cadastro para testes
+
+Clicar na base de dados
+CREATE TABLE cadastro (
+cod          INT (10) NOT NULL AUTO_INCREMENT,
+nome         VARCHAR (200),
+sobrenome    VARCHAR (200),
+CONSTRAINT   pk_cadastro PRIMARY KEY(cod));
+------------------------------------------------------------------------------------------------------------------------------------------------------
+conexao.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Conexao com o banco</title>
+	</head>
+	<body>
+		<?php 
+			// Conexao com o banco de dados MySQL
+			$mysql_host = "localhost";
+			$mysql_usuario = "root";
+			$mysql_senha = "";
+			$mysql_banco = "giuseppe";
+
+			$conexao = mysql_connect($mysql_host, $mysql_usuario , $mysql_senha) or die ("<br />Nao foi possivel estabeler a conexao pois: " . mysql_error());
+	
+			if($conexao){
+				echo "<br />A conexao com o banco de dados foi estabelecida.";
+			}
+		?>
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+cadastro.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro</title>
+	</head>
+	<body>
+		Cadastro de Pessoas<br/>
+		<br/>
+		<form nome="cadastro" method="post" action="cadastro_gravar.php"> 
+			Nome:<input type="text" name="nome"/><br/>
+			Sobrenome:<input type="text" name="sobrenome"/><br/>
+			<br/>
+			<input type="submit" name="cadastrar" value="Cadastrar"/><br/>
+		</form>
+		<br/> 
+		
+		<?php
+			include("conexao.php");
+			
+			// Selecionar o banco de dados
+			mysql_select_db($mysql_banco);
+			
+			// Consultar, no banco, nome e sobrenome de todos os registros da tabela cadastro
+			$sql = "SELECT * FROM cadastro";
+			$consultar = mysql_query($sql);
+		?>
+		<!-- Inicio da tabela mostrar registro -->
+		<table border="1">
+			<?php
+				// Utilizar uma funcao do MySQL para criar um Array de todos os registros da consulta
+				while($listar = mysql_fetch_array($consultar)){
+					$cod = $listar['cod'];
+					$nome = $listar['nome'];
+					$sobrenome = $listar['sobrenome'];
+				?>
+					<tr>
+						<td><?php echo "$nome $sobrenome"; ?></td>
+						<td><a href="<?php echo "cadastro_editar.php?cod=$cod"; ?>">Alterar</a></td>
+						<td><a href="<?php echo "cadastro_deletar.php?cod=$cod"; ?>">Deletar</a></td>
+					</tr>
+					<?php
+				}
+			?>
+		</table>
+		<!-- Inicio da tabela mostrar registro -->
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+cadastro_gravar.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro</title>
+	</head>
+	<body>
+		<?php
+			include("conexao.php");
+			
+			$nome = $_POST["nome"];
+			$sobrenome = $_POST["sobrenome"];
+			
+			echo "$nome $sobrenome";
+			
+			// Incluir os dados das variaveis no banco de dados 
+			mysql_select_db($mysql_banco);
+			$gravar = mysql_query("INSERT INTO cadastro (nome, sobrenome) VALUES ('$nome', '$sobrenome')");
+
+			// Verificar se os dados foram gravados no banco de dados 
+			if ($gravar) {
+				echo "<br/><br/>Gravou no banco de dados";
+				header ("location:cadastro.php");
+			}else{
+				echo "<br/><br/>Nao gravou no banco de dados pois: " . mysql_error();
+			}
+			
+		?>
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+cadastro_editar.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro</title>
+	</head>
+	<body>
+		<?php
+
+			include("conexao.php");
+			
+			// Pegar da barra de enderecos e armazenar em uma variavel
+			$cod = $_GET["cod"];
+			
+			// Selecionar o banco de dados
+			mysql_select_db($mysql_banco);
+			
+			// Consultar, no banco, nome e sobrenome de todos os registros da tabela cadastro
+			$sql = "SELECT * FROM cadastro WHERE cod = '$cod'";
+			$consultar = mysql_query($sql);
+
+			// Utilizar uma funcao do MySQL para criar um array de todos os registros da consulta
+			while($listar = mysql_fetch_array($consultar)) {
+				$nome = $listar['nome'];
+				$sobrenome = $listar['sobrenome'];
+			}
+		?>
+
+		Cadastro de Pessoas - Alterar<br/>
+		<br/>
+		<form name="cadastro" method="post" action="<?php echo "cadastro_editar_gravar.php?cod=$cod";?>"> 
+			Nome:<input type="text" name="nome" value="<?php echo $nome; ?>"/><br/>
+			Sobrenome:<input type="text" name="sobrenome" value="<?php echo $sobrenome;?>"/><br/>
+			<br/>
+			<input type="submit" name="cadastrar" value="Salvar alteração"/><br/>
+		</form>
+		<br/>
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+cadastro_deletar.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro deletar</title>
+	</head>
+	<body>
+		<?php
+			
+			include("conexao.php");
+			
+			$cod = $_GET["cod"];
+			
+			// Incluir os dados das variaveis no banco de dados 
+			mysql_select_db($mysql_banco);
+			$deletar = mysql_query("DELETE FROM cadastro WHERE cod='$cod'");
+
+			// Verificar se os dados foram gravados no banco de dados 
+			if ($deletar) {
+				echo "<br/><br/>Registro deletado do banco de dados";
+				header ("location:cadastro.php");
+			}else{
+				echo "<br/><br/>Nao deletou o registro do banco de dados pois: " . mysql_error();
+			}
+			
+		?>
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+cadastro_editar_gravar.php
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro</title>
+	</head>
+	<body>
+		<?php
+
+			include("conexao.php");
+			
+			$cod = $_GET["cod"];
+			$nome = $_POST["nome"];
+			$sobrenome = $_POST["sobrenome"];
+			
+			echo "$nome $sobrenome";
+			
+			// Incluir os dados das variaveis no banco de dados 
+			mysql_select_db($mysql_banco);
+			$gravar = mysql_query ("UPDATE cadastro SET nome = '$nome', sobrenome = '$sobrenome' WHERE cod='$cod'");
+
+			// Verificar se os dados foram gravados no banco de dados 
+			if ($gravar) {
+				echo "<br/><br/>Gravou no banco de dados";
+				header ("location:cadastro.php");
+			}else{
+				echo "<br/><br/>Nao gravou no banco de dados pois: " . mysql_error();
+			}
+		?>
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
+JavaScript para validação
+
+<script type="text/javascript">
+function validar(cadastro){
+	if(cadastro.nome.value == ''){
+		alert("O campo NOME é obrigatório.");
+		return false;
+	}
+	 
+	if(cadastro.sobrenome.value == ''){
+		alert("O campo SOBRENOME é obrigatório.");
+		return false;
+	}
+	 
+	if(cadastro.email.value.indexOf(('@' && '.'),0)== -1){
+		alert("E-MAIL invalido. Ele deve conter uma @ e pelo menos um Ponto.");
+		return false;
+	}
+	  
+	if(cadastro.email.value == ''){
+		alert("O campo E-MAIL é obrigatório.");
+		return false;
+	}
+
+	return false;
+}
+</script>
+
+//Este vai dentro do formulario
+onsubmit="return validar(this);"
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Funções MySQL
+
+    mysql_affected_rows — Obtém o número de linhas atingidas na operação anterior do MySQL
+    mysql_client_encoding — Retorna o nome do conjunto de caracteres
+    mysql_close — Fecha a conexão MySQL
+    mysql_connect — Abre uma conexão com um servidor MySQL
+    mysql_create_db — Cria um banco de dados MySQL
+    mysql_data_seek — Move o ponteiro interno do resultado
+    mysql_db_name — Obtém dados do resultado(nome de banco de dados)
+    mysql_db_query — Envia uma consulta MySQL
+    mysql_drop_db — Exclui um banco de dados MySQL
+    mysql_errno — Retorna o valor numérico da mensagem de erro da operação MySQL anterior
+    mysql_error — Retorna o texto da mensagem de erro da operação MySQL anterior
+    mysql_escape_string — Escapa uma string para usar em uma consulta MySQL
+    mysql_fetch_array — Obtém uma linha como uma matriz associativa, uma matriz numérica, ou ambas
+    mysql_fetch_assoc — Obtém um linha do resultado como uma matriz associativa
+    mysql_fetch_field — Obtém informações sobre uma coluna de um resultado e retorna como um objeto
+    mysql_fetch_lengths — Obtém o tamanho de cada saída no resultado
+    mysql_fetch_object — Obtém o resultado de uma linha como um objeto
+    mysql_fetch_row — Obtém uma linha como uma array numérica
+    mysql_field_flags — Obtém as flags associadas ao campo especificado em um resultado
+    mysql_field_len — Retorna o tamanho do campo especificado
+    mysql_field_name — Obtém o nome do campo especificado em um resultado
+    mysql_field_seek — Define o ponteiro do resultado para o índice de campo especificado
+    mysql_field_table — Obtém o nome da tabela na qual o campo especificado esta
+    mysql_field_type — Obtém o tipo do campo especificado em um resultado
+    mysql_free_result — Libera um resultado da memória
+    mysql_get_client_info — Obtém informações do cliente MySQL
+    mysql_get_host_info — Obtém informações do servidor MySQL
+    mysql_get_proto_info — Obtém informações do protocolo MySQL
+    mysql_get_server_info — Obtém informações do servidor MySQL
+    mysql_info — Obtém informação sobre a consulta mais recente
+    mysql_insert_id — Obtém o ID gerado pela operação INSERT anterior
+    mysql_list_dbs — Lista os bancos de dados disponíveis em um servidor MySQL
+    mysql_list_fields — Lista os campos de uma tabela MySQL
+    mysql_list_processes — Lista os processos MySQL
+    mysql_list_tables — Lista as tabelas em um banco de dados MySQL
+    mysql_num_fields — Obtém o numero de campos em um resultado
+    mysql_num_rows — Obtém o número de linhas em um resultado
+    mysql_pconnect — Abre uma conexão persistente com um servidor MySQL
+    mysql_ping — pinga uma conexão com o servidor ou reconecta se não houver conexão
+    mysql_query — Envia uma consulta MySQL
+    mysql_real_escape_string — Escapa os caracteres especiais numa string para usar em um comando SQL, levando em conta o conjunto atual de caracteres.
+    mysql_result — Retorna dados do resultado
+    mysql_select_db — Seleciona um banco de dados MySQL
+    mysql_set_charset — Sets the client character set
+    mysql_stat — Retorna o status atual do sistema
+    mysql_tablename — Retorna o nome da tabela do campo
+    mysql_thread_id — Returna o ID da thread atual
+    mysql_unbuffered_query — Envia uma query para o MySQL, sem retornar e colocar em buffer as linhas do resultado
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Classe MySQLi
+
+    mysqli->affected_rows — Retorna o número de linhas afetadas pela operação MySQL anterior
+    mysqli::autocommit — Ativa ou desativa o salvar automaticamente as modificações no banco de dados
+    mysqli::begin_transaction — Starts a transaction
+    mysqli::change_user — Modifica o usuário para a conexão com o banco de dados especificada
+    mysqli::character_set_name — Retorna o conjunto de caracteres padrão para a conexão com o banco de dados
+    mysqli::$client_info — Get MySQL client info
+    mysqli::$client_version — Returns the MySQL client version as a string
+    mysqli_close — Fecha uma conexão aberta anteriormente com o banco de dados
+    mysqli::commit — Salva a transação atual
+    mysqli_connect_errno — Retorna o código de erro da ultima chamada a função connect
+    mysqli_connect_error — Retorna uma string descrevendo o ultimo erro da função connect
+    mysqli::__construct — Open a new connection to the MySQL server
+    mysqli_debug — Realiza operações de debug
+    mysqli::dump_debug_info — Descarrega informação de debug no log
+    mysqli->errno — Retorna o código de erro para a chamada de função mais recente
+    mysqli::$error_list — Returns a list of errors from the last command executed
+    mysqli->error — Retorna uma string descrevendo o ultimo erro
+    mysqli_field_count — Retorna o número de colunas para a consulta mais recente
+    mysqli::get_charset — Returns a character set object
+    mysqli::get_client_info — Retorna a versão do cliente MySQL como uma string
+    mysqli_get_client_stats — Returns client per-process statistics
+    mysqli::get_client_version — Obtém informação sobre o cliente MySQL
+    mysqli::get_connection_stats — Returns statistics about the client connection
+    mysqli_get_host_info — Retorna uma string representando o tipo da conexão usada
+    mysqli->protocol_version — Retorna a versão do protocolo MySQL usada
+    mysqli->server_info — Retorna a versão do servidor MySQL
+    mysqli->server_version — Retorna a versão do servidor MySQL como um integer
+    mysqli::get_warnings — Get result of SHOW WARNINGS
+    mysqli_info — Recupera informação sobre a mais recente query executada
+    mysqli_init — Inicializa a MySQLi e retorna um resource para usar com mysqli_real_connect()
+    mysqli_insert_id — Retorna o id gerado automaticamente na última consulta
+    mysqli::kill — Solicita ao servidor o encerramento de um thread do MySQL
+    mysqli::more_results — Verifica se há mais algum resultado de uma multi query
+    mysqli::multi_query — Performs a query on the database
+    mysqli::next_result — Prepara o próximo resultado de multi_query
+    mysqli::options — Set options
+    mysqli::ping — Pings a server connection, or tries to reconnect if the connection has gone down
+    mysqli::poll — Poll connections
+    mysqli::prepare — Prepare an SQL statement for execution
+    mysqli::query — Performs a query on the database
+    mysqli::real_connect — Opens a connection to a mysql server
+    mysqli::real_escape_string — Escapes special characters in a string for use in an SQL statement, taking into account the current charset of the connection
+    mysqli::real_query — Execute an SQL query
+    mysqli::reap_async_query — Get result from async query
+    mysqli::refresh — Refreshes
+    mysqli::release_savepoint — Removes the named savepoint from the set of savepoints of the current transaction
+    mysqli::rollback — Rolls back current transaction
+    mysqli::rpl_query_type — Returns RPL query type
+    mysqli::savepoint — Set a named transaction savepoint
+    mysqli::select_db — Selects the default database for database queries
+    mysqli::send_query — Send the query and return
+    mysqli::set_charset — Sets the default client character set
+    mysqli::set_local_infile_default — Unsets user defined handler for load local infile command
+    mysqli::set_local_infile_handler — Set callback function for LOAD DATA LOCAL INFILE command
+    mysqli::$sqlstate — Returns the SQLSTATE error from previous MySQL operation
+    mysqli::ssl_set — Used for establishing secure connections using SSL
+    mysqli::stat — Gets the current system status
+    mysqli::stmt_init — Initializes a statement and returns an object for use with mysqli_stmt_prepare
+    mysqli::store_result — Transfers a result set from the last query
+    mysqli::$thread_id — Returns the thread ID for the current connection
+    mysqli::thread_safe — Returns whether thread safety is given or not
+    mysqli::use_result — Initiate a result set retrieval
+    mysqli::$warning_count — Returns the number of warnings from the last query for the given link
+
+Classe MySQLi_STMT
+
+    mysqli_stmt::$affected_rows — Returns the total number of rows changed, deleted, or inserted by the last executed statement
+    mysqli_stmt::attr_get — Used to get the current value of a statement attribute
+    mysqli_stmt::attr_set — Used to modify the behavior of a prepared statement
+    mysqli_stmt::bind_param — Passa variáveis para um preparado comando como parâmetros
+    mysqli_stmt::bind_result — Passa variáveis para um preparado comando por resultado armazenado
+    mysqli_stmt::close — Closes a prepared statement
+    mysqli_stmt::__construct — Constructs a new mysqli_stmt object
+    mysqli_stmt::data_seek — Seeks to an arbitrary row in statement result set
+    mysqli_stmt::$errno — Returns the error code for the most recent statement call
+    mysqli_stmt::$error_list — Returns a list of errors from the last statement executed
+    mysqli_stmt::$error — Returns a string description for last statement error
+    mysqli_stmt->execute — Executa uma preparada query
+    mysqli_stmt::fetch — Obtém resultados de um preparado comando e os coloca nas determinadas variáveis
+    mysqli_stmt::$field_count — Returns the number of field in the given statement
+    mysqli_free_result — Libera a memória associada ao resultado
+    mysqli_stmt::get_result — Gets a result set from a prepared statement
+    mysqli_stmt::get_warnings — Get result of SHOW WARNINGS
+    mysqli_stmt::$insert_id — Get the ID generated from the previous INSERT operation
+    mysqli_stmt::more_results — Check if there are more query results from a multiple query
+    mysqli_stmt::next_result — Reads the next result from a multiple query
+    mysqli_stmt::$num_rows — Return the number of rows in statements result set
+    mysqli_stmt::$param_count — Returns the number of parameter for the given statement
+    mysqli_stmt::prepare — Prepara uma declaração SQL para execução
+    mysqli_stmt::reset — Resets a prepared statement
+    mysqli_stmt::result_metadata — Returns result set metadata from a prepared statement
+    mysqli_stmt::send_long_data — Send data in blocks
+    mysqli_stmt::$sqlstate — Returns SQLSTATE error from previous statement operation
+    mysqli_stmt::store_result — Transfers a result set from a prepared statement
+
+Classe MySQLi_Result
+
+    mysqli_result::$current_field — Get current field offset of a result pointer
+    mysqli_result::data_seek — Ajusta o ponteiro do resultado para uma linha arbritaria no conjunto de resutados
+    mysqli_result::fetch_all — Fetches all result rows as an associative array, a numeric array, or both
+    mysqli_fetch_array — Obtem uma linha do resultado como uma matriz associativa, numérica, ou ambas
+    mysqli_result::fetch_assoc — Obtem uma linha do conjunto de resultados como uma matriz associativa
+    mysqli_fetch_field_direct — Obtem meta dados para um único campo
+    mysqli_result::fetch_field — Retorna o próximo campo no conjunto de resultados
+    mysqli_result::fetch_fields — Retorna uma matriz de objetos representando os campos em um conjunto de resultados
+    mysqli_fetch_object — Retorna a linha atual do conjunto de resultados como um objeto
+    mysqli_result::fetch_row — Obtém uma linha do resultado como uma matriz numerada
+    mysqli_result::$field_count — Get the number of fields in a result
+    mysqli_field_seek — Move o ponteiro do resultado para um campo especificado
+    mysqli_result::free — Frees the memory associated with a result
+    mysqli_result::$lengths — Returns the lengths of the columns of the current row in the result set
+    mysqli_result::$num_rows — Gets the number of rows in a result
+
+Classe mysqli_driver
+
+    mysqli_driver::embedded_server_end — Stop embedded server
+    mysqli_driver::embedded_server_start — Initialize and start embedded server
+    mysqli_driver::$report_mode — Enables or disables internal report functions
+
+Apelidos e Funções obsoletas da Mysqli
+
+    mysqli_bind_param — Apelido para mysqli_stmt_bind_param
+    mysqli_bind_result — Apelido para mysqli_stmt_bind_result
+    mysqli_client_encoding — Apelido para mysqli_character_set_name
+    mysqli_connect — Sinônimo de mysqli::__construct
+    mysqli_disable_reads_from_master — Desabilita leitura do master
+    mysqli_disable_rpl_parse — Desabilita análise RPL
+    mysqli_enable_reads_from_master — Habilita leitura do master
+    mysqli_enable_rpl_parse — Habilita análise RPL
+    mysqli_escape_string — Apelido para mysqli_real_escape_string
+    mysqli_execute — Apelido para mysqli_stmt_execute
+    mysqli_fetch — Apelido para mysqli_stmt_fetch
+    mysqli_get_cache_stats — Returns client Zval cache statistics
+    mysqli_get_links_stats — Return information about open and cached links
+    mysqli_get_metadata — Apelido para mysqli_stmt_result_metadata
+    mysqli_master_query — Força execução de uma query no master numa configuração master/slave
+    mysqli_param_count — Alias for mysqli_stmt_param_count
+    mysqli_report — Sinônimo de mysqli_driver->report_mode
+    mysqli_rpl_parse_enabled — Check if RPL parse is enabled
+    mysqli_rpl_probe — RPL probe
+    mysqli_send_long_data — Alias for mysqli_stmt_send_long_data
+    mysqli::set_opt — Alias of mysqli_options
+    mysqli_slave_query — Force execution of a query on a slave in a master/slave setup
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Anexar arquivos
+
+Criar base de dados arquivos
+CREATE DATABASE arquivos COLLATE = latin1_general_ci;
+
+Clicar no nome da tabela e criar tabela anexo
+CREATE TABLE anexo (
+cod          INT (10) NOT NULL AUTO_INCREMENT,
+nome         VARCHAR (200),
+descricao    VARCHAR (200),
+arquivo      VARCHAR (200),
+CONSTRAINT   pk_anexo PRIMARY KEY(cod));
+
+conexao.php
+
+...
+<body>
+<?php 
+	// Conexao com o banco de dados MySQL
+	$mysql_host = "localhost";
+	$mysql_usuario = "root";
+	$mysql_senha = "";
+	$mysql_banco = "arquivos";
+
+	$conexao = mysql_connect($mysql_host, $mysql_usuario , $mysql_senha)
+	or die ("<br />Nao foi possivel estabeler a conexao pois: " . mysql_error());
+	
+
+	
+?>
+<>/body
+...
+
+anexar.php
+
+...
+<body>
+
+	
+	<br /><br />
+	Anexar arquivo
+	
+	<br /><br />
+	<form  nome="anexar" method="post" action="anexar_gravar.php"  enctype="multipart/form-data" >
+	Nome: <input type="text" name="nome" />
+	<br /><br />
+	Descrição: <input type="text" name="descricao" />
+	<br /><br />	
+	Anexo:<input type="file" name="arquivo" />
+	<input type="submit" name="enviar" value="Enviar" />
+	</form> 
+	<br />
+	<br />
+	<?php
+	
+	include("conexao.php");
+	
+	mysql_select_db($mysql_banco);
+	
+	$sql = "SELECT * FROM anexo";
+
+	$consultar = mysql_query($sql);			
+	while($listar = mysql_fetch_array($consultar))
+	{
+	$nome = $listar['nome'];
+	$descricao = $listar['descricao'];
+	$arquivo = $listar['arquivo'];
+	
+	echo "<a href='$arquivo' target='_blank'>Abrir arquivo $nome</a><br />";
+	}
+	?>
+ 
+</body>
+...
+
+anexar_gravar.php
+
+...
+<body>
+<?php
+
+	include("conexao.php");
+	
+	$nome = $_POST["nome"];
+	$descricao = $_POST["descricao"];
+	
+	mysql_select_db($mysql_banco);
+	
+
+	$_UP['pasta'] = 'arquivos/';
+
+	$pasta = $_UP['pasta'];
+
+	$extensao = explode(".", $_FILES['arquivo']['name']);
+	$extensao = $extensao[1]; 
+	
+	$nome_final = $nome.".".$extensao;
+	$nome_parcial = $nome.".".".";
+
+	move_uploaded_file($_FILES['arquivo']['tmp_name'], $pasta . $nome_final);
+
+	if($nome_final == $nome_parcial){
+		$arquivo = "";
+	}
+	else{
+		$arquivo = $pasta.$nome_final;
+	}
+
+
+	mysql_select_db($mysql_banco);
+	$gravar = mysql_query ("INSERT INTO anexo (nome , descricao, arquivo) VALUES ('$nome','$descricao','$arquivo')");
+
+	// Verifica se os dados foram gravados no banco de dados 
+	if ($gravar) {
+		echo "<br /><br />Gravou no banco de dados";
+		header ("location:anexar.php");
+	}else{
+		echo "<br /><br />Nao gravou no banco de dados pois: " . mysql_error();
+	}
+?>
+</body>
+...
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Anexar imagens
+
+Criar base de dados imagens
+CREATE DATABASE imagens COLLATE = latin1_general_ci;
+
+Clicar no nome da tabela e criar tabela anexo
+CREATE TABLE anexo (
+cod          INT (10) NOT NULL AUTO_INCREMENT,
+nome         VARCHAR (200),
+descricao    VARCHAR (200),
+arquivo      VARCHAR (200),
+CONSTRAINT   pk_anexos PRIMARY KEY(cod));
+
+conexao.php
+
+...
+<body>
+<?php 
+	// Conexao com o banco de dados MySQL
+	$mysql_host = "localhost";
+	$mysql_usuario = "root";
+	$mysql_senha = "";
+	$mysql_banco = "imagens";
+
+	$conexao = mysql_connect($mysql_host, $mysql_usuario , $mysql_senha)
+	or die ("<br />Nao foi possivel estabeler a conexao pois: " . mysql_error());
+?>
+</body>
+...
+
+anexar.php
+
+...
+<body>
+
+	
+	<br /><br />
+    Anexar imagem
+	
+	<br /><br />
+    <form  nome="anexar" method="post" action="anexar_gravar.php"  enctype="multipart/form-data" >
+	Nome: <input type="text" name="nome" />
+	<br /><br />
+	Descrição: <input type="text" name="descricao" />
+	<br /><br />	
+	Anexo:<input type="file" name="arquivo" />
+	<input type="submit" id="enviar" name="enviar" value="Enviar" />
+	</form> 
+	<br />
+	<br />
+	<?php
+	
+	include("conexao.php");
+	
+	mysql_select_db($mysql_banco);
+	
+	$sql = "SELECT * FROM anexo";
+
+	$consultar = mysql_query($sql);			
+	while($listar = mysql_fetch_array($consultar))
+	{
+	$nome = $listar['nome'];
+	$descricao = $listar['descricao'];
+	$arquivo = $listar['arquivo'];
+	
+	echo "Titulo: $nome<br />";
+	?>
+	<img src="<?php echo $arquivo; ?>" width="100" height="100"><br /><br />
+	<?php
+	}
+	?>
+	
+</body>
+...
+
+anexar_gravar.php
+
+...
+<body>
+<?php
+	include("conexao.php");
+	
+	$nome = $_POST["nome"];
+	$descricao = $_POST["descricao"];
+	
+	mysql_select_db($mysql_banco);
+	
+
+	$_UP['pasta'] = 'imagens/';
+
+	$pasta = $_UP['pasta'];
+
+	$extensao = explode(".", $_FILES['arquivo']['name']);
+	$extensao = $extensao[1]; 
+	
+	$nome_final = $nome.".".$extensao;
+	$nome_parcial = $nome.".".".";
+
+	move_uploaded_file($_FILES['arquivo']['tmp_name'], $pasta . $nome_final);
+
+	if($nome_final == $nome_parcial){ $arquivo = ""; }else{ $arquivo = $pasta.$nome_final;  }
+
+
+	mysql_select_db($mysql_banco);
+	$gravar = mysql_query ("INSERT INTO anexo (nome , descricao, arquivo) VALUES ('$nome','$descricao','$arquivo')");
+
+	// Verifica se os dados foram gravados no banco de dados 
+	if ($gravar) {
+		echo "<br /><br />Gravou no banco de dados";
+		header ("location:anexar.php");
+	}else{
+		echo "<br /><br />Nao gravou no banco de dados pois: " . mysql_error();
+	}
+?>
+</body>
+...
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Manipulação de base de dados relacionada
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Busca em base de dados relacionada
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Order by em base de dados relacionada
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Sessao em base de dados relacionada
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Envio de email em base de dados relacionada
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------

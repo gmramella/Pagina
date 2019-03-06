@@ -1,0 +1,142 @@
+Primeiro programa
+
+	#include <iostream>
+	using namespace std;
+	int main(){
+		cout << "Hello World!" << endl;
+	}
+
+Namespace
+
+	Programa equivalente 1:
+	
+		#include <iostream>
+		int main(){
+			std::cout << "foo" << std::endl;
+		}
+
+	Programa equivalente 2:
+
+		#include <iostream>
+		using namespace std;
+		int main(){
+			cout << "foo" << endl;
+		}
+
+Random
+
+	#include <iostream>
+	#include <cstdlib>
+	#include <ctime>
+	using namespace std;
+	int main(){
+		srand(time(0));
+		cout << 1+(rand()%6) << endl;
+	}
+
+Classes
+
+	public class Carro {
+		public:
+			void setNome(String novoNome){
+				nome=novoNome;
+			}
+			String getNome(){
+				return nome;
+			}
+			void setAno(Integer novoAno){
+				ano=novoAno;
+			}
+			String getAno(){
+				return ano;
+			}
+			private:
+				String nome;
+				Integer ano;
+	};
+
+Separando em classes
+
+	Dá para pensar que .h são interfaces e .cpp são implementações de interface.
+	.h:
+		#ifndef CARRO_H
+		#define CARRO_H
+		class Carro {
+			public:
+				int nroPassageiros;
+				Carro();
+				void f1();
+			protected:
+				void f2();
+			private:
+				void f3();
+		};
+		#endif
+	.h:
+		#ifndef AVIAO_H
+		#define AVIAO_H
+		class Aviao {
+			public:
+				int nroTripulantes;
+				Aviao();
+				void g1();
+			protected:
+				void g2();
+			private:
+				void g3();
+		};
+		#endif
+	.cpp:
+		#include <iostream>
+		#include "Carro.h"
+		#include "Aviao.h"
+		using namespace std;
+		Carro::Carro(){
+			nroPassageiros=0;
+		}
+		Carro::~Carro(){
+			cout << "Objeto da Carro encerrado" << endl;
+		}
+		void Carro::setnroPassageiros(int novo){
+			nroPassageiros=novo;
+		}
+		int Carro::getnroPassageiros(){
+			return nroPassageiros;
+		}
+		Aviao::Aviao(){
+			nroTripulantes=0;
+		}
+		Aviao::~Aviao(){
+			cout << "Objeto da Aviao encerrado" << endl;
+		}
+		void Aviao::setnroTripulantes(int novo){
+			nroTripulantes=novo;
+		}
+		int Aviao::getnroTripulantes(){
+			return nroTripulantes;
+		}
+	main:
+		#include <iostream>
+		#include "Classe1.h"
+		#include "Classe2.h"
+		using namespace std;
+		int main(){
+			Classe1 c1;
+			Classe2 c2;
+			cout << "Funciona!" << endl;
+			return 0;
+		}
+
+Overload de função
+	void MostraSoma(int a, int b){
+		cout << a << " + " << b << " = " << a+b <<endl;
+	}
+	void MostraSoma(float a, float b){
+		cout << a << " + " << b << " = " << a+b <<endl;
+	}
+
+Composição
+	Data.h: #ifndef DATA_H#define DATA_H
+	Data.cpp: 
+	Pessoa.h: #ifndef PESSOA_H#define PESSOA_H
+	Pessoa.cpp: 

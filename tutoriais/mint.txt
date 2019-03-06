@@ -1,0 +1,48 @@
+Entrar em linuxmint.com
+Clicar em download
+Escolher qual a interface gráfica e versão do sistema desejadas (Cinnamon x64 é a mais parecida com Windows)
+Escolher mirror mais próximo e baixar .ISO
+
+Abrir Virtual Box
+Clicar em Novo
+Colocar nome, tipo (Linux) e versão (Ubuntu 64-bit)
+Colocar 2048 MB de memória
+Criar disco virtual agora > Criar > VDI > Próximo > Alocado dinamicamente > 12 GB ou mais
+Botão direito na máquina criada > Configurações
+Geral > Avançado > Bidirecional nas duas opções
+Sistema > Desmarcar disquete
+Processador > Colocar mais processadores > Habilitar PAE>NX
+Monitor > Aumentar memória de vídeo até o fim da barra verde > Habilitar aceleração 3D
+Armazenamento > Vazio > Clicar no desenho de um disco > Escolher arquivo de disco óptico virtual > selecionar o .ISO
+
+Ligar a máquina
+Clicar em Install Linux Mint
+Escolher idioma
+Marcar opção de softwares gráficos de terceiros
+Apagar disco e instalar Linux Mint
+Continuar
+Selecionar timezone
+Selecionar teclado
+Configurar nome do computador e do usuário
+Reiniciar quando terminar
+
+Visualizar > Redimensionar Tela Automaticamente
+
+Abrir terminal e executar os comandos
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo reboot
+
+Dispositivos > Inserir imagem de CD dos Adicionais para Convidado... > Cancelar
+Duplo clique no arquivo com desenho de CD criado na área de trabalho > Botão direito em algum lugar em branco da pasta que abrir > Abrir em um terminal
+sudo apt-get purge virtualbox* > Colocar senha do administrador > Digitar y e enter quando terminar
+sudo bash ./VBoxLinuxAdditions.run
+Fechar terminal
+Clicar em VBOXADDIT... na aba dispositivos na esquerda da janela da pasta
+Menu > Sair > Desligar
+Abrir terminal
+dmesg | egrep -i 'virtualbox|vbox' > Se aparecer texto em cor diferente, funcionou
+
+Fontes:
+https://www.youtube.com/watch?v=5JOI6uK28fk (instalação)
+http://www.tomshardware.com/faq/id-1957309/install-virtualbox-guest-additions-linux-mint.html (remover problema de aceleração)

@@ -1,0 +1,59 @@
+criar projeto
+	file > new project > nomear e gravar no C, ou numa pasta permitida sem espaços ou pendrive > familia = spartan3E
+
+criar placa
+	botão direito no hierarchy > new source > VHDL module > chamar de foo > colocar nome das portas e escolher entre entrada e saida
+
+primeiro programa
+	trocar STD_LOGIC por STD_LOGIC_vector(1 downto 0), entre begin e end colocar s <= f(x); (usando and,or,not)
+
+compilação
+	botão direito em Synthesize - XST > run
+	clicar 2x em Synthesize - XST - View Technology Schematic > passar foo pra direito no add > create schematic
+
+ver figura
+	clicar 2x na figura
+
+ver placa
+	Implement Design - Place & Route - View/Edit ... > botão direito > run > fecha os 2 pequenos e maximiza o grande
+	a partir do - dá pra habilitar tudo
+
+benchmark
+	botão direito no hierarchy > new source > VHDL test bench > chamar de tb_foo
+	apagar clock e tals, criar uns testes em Stimulus process
+	alternar para simulation
+	expandir o troço e clicar 1x no primeiro sub, expandir ISim Simulator e clicar 2x em Behavioral ..., se funcionar, clicar 2x em Simulate ...
+	pode arrastar pra dentro
+	pode trocar pra decimal selecionando, clicando com direito > radix > unsigned decimal
+
+colocar atraso
+	implement design > place & route > generate post-place & route simulation model
+	mudar ula8bits por ula8bitscomp no tb_ula8bits SEM USAR CTRL+H
+	simulation, trocar behavioral para post-route, escolhe o tb_ula8bits - behavior, expande o ISim Simulator e clica em simulate post-place
+criar componente pronto
+	new source > IP (CORE generator, > chamar de IPsomador > math funcions > adder > escolher
+	trocar para unsigned, 8 bits, latencia manual 0, colocar carry out, generate
+
+criar cópia
+	new text file
+	copiar o ula8bits.vhd e trocar ula8bits por ula8bitscomp
+	ula8bitscomp.vhd
+	add source, adicionar o comp
+
+usar componente pronto
+	clicar no IPsomador
+	expandir o CORE
+	clicar 2x em view HDL instantiation
+	copia COMPONENT IPsomador e cola no comp entre signal e begin
+	copia your_instance_name e cola no comp begin e A_int
+	adicionar c_out : OUT STD_LOGIC; no COMPONENT IPsomador
+	mudar sum : IPsomador com c_out => cout, e s => scomp
+	adicionar signal cout : std_logic; signal scomp : std_logic_vector(7 downto 0); entre o novo END COMPONENT; e begin
+	trocar ULA_int <= "0000000"&Cout&scomp when f="00" else
+	clicar 1x no ula8bitscomp behavioral e clicar 2x no synthesize - xst
+
+trocar opção de otimização de compilação
+	botão direito em synthesize - xst > process properties
+
+criar projeto de arquivos prontos
+	https://moodle.inf.ufrgs.br/pluginfile.php/48287/mod_resource/content/0/Aula_1.pdf

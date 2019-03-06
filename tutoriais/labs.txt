@@ -1,0 +1,57 @@
+Para diminuir o tamanho do documento, vou chamar:
+	html.inf.ufrgs.br	de	HTML
+	portal.inf.ufrgs.br	de	PORTAL
+	login dos labs		de	USER
+	senha dos labs		de	PW
+Basta substituir as ocorrências destas palavras pelos seus valores.
+
+O Instituto disponibiliza duas máquinas, HTML e PORTAL.
+	HTML é usada para a página pessoal.
+	PORTAL é usada pelos alunos quando estão nos labs (a área de trabalho do aluno quando usa os labs está localizada na pasta Desktop).
+
+No Windows, pode-se usar o WinSCP, que, por padrão, executa SFTP (a HTML não atende SCP de Windows).
+	em Host name, coloque HTML ou PORTAL
+	em User name, coloque USER
+	em password, coloque PW
+
+No Linux:
+	as máquinas podem ser acessadas com os protocolos SFTP ou SCP.
+	para executar ambos, PW é pedida depois de dar enter nos comandos anteriores.
+
+	o SCP executa apenas um comando, a cópia de arquivo segura, e sua sintaxe é "scp origem destino", com ele dá para baixar e subir arquivos para as máquinas.
+	na HTML, execute:
+		scp arquivo USER@HTML:public_html/diretórios/arquivo (diretórios é uma seqüência de diretórios) para colocar um arquivo na sua página.
+		scp USER@HTML:public_html/diretórios/arquivo destino (diretórios é uma seqüência de diretórios) para pegar um arquivo da sua página.
+		scp -r USER@HTML:public_html/ destino para criar uma pasta com todos os arquivos da sua página.
+		scp -r origem/public_html gmramella@html.inf.ufrgs.br: para substituir sua página por completo. (perigoso dar algum problema, use WinSCP)
+	na PORTAL, execute:
+		scp arquivo USER@PORTAL:Desktop/arquivo para colocar um arquivo na área de trabalho dos labs.
+		scp USER@PORTAL:Desktop/arquivo arquivo para pegar um arquivo da área de trabalho dos labs.
+		scp -r gmramella@PORTAL:Desktop/ destino para criar uma pasta com todos os seus arquivos da área de trabalho dos labs no diretório destino.
+		scp -r origem gmramella@PORTAL:Desktop para colocar vários arquivos numa pasta na área de trabalho dos labs no diretório destino.
+	uma dica é executar o comando pwd antes deles, para ver o diretório atual.
+
+	o SFTP abre uma nova shell, e sua sintaxe é "sftp USER@máquina".
+	na shell do SFTP, use os comandos abaixo:
+		? ou help						ajuda
+		version							mostrar versão do protocolo
+		bye ou exit						sair
+
+		get	[-Ppr]	caminho-remoto	[caminho-local]		baixar arquivo
+		put	[-Ppr]	caminho-local	[caminho-remoto]	subir arquivo
+
+		cd	caminho-remoto					mudar diretório remoto (para ir para o diretório superior: cd ..)
+		lcd	caminho-local					mudar diretório local (para ir para o diretório superior: lcd ..)
+
+		ls	[-1aflnrSt]	[caminho-remoto]		listar diretório remoto
+		lls	[-1aflnrSt]	[caminho-local]			listar diretório local
+
+		mkdir	caminho-remoto					criar diretório remoto
+		lmkdir	caminho-local					criar diretório local
+
+		pwd	 						mostrar caminho do diretório remoto atual
+		lpwd	 						mostrar caminho do diretório local atual
+
+		rename	velho-caminho-remoto	novo-caminho-remoto	renomear arquivo remoto
+		rm	caminho-remoto					remover arquivo remoto
+		rmdir	caminho-remoto					remover diretório remoto

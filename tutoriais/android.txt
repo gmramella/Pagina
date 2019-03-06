@@ -1,0 +1,285 @@
+Baixar Android Studio: developer.android.com > develop > tools > Android Studio
+ou
+Genymotion: https://www.genymotion.com > get Genymotion > Download
+
+Baixar drivers do aparelho Android usado.
+
+Habilitar USB Debugging no aparelho: http://www.wugfresh.com/faq/6/
+
+Instalar USB driver.
+
+Se houver problema de renderização do simulador de aparelho Android no design das activity.xml, trocar App Theme para Base.Theme.AppCompat.Light.DarkActionBar.
+
+SDK: C:\Users\Unisinos\AppData\Local\Android\sdk1
+--------------------------------------------------
+Árvore da aplicação no modo de visualização Android
+App
+	manifests
+		AndroidManifest.xml
+	java
+		nome.do.pacote
+			ActivityPrincipal
+			OutrasClasses
+	res
+		drawable
+			ic_launcher.png
+				ic_launcher.png (hdpi)
+				ic_launcher.png (mdpi)
+				ic_launcher.png (xhdpi)
+				ic_launcher.png (xxhdpi)
+		layout (layout em portrait ou landscape, independente do tamanho da tela)
+			activity_main.xml
+		layout-port (layout em portrait, independente do tamanho da tela)
+			activity_main.xml
+		layout-large (layout em portrait ou landscape, para telas grandes)
+			activity_main.xml
+		layout-land-xlarge (layout em landscape, para telas extra grandes)
+			activity_main.xml
+		menu
+			menu_main.xml
+		values
+			dimens.xml
+				dimens.xml
+			strings.xml
+			styles.xml
+				styles.xml
+--------------------------------------------------
+AndroidManifest.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="nome.do.pacote.nome_do_projeto" >
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icone_da_aplicacao"
+        android:label="@string/nome_da_aplicacao"
+        android:theme="@style/TemaDaAplicacao" >
+        <activity
+            android:name=".ActivityPrincipal"
+            android:label="@string/nome_da_janela" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
+--------------------------------------------------
+ActivityPrincipal
+
+package nome.do.pacote.nome_do_projeto;
+
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class MainActivity extends ActionBarActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+--------------------------------------------------
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+    <TextView
+        android:text="@string/hello_world"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+--------------------------------------------------
+menu_main.xml
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>
+--------------------------------------------------
+dimens.xml
+
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+</resources>
+--------------------------------------------------
+strings.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nome da Aplicação</string>
+    <string name="var">Val</string>
+    ...
+</resources>
+--------------------------------------------------
+styles.xml
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>
+--------------------------------------------------
+Caminho do recurso				  ID da classe R	  Em arquivos XML
+
+res/drawable/titulo.formato			= R.drawable.titulo	= @drawable/titulo
+res/layout/titulo.xml				= R.layout.titulo	= @layout/titulo
+res/menu/titulo.xml				= R.menu.titulo		= @menu/titulo
+res/values/strings.xml/<string name="var">	= R.string.var		= @string/var
+res/values/dimens.xml/<dimen name="var">	= R.string.var		= @dimen/var
+--------------------------------------------------
+Tabela de densidades de tela
+
+Densidade	Dots per inch (em dpi)	Proporção
+
+ldpi		120			 9/12
+mdpi		160			12/12
+tvdpi		213			16/12
+hdpi		240			18/12
+xhdpi		320			24/12
+xxhdpi		480			36/12
+xxxhdpi		640			48/12
+--------------------------------------------------
+Tabela de classificação de telas
+
+Classificação	Tamanho mínimo (em dp²)
+
+small		426x320
+normal		470x320
+large		640x480
+xlarge		960x720
+--------------------------------------------------
+Fórmula para conversão para a classificação do aparelho
+
+dpHorizontal = resolucaoHorizontal/(densidade/160)
+dpVertical = resolucaoVertical/(densidade/160)
+
+classificação = classificação(dpHorizontal,dpVertical); //small, normal, large, xlarge
+--------------------------------------------------
+Log
+
+...
+import android.content.res.Configuration;
+import android.util.DisplayMetrics;
+...
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+	Configuration configuration = getResources().getConfiguration();
+	DisplayMetrics metrics = getResources().getDisplayMetrics();
+
+	int orientation = configuration.orientation;
+	float density = metrics.density;
+	float height = metrics.heightPixels/metrics.density;
+	float width = metrics.widthPixels/metrics.density;
+	int mcc = configuration.mcc;
+	int mnc = configuration.mnc;
+
+	Locale locale = configuration.locale;
+	Log.d("NOME_FILTRO", "density: " + density);
+	Log.d("NOME_FILTRO", "orientation: " + orientation);
+	Log.d("NOME_FILTRO", "height: " + height);
+	Log.d("NOME_FILTRO", "width: " + width);
+	Log.d("NOME_FILTRO", "language: " + locale.getLanguage() + "-" + locale.getCountry());
+	Log.d("NOME_FILTRO", "mcc: " + mcc);
+	Log.d("NOME_FILTRO", "mnc: " + mnc);
+    }
+...
+
+Tools > Android > Android Device Monitor > Logcat
+mes-dia	hora:minuto:segundo,milesimo	PID-TID/nome.do.pacote.nome_do_projeto.app	D/NOME_FILTRO : mensagem
+--------------------------------------------------
+Como obter a referência de um componente declarado em um arquivo de layoutres/layout/titulo.xml
+
+<Objeto
+	android:id="@+id/nomeVar"
+	android:atributo="val"
+	... />
+
+R.id.nomeVar
+--------------------------------------------------
+Tratamento de evento de clique em botões
+
+package nome.do.pacote.nome_do_projeto;
+
+
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+	Button button = (Button) findViewById(R.id.button);
+	button.setOnClickListener(this); //Objeto que implementa interface View.OnClickListener
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.button:
+                Toast.makeText(this,texto,Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

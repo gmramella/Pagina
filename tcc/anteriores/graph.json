@@ -1,0 +1,37 @@
+//Code based on: https://github.com/jsongraph/json-graph-specification
+
+{
+	"graph": {
+		"directed": false,
+		"label": "graph label",
+		"nodes": [
+			{
+				"id": "",
+				"label": "",
+				"x": "",
+				"y": "",
+				"radius": "",
+				"fill": "",
+			},
+			{
+				"id": "",
+				"label": "",
+				"x": "",
+				"y": "",
+				"radius": "",
+				"fill": "",
+			}
+		],
+		"edges": [
+			{
+				"id": "",
+				"label": "",
+				"source": "",
+				"target": "",
+				"type": "",
+				"stroke": "",
+				"stroke_width": "",
+			}
+		]
+	}
+}

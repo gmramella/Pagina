@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="./drawingFunctions.js"></script>
+		<style>
+			body {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+			#items {
+				list-style:none;
+				margin:0px;
+				margin-top:4px;
+				padding-left:10px;
+				padding-right:10px;
+				padding-bottom:3px;
+				font-size:17px;
+				color: #333333;
+			}
+			hr {
+				width: 85%;
+				background-color:#E4E4E4;
+				border-color:#E4E4E4;
+				color:#E4E4E4;
+			}
+			#rightButtonMenu {
+				display:none;
+				position:fixed;
+				border:1px solid #B2B2B2;
+				width:150px;
+				background:#F9F9F9;
+				box-shadow: 3px 3px 2px #E9E9E9;
+				border-radius:4px;
+			}
+			li {
+				padding: 3px;
+				padding-left:10px;
+			}
+			#items :hover {
+				color: white;
+				background:#284570;
+				border-radius:2px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<p id="debug">Click me.</p>-->
+		<script>
+			var svg = addCanvas(1500, 768);
+			$("body").append('<div id="rightButtonMenu"><ul id="items"></ul></div>');
+			
+			//id, label, selected, x, y, radius, fill
+			var nodes = [];
+			var nodesCounter = 0;
+			//id, label, selected, source, target, stroke, stroke_width
+			var edges = [];
+			var edgesCounter = 0;
+			//id, label, selected, points, stroke, stroke_width
+			var rects = [];
+			var rectsCounter = 0;
+			
+			var mousedownCoords = null;
+			var mouseupCoords = null;
+			
+			var mousedownNodeId = null;
+			var mouseupNodeId = null;
+			
+			var mousedownEdgeId = null;
+			var mouseupEdgeId = null;
+			
+			/*
+			02=mousedown over some node	07=mouseup over some node
+			03=mousedown over some edge	11=mouseup over some edge
+			05=mousedown over the svg	13=mouseup over the svg
+			*/
+			var mousedownAndMouseupCode = 1;
+			/*
+			02=dblclick over some node
+			03=dblclick over some edge
+			05=dblclick over the svg
+			*/
+			var dblclickCode = 1;
+			
+			//last object selected on mousedown
+			var lastSelectedObjectId = null;
+			//node or edge
+			var lastSelectedObjectType = null;
+			
+			//last created object
+			var lastCreatedObjectId = [];
+			//node or edge
+			var lastCreatedObjectType = [];
+			
+			$("#items").append('<li id="rightButtonMenuOption1">Copy</li>');
+			$("#items").append('<li id="rightButtonMenuOption2">Paste</li>');
+			$("#items").append('<li id="rightButtonMenuOption3">Delete</li>');
+			//$("#items").append('<hr/>');
+			//$("#items").append('<li>Lock selection</li>');
+			//$("#items").append('<hr/>');
+			//$("#items").append('<li>Send to Back</li>');
+			//$("#items").append('<li>Bring to Front</li>');
+			
+			var startTime = null;
+			var endTime = null;
+			var starts = [new Date(), new Date()];
+			var cont = 0;
+			var doubleClick = false;
+
+			window.addEventListener("mousedown", function(e){
+				startTime = new Date();
+				starts[cont] = startTime;
+				cont = ++cont % 2;
+
+				if(e.which == 1){
+					//document.getElementById("debug").innerHTML = "The left mouse button is down.";
+				} else if(e.which == 2){
+					//document.getElementById("debug").innerHTML = "The middle mouse button is down.";
+				} else if(e.which == 3){
+					//document.getElementById("debug").innerHTML = "The right mouse button is down.";
+				} else {
+					//document.getElementById("debug").innerHTML = "Unknown mouse button is down.";
+				}
+			});
+
+			window.addEventListener("mouseup", function(e){
+				endTime = new Date();
+				var diff = Math.max(starts[0], starts[1]) - Math.min(starts[0], starts[1]);
+				doubleClick = (diff <= 200);
+				
+				if(e.which == 1){
+					//document.getElementById("debug").innerHTML = "The left mouse button was released in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+				} else if(e.which == 2){
+					//document.getElementById("debug").innerHTML = "The middle mouse button was released in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+				} else if(e.which == 3){
+					//document.getElementById("debug").innerHTML = "The right mouse button was released in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+				} else {
+					//document.getElementById("debug").innerHTML = "Unknown mouse button was released in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+				}
+				
+				if (doubleClick) {
+					if(e.which == 1){
+						//document.getElementById("debug").innerHTML = "The left mouse button was double clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					} else if(e.which == 2){
+						//document.getElementById("debug").innerHTML = "The middle mouse button was double clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					} else if(e.which == 3){
+						//document.getElementById("debug").innerHTML = "The right mouse button was double clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					} else {
+						//document.getElementById("debug").innerHTML = "Unknown mouse button was double clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					}
+				} else {
+					if(e.which == 1){
+						var x = e.clientX-8;
+						var y = e.clientY-8;
+						addNodeToCanvas(svg, 0, x, y, 50, "red");
+						//document.getElementById("debug").innerHTML = "The left mouse button was clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					} else if(e.which == 2){
+						//document.getElementById("debug").innerHTML = "The middle mouse button was clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					} else if(e.which == 3){
+						//document.getElementById("debug").innerHTML = "The right mouse button was clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					} else {
+						//document.getElementById("debug").innerHTML = "Unknown mouse button was clicked in "+(endTime - startTime)+" "+diff+" "+doubleClick+".";
+					}
+				}
+			});
+			
+			$(document).bind("contextmenu",function(e) {
+				e.preventDefault();
+				console.log(e.pageX + "," + e.pageY);
+				$("#rightButtonMenu").css("left",e.pageX);
+				$("#rightButtonMenu").css("top",e.pageY);
+				// $("#rightButtonMenu").hide(100);        
+				$("#rightButtonMenu").fadeIn(200,startFocusOut());
+			});
+
+			function startFocusOut() {
+				$(document).on("click",function() {
+					$("#rightButtonMenu").hide();        
+					$(document).off("click");
+				});
+			}
+
+			$("#items > li").click(function() {
+				//document.getElementById("debug").innerHTML = "Option "+$(this).text()+" chosen on menu.";
+			});
+		</script>
+	</body>
+</html>

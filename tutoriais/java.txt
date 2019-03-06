@@ -1,0 +1,722 @@
+Configuração do ambiente:
+	Baixar JDK
+	Baixar IDE
+		IDEs: Eclipse, IntelliJ, Netbeans (dá pra ver o código fonte dos métodos)
+	Configurar variáveis do sistema
+		Abrir Meu Computador
+		Botão direito, Propriedades, Configurações Avançadas do Sistema (Win7+), Variáveis de Ambiente...
+		Criar 2 novas variáveis do sistema:
+			Nome	 : Valor
+			CLASSPATH: .;%CLASSPATH%C:\Program Files\Java\jdk1.8.0_45\jre\classes
+			JAVA_HOME: C:\Program Files\Java\jdk1.8.0_45
+		Abrir prompt e digitar java -version para ver se funcionou
+---------------------------------------------------------------------------------
+Primeiro programa
+	public class MyFirstJavaProgram {
+		public static void main(String []args) {
+			System.out.println("Hello World");
+		}
+	}
+	Defeitos de Java: nome do arquivo deve ser MyFirstJavaProgram.java e somente 1 classe por arquivo (exceto inner classes)
+---------------------------------------------------------------------------------
+Compilar e executar
+	2 opções: usar IDE ou manual
+	Com IDE é trivial, manualmente é mais complexo:
+		Abrir prompt e dar cd até o diretório do arquivo .java
+		javac MyFirstJavaProgram.java
+		java MyFirstJavaProgram
+---------------------------------------------------------------------------------
+Comentários
+	// (uma linha)
+	/* */ (múltiplas linhas)
+	/** */ (javadoc)
+---------------------------------------------------------------------------------
+Pacote
+	import importar.especifico.do.pacote;
+	import importar.tudo.do.pacote.*;
+---------------------------------------------------------------------------------
+Tipos Primitivos e Wrapper Classes
+	Tipos Primitivos
+		boolean, byte, char, double, float, int, long, short
+	Wrapper Classes
+		Wrapper Classes são classes que substituem tipos primitivos e têm métodos úteis para estes tipos que substituem
+		Boolean, Byte, Character, Double, Float, Integer, Long, Short
+---------------------------------------------------------------------------------
+Objeto, Classe e Instância
+	Objeto carro, Classe Carro, Instância c
+	public class Carro {}
+	Carro c = new Carro();
+---------------------------------------------------------------------------------
+Variáveis local, de instância e de classe
+	class NomeDaClasse {
+		static tipo deClasse;
+		tipo deInstancia;
+		tipo nomeDoMetodo() {
+			tipo local;
+		}
+	}
+---------------------------------------------------------------------------------
+Construtor
+	class Nome {
+		acesso Nome(){}
+	}
+---------------------------------------------------------------------------------
+Modificador de acesso
+	sem modificador: visível ao pacote
+	public: visível a todos
+	protected: visível aos filhos
+	private: visível à classe
+
+	static: um atributo ou método static é o mesmo para todas as instâncias
+	final: depois que o valor de um atributo final é definido, não pode ser modificado
+	abstract: classes e métodos abstract não podem ser instanciados, apenas extendidos
+	synchronized: um método synchronized só pode ser acessado por uma thread por vez
+---------------------------------------------------------------------------------
+Operadores
+	+, -, *, /, %, ++, --
+	<, <=, ==, !=, >=, >
+	&, |, ^, ~, <<, >>, >>>
+	&&, ||, !
+	=, +=, -=, *=, /=, %=, <<=, >>=, &=, |=, ^=
+	?:
+	var instanceof Classe
+---------------------------------------------------------------------------------
+Laços
+	while(cond){com;}
+	do{com;}while(cond);
+	for(init;cond;updt){com;}
+	for(var : nomeVetor){com;}
+	break, continue
+	if(cond){com;}
+	if(cond){com;}else{com;}
+	if(cond){com;}else if(cond){com;}else{com;}
+	if(cond){if(cond){com;}}
+	switch(var){case val: com;break;default:com;}
+---------------------------------------------------------------------------------
+Métodos da classe Number
+	abs()
+	acos()
+	asin()
+	atan()
+	atan2()
+	ceil()
+	compareTo()
+	cos()
+	equals()
+	exp()
+	floor()
+	log()
+	max()
+	min()
+	parseInt()
+	pow()
+	random()
+	rint()
+	round()
+	sin()
+	sqrt()
+	tan()
+	toDegrees()
+	toRadians()
+	toString()
+	valueOf()
+	byteValue()
+	doubleValue()
+	floatValue()
+	intValue()
+	longValue()
+	shortValue()
+---------------------------------------------------------------------------------
+Métodos da Wrapper Class de caracteres
+	isDigit()
+	isLetter()
+	isLowerCase()
+	isUpperCase()
+	isWhitespace()
+	toLowerCase()
+	toUpperCase()
+	toString()
+---------------------------------------------------------------------------------
+Métodos da Wrapper Class de strings
+	charAt(int index)
+	compareTo(Object o)
+	compareTo(String anotherString)
+	compareToIgnoreCase(String str)
+	concat(String str)
+	contentEquals(StringBuffer sb)
+	copyValueOf(char[] data)
+	copyValueOf(char[] data, int offset, int count)
+	endsWith(String suffix)
+	equals(Object anObject)
+	equalsIgnoreCase(String anotherString)
+	getBytes()
+	getBytes(String charsetName
+	getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+	hashCode()
+	indexOf(int ch)
+	indexOf(int ch, int fromIndex)
+	indexOf(String str)
+	indexOf(String str, int fromIndex)
+	intern()
+	lastIndexOf(int ch)
+	lastIndexOf(int ch, int fromIndex)
+	lastIndexOf(String str)
+	lastIndexOf(String str, int fromIndex)
+	length()
+	matches(String regex)
+	regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)
+	regionMatches(int toffset, String other, int ooffset, int len)
+	replace(char oldChar, char newChar)
+	replaceAll(String regex, String replacement
+	replaceFirst(String regex, String replacement)
+	split(String regex)
+	split(String regex, int limit)
+	startsWith(String prefix)
+	startsWith(String prefix, int toffset)
+	subSequence(int beginIndex, int endIndex)
+	substring(int beginIndex)
+	substring(int beginIndex, int endIndex)
+	toCharArray()
+	toLowerCase()
+	toLowerCase(Locale locale)
+	toString()
+	toUpperCase()
+	toUpperCase(Locale locale)
+	trim()
+	valueOf(primitive data type x)
+---------------------------------------------------------------------------------
+Herança e Polimorfismo
+	public class Veiculo {
+		public String nome;
+		public Integer ano;
+	}
+	public class Carro extends Veiculo {
+		private Integer nroPortas;
+		private Integer nroPassageiros;
+		/*setters e getters e outros atributos e métodos*/
+	}
+	public class Navio extends Veiculo {
+		private Integer potencia;
+		private String nome;
+		/*setters e getters e outros atributos e métodos*/
+	}
+---------------------------------------------------------------------------------
+Array
+	tipo[] var;
+	tipo[] var = new tipo[tam];
+	tipo nome(tipo[] var){}, nome(var);
+	tipo[] nome(params){}, 
+---------------------------------------------------------------------------------
+Métodos de array
+	binarySearch(Object[] a, Object key)
+	equals(long[] a, long[] a2)
+	fill(int[] a, int val)
+	sort(Object[] a)
+---------------------------------------------------------------------------------
+Date e SimpleDateFormat
+	Date()
+	Date(long ms)
+
+	boolean after(Date date)
+	before(Date date)
+	clone( )
+	compareTo(Date date)
+	compareTo(Object obj)
+	equals(Object date)
+	getTime( )
+	hashCode( )
+	setTime(long time)
+	toString( )
+
+	SimpleDateFormat sdf = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a"); (Thu 2015.01.01 at 00:00:00 AM)
+
+	SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
+	Date d = sdf.parse("2015-01-01");
+---------------------------------------------------------------------------------
+Funções de tempo
+	Thread.sleep(ms);
+	System.currentTimeMillis();
+---------------------------------------------------------------------------------
+Classe GregorianCalendar
+	GregorianCalendar()
+	GregorianCalendar(int year, int month, int date)
+	GregorianCalendar(int year, int month, int date, int hour, int minute)
+	GregorianCalendar(int year, int month, int date, int hour, int minute, int second)
+	GregorianCalendar(Locale aLocale)
+	GregorianCalendar(TimeZone zone)
+	GregorianCalendar(TimeZone zone, Locale aLocale)
+
+	add(int field, int amount)
+	computeFields()
+	computeTime()
+	equals(Object obj)
+	get(int field)
+	getActualMaximum(int field)
+	getActualMinimum(int field)
+	getGreatestMinimum(int field)
+	getGregorianChange()
+	getLeastMaximum(int field)
+	getMaximum(int field)
+	getTime()
+	getTimeInMillis()
+	getTimeZone()
+	getMinimum(int field)
+	hashCode()
+	isLeapYear(int year)
+	roll(int field, boolean up)
+	set(int field, int value)
+	set(int year, int month, int date)
+	set(int year, int month, int date, int hour, int minute)
+	set(int year, int month, int date, int hour, int minute, int second)
+	setGregorianChange(Date date)
+	setTime(Date date)
+	setTimeInMillis(long millis)
+	setTimeZone(TimeZone value)
+	toString()
+---------------------------------------------------------------------------------
+Expressões Regulares
+	Classe Pattern
+	Classe Matcher
+		Métodos de índice
+			start()
+			start(int group)
+			end()
+			end(int group)
+		Métodos de estudo
+			lookingAt()
+			find()
+			find(int start
+			matches() 
+		Métodos de substiuição
+			appendReplacement(StringBuffer sb, String replacement)
+			appendTail(StringBuffer sb)
+			replaceAll(String replacement)
+			replaceFirst(String replacement)
+			quoteReplacement(String s)
+	Classe PatternSyntaxException
+		getDescription()
+		getIndex()
+		getPattern()
+		getMessage()
+---------------------------------------------------------------------------------
+Funções
+	acesso tipo nome(params){}
+	tipo var = nome(params);
+---------------------------------------------------------------------------------
+Construtor e Destrutor
+	class Nome() {
+		Nome(params) {
+		}
+		/*protected*/ void finalize(){}
+	}
+---------------------------------------------------------------------------------
+Arquivos de bytes
+	FileInputStream in = null;
+	FileOutputStream out = null;
+
+	try {
+		in = new FileInputStream("input.txt");
+		out = new FileOutputStream("output.txt");
+         
+		int c;
+		while ((c = in.read()) != -1) {
+			out.write(c);
+		}
+	}
+	catch (FileNotFoundException fnfe) {}
+	catch (IOException ex) {}
+	finally {
+		if (in != null) {
+			in.close();
+		}
+		if (out != null) {
+			out.close();
+		}
+	}
+---------------------------------------------------------------------------------
+Arquivos de chars
+	FileReader in = null;
+	FileWriter out = null;
+
+	try {
+		in = new FileReader("input.txt");
+		out = new FileWriter("output.txt");
+         
+		int c;
+		while ((c = in.read()) != -1) {
+			out.write(c);
+		}
+	}
+	catch (FileNotFoundException fnfe) {}
+	catch (IOException ex) {}
+	finally {
+		if (in != null) {
+			in.close();
+		}
+		if (out != null) {
+			out.close();
+		}
+	}
+---------------------------------------------------------------------------------
+Entrada e saída de dados
+	InputStreamReader cin = null;
+
+	try {
+		cin = new InputStreamReader(System.in);
+		System.out.println("Enter characters, 'q' to quit.");
+		char c;
+		do {
+			c = (char) cin.read();
+			System.out.print(c);
+		} while(c != 'q');
+	}catch(IOException) {
+		System.err.println("Error");
+	}finally {
+		if (cin != null) {
+			cin.close();
+		}
+	}
+---------------------------------------------------------------------------------
+Hierarquia das classes de arquivos
+	Object
+		InputStream
+			ByteArrayInputStream
+			FileInputStream
+			FilterInputStream
+				BufferedInputStream
+				DataInputStream
+				PushbackInputStream
+			SequenceInputStream
+			StringBufferInputStream
+		OutputStream
+			ByteArrayOutputStream
+			FileOutputStream
+			FilterOutputStream
+				BufferedOutputStream
+				DataOutputStream
+				PrintStream
+		Reader
+			InputStreamReader
+				FileReader
+		Write
+			OutputStreamWriter
+				FileWriter
+---------------------------------------------------------------------------------
+FileInputStream
+	InputStream f = new FileInputStream(arquivoOuCaminho);
+	=
+	InputStream f = new FileInputStream(new File(arquivoOuCaminho));
+
+	close() throws IOException{}
+	finalize() throws IOException {}
+	read(int r) throws IOException{}
+	read(byte[] r) throws IOException{}
+	available() throws IOException{}
+---------------------------------------------------------------------------------
+FileOutputStream
+	OutputStream f = new FileOutputStream(arquivoOuCaminho);
+	=
+	OutputStream f = new FileOutputStream(new File(arquivoOuCaminho));
+
+	close() throws IOException{}
+	finalize() throws IOException {}
+	write(int w) throws IOException{}
+	write(byte[] w)
+---------------------------------------------------------------------------------
+FileReader
+	read() throws IOException
+	read(char [] c, int offset, int len)
+---------------------------------------------------------------------------------
+FileWriter
+	write(int c) throws IOException
+	write(char [] c, int offset, int len)
+	write(String s, int offset, int len)
+---------------------------------------------------------------------------------
+File
+	canRead()
+	canWrite()
+	compareTo(File pathname)
+	compareTo(Object o)
+	createNewFile() throws IOException
+	createTempFile(String prefix, String suffix, File directory) throws IOException
+	createTempFile(String prefix, String suffix) throws IOException
+	delete()
+	deleteOnExit()
+	equals(Object obj)
+	exists()
+	getAbsolutePath()
+	getName()
+	getParent()
+	getParentFile()
+	getPath()
+	isAbsolute()
+	isDirectory()
+	isFile()
+	lastModified()
+	length()
+	list()
+	list(FilenameFilter filter)
+	listFiles()
+	listFiles(FileFilter filter)
+	mkdir()
+	mkdirs()
+	renameTo(File dest)
+	setLastModified(long time)
+	setReadOnly()
+	toString()
+---------------------------------------------------------------------------------
+Hierarquia das classes de exceção
+	Throwable
+		Error
+			...
+		Exception
+			...
+---------------------------------------------------------------------------------
+Métodos da classe Throwable
+	getMessage()
+	getCause()
+	toString()
+	printStackTrace()
+	getStackTrace()
+	fillInStackTrace()
+---------------------------------------------------------------------------------
+Captura de exceções
+	try {
+		// Código
+	} catch(ExceptionName e1) {
+		// Conserto
+	...
+	} catch(ExceptionName eN) {
+		// Conserto
+	} finally {
+		//Código sempre executado
+	}
+---------------------------------------------------------------------------------
+Throw
+	resolve lá mesmo
+
+	acesso class Nome {
+		try {
+			throw new Exception("Something went wrong!!");
+		} catch (Exception e) {
+			System.out.println("Error: "+e.getMessage());
+		}
+	}
+---------------------------------------------------------------------------------
+Throws
+	deixa pra outro resolver
+
+	acesso class Nome throws Exception {
+		try {
+			throw new Exception("Something went wrong!!");
+		}
+	}
+	try {
+		Nome n = new Nome();
+	} catch (Exception e) {
+		System.out.println("Error: "+e.getMessage());
+	}
+---------------------------------------------------------------------------------
+Tratamento de Exceções
+	Exemplo de tratamento de exceção
+		Integer nroAlunos = 0;
+		Double somaDasNotasDaTurma = 100.0;
+		try {
+			System.out.println("A média da turma foi " + somaDasNotasDaTurma/nroAlunos);
+		} catch(Exception e) {
+			System.out.println("Não é possível dividir por 0.");
+		}
+---------------------------------------------------------------------------------
+Criar exceção
+	public class InsufficientFundsException extends Exception {
+		private double amount;
+		public InsufficientFundsException(double amount) {
+			this.amount = amount;
+		} 
+		public double getAmount() {
+			return amount;
+		}
+	}
+	public class CheckingAccount {
+		private double balance;
+		private int number;
+		public CheckingAccount(int number) {
+			this.number = number;
+		}
+		public void deposit(double amount) {
+			balance += amount;
+		}
+		public void withdraw(double amount) throws InsufficientFundsException {
+			if(amount <= balance) {
+				balance -= amount;
+			}
+			else {
+				double needs = amount - balance;
+				throw new InsufficientFundsException(needs);
+			}
+		}
+		public double getBalance() {
+			return balance;
+		}
+		public int getNumber() {
+			return number;
+		}
+	}
+	public class BankDemo {
+	public static void main(String [] args) {
+		CheckingAccount c = new CheckingAccount(101);
+		System.out.println("Depositing $500...");
+		c.deposit(500.00);
+		try {
+			System.out.println("\nWithdrawing $100...");
+			c.withdraw(100.00);
+			System.out.println("\nWithdrawing $600...");
+			c.withdraw(600.00);
+		} catch(InsufficientFundsException e) {
+			System.out.println("Sorry, but you are short $" + e.getAmount());
+		}
+	}
+---------------------------------------------------------------------------------
+Override de método
+	class Animal {
+		public void move() {
+			System.out.println("Animals can move");
+		}
+	}
+	class Dog extends Animal {
+		public void move() {
+			System.out.println("Dogs can walk and run");
+			super.move();
+		}
+	}
+	Animal a = new Animal(); // Animal reference and object
+	Animal b = new Dog(); // Animal reference but Dog object
+	a.move();
+	b.move();
+---------------------------------------------------------------------------------
+Polimorfismo
+	class A{}
+	class B extends A{}
+	class C extends A{}
+	A a;
+	a = new A();
+	a = new B();
+	a = new C();
+---------------------------------------------------------------------------------
+Classes abstratas e Interfaces
+	public abstract class Veiculo {
+		public irParaFrente();
+	}
+	public class Carro extends Veiculo {
+		public irParaFrente() {
+			/*manterDirecaoCentralizada();*/
+		}
+	}
+	public class Aviao extends Veiculo {
+		public irParaFrente() {
+			/*manterMancheCentralizado();*/
+			};
+		}
+	}
+
+	public interface Animal {
+		public void comer();
+	}
+	public class Cachorro implements Animal {
+		public void comer() {
+			System.out.println("Como gatos.");
+		}
+	}
+	public class Gato implements Animal {
+		public void comer() {
+			System.out.println("Como ratos.");
+		}
+	}
+---------------------------------------------------------------------------------
+Pacote
+	package animais;
+	interface Animal {
+		public void comer();
+		public void andar();
+	}
+
+	package animais;
+	interface Gato {
+		public void comer(){System.out.println("Leite");}
+		public void andar(){System.out.println("Com 4 patas");}
+	}
+---------------------------------------------------------------------------------
+Como usar algo de fora do pacote
+	package pacote.a;
+	public class A {
+		public tipo nome1();
+	}
+
+	package pacote.b;
+	public class B {
+		public tipo nome2(){pacote.a.A.nome1}
+	}
+
+	package pacote.c;
+	import pacote.a.A.nome1;
+	public class C {
+		public tipo nome3(){A.nome1}
+	}
+
+	package pacote.d;
+	import pacote.a.*;
+	public class D {
+		public tipo nome4(){A.nome1}
+	}
+---------------------------------------------------------------------------------
+Estruturas de dados
+
+---------------------------------------------------------------------------------
+Coleções
+	List
+	Map
+	Set
+
+	http://www.tutorialspoint.com/java/java_collections.htm
+---------------------------------------------------------------------------------
+Generics
+	http://www.tutorialspoint.com/java/java_generics.htm
+---------------------------------------------------------------------------------
+Serialização
+	http://www.tutorialspoint.com/java/java_serialization.htm
+---------------------------------------------------------------------------------
+Networking
+	http://www.tutorialspoint.com/java/java_networking.htm
+---------------------------------------------------------------------------------
+Envio de e-mail
+	http://www.tutorialspoint.com/java/java_sending_email.htm
+---------------------------------------------------------------------------------
+Multithreading
+	http://www.tutorialspoint.com/java/java_multithreading.htm
+---------------------------------------------------------------------------------
+Básico de applets
+	http://www.tutorialspoint.com/java/java_applet_basics.htm
+---------------------------------------------------------------------------------
+Javadoc
+
+/**
+* Explicação do que a classe faz
+* @author val
+* {@code val}
+* @deprecated val
+* {@docRoot}
+* @exception val
+* {@inheritDoc}
+* {@link val}
+* {@linkplain val}
+* @param val
+* @return val
+* @see val
+* @serial val
+* @serialData val
+* @serialField val
+* @since val
+* @throws val
+* {@value val}
+* @version val
+*/

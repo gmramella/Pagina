@@ -1,0 +1,22 @@
+<!--Code based on: http://koyamatch.com/d3js/d3js11.html-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	</head>
+	<body>
+		 <button type="button" id="botao">Click Me!</button>
+		<script>
+			var control = false;
+			$(document).on('keyup keydown', function(e) {control = e.ctrlKey;});
+
+			$('#botao').on('click', function() {
+			  if (control) {
+				alert("com CTRL");
+			  } else {
+				alert("sem CTRL");
+			  }
+			});
+		</script>
+	</body>
+</html>

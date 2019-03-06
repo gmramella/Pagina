@@ -1,0 +1,82 @@
+<!--Code based on: http://koyamatch.com/d3js/d3js11.html-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<style>
+			. body {
+				background-color: #fff;
+			}
+
+			.line {
+			  fill: none;
+			  stroke: #000;
+			  stroke-width: 3px;
+			  stroke-linejoin: round;
+			  stroke-linecap: round;
+			}
+			
+			div {
+				background-color: #444;
+			}
+	</style>
+	</head>
+	<body>
+		<div>
+			<button type="button" onclick="completelyClearSVGs()">Limpar SVGs</button>
+		</div>
+		</br>
+		<div class="livre1">
+			
+		</div>
+		</br>
+		<div class="livre2">
+			
+		</div>
+		<script>
+			function completelyClearSVGs() {
+				svg1.selectAll("*").remove();
+				svg2.selectAll("*").remove();
+			}
+		
+			var svg1 = d3.select("div.livre1").append("svg").attr("width", 1000).attr("height", 200).call(d3.behavior.drag().on("dragstart", dragstarted1).on("drag", dragged).on("dragend", dragended));
+			var svg2 = d3.select("div.livre2").append("svg").attr("width", 1000).attr("height", 200).call(d3.behavior.drag().on("dragstart", dragstarted2).on("drag", dragged).on("dragend", dragended));
+			
+			function KeyPress(e) {
+				var evtobj = window.event? event : e;
+				if (evtobj.keyCode == 90 && evtobj.ctrlKey) {
+					alert("Ctrl+z");
+				}
+			}
+
+			document.onkeydown = KeyPress;
+
+			var activeLine;
+
+			var renderPath = d3.svg.line()
+				.x(function(d) { return d[0]; })
+				.y(function(d) { return d[1]; })
+				.interpolate("basis");
+
+			function dragstarted1() {
+			  activeLine = svg1.append("path").datum([]).attr("class", "line");
+			}
+			
+			function dragstarted2() {
+			  activeLine = svg2.append("path").datum([]).attr("class", "line");
+			}
+
+			function dragged() {
+			  activeLine.datum().push(d3.mouse(this));
+			  activeLine.attr("d", renderPath);
+			}
+
+			function dragended() {
+			  activeLine = null;
+			}
+			
+			addNodeToCanvas(svg1, 50, 50, 50, "green");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+COMO CRIAR UMA PÁGINA INICIAL (baseado no tutorial disponível em http://www.inf.ufrgs.br/~bsguedes/tutoriais/pagina.htm)
+
+No Windows:
+	1 Baixar o programa WinSCP, selecionar instalação customizada (https://winscp.net/download/winscp576setup.exe)
+	2.1 Host name = html.inf.ufrgs.br
+	2.2 Port number = 22
+	2.3 User name = login usado nos labs
+	2.4 Password = senha usada nos labs
+	2.5 Clicar em login (ou dar enter)
+	3 Lado esquerdo = computador que está usando | Lado direito = diretórios da página
+	4 Entrar na pasta "public_html"
+	5 Criar um arquivo index.htm dentro deste diretório e colocar um código HTML básico (dica: shift+f4 = create new file, ou botão direito > new > file)
+	6 F7 = create new directory, ou botão direito > new > directory
+	7 Para cada diretório que for acessível por um link, certifique-se de que ele tenha um index.htm, senão vão aparecer todos os arquivos dele para o usuário
+
+No Linux:
+	1 Abra o terminal
+	2 Use o comando cd até chegar ao diretório do arquivo index.htm
+	3 Execute o comando pwd (mostra o caminho do diretório atual)
+	4.1 Execute o comando scp "resultado do comando pwd" usernamedoslabs@html.inf.ufrgs.br:public_html/index.htm e coloque a senha dos labs
+	4.2 Ou execute o comando sftp usernamedoslabs@html.inf.ufrgs.br, coloque a senha dos labs, use os comando cd e lcd na shell do sftp e coloque o index.htm (em caso de dúvida, procure o tutorial "Como acessar seus arquivos dos laboratórios, de casa")
+
+Arquivo .htm para teste:
+
+<html>
+	<head>
+		<title>Titulo</title>
+	</head>
+	<body>
+		Funciona
+	</body>
+</html>

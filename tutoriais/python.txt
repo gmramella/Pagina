@@ -1,0 +1,711 @@
+Olá mundo em python, no arquivo teste.py
+
+print "Ola Mundo!"
+# na versão 3 de Python, print virou função e o conteúdo a ser impresso deve estar entre parênteses, este arquivo usa a versão antiga
+--------------------------------------------------------------
+Executar arquivo teste.py
+
+python teste.py
+--------------------------------------------------------------
+Identificador
+
+[a-zA-Z_][a-zA-Z_0-9]*
+Var != var
+--------------------------------------------------------------
+Convenção
+
+module_name
+package_name
+
+ClassName
+ExceptionName
+
+method_name
+function_name
+
+GLOBAL_CONSTANT_NAME
+
+global_var_name
+local_var_name
+instance_var_name
+function_parameter_name
+--------------------------------------------------------------
+Palavras reservadas
+
+and		exec		not
+assert		finally		or
+break		for		pass
+class		from		print
+continue	global		raise
+def		if		return
+del		import		try
+elif		in		while
+else		is		with
+except		lambda		yield
+--------------------------------------------------------------
+Indentação e blocos
+
+if True:
+    print "Answer"
+    print "True"
+else:
+    print "Answer"
+    print "False"
+--------------------------------------------------------------
+Continuação de linha
+
+var1 = var2 + var3
+var1 = \
+       var2 + \
+       var3
+
+days = ['Monday', 'Tuesday', 'Wednesday','Thursday', 'Friday']
+days = ['Monday', 'Tuesday', 'Wednesday',
+        'Thursday', 'Friday']
+--------------------------------------------------------------
+Aspas
+
+var = 'blablabla'
+var = "blablabla."
+var = '''blablabla
+blablabla.'''
+var = """blablabla
+blablabla."""
+--------------------------------------------------------------
+Comentário 
+
+# mesma linha
+''' multiplas
+linhas'''
+""" multiplas
+linhas"""
+--------------------------------------------------------------
+Input
+
+raw_input("Aperte enter")
+imput("expressão python")
+--------------------------------------------------------------
+Múltiplos comandos em uma linha
+
+comando1 ; comando2
+--------------------------------------------------------------
+Atribuição de valor
+
+var1 = var2 = var3 = val
+var1, var2, var3 = val1, val2, val3
+--------------------------------------------------------------
+Tipos de dados
+
+Numbers (int, long, float, complex)
+String
+List
+Tuple
+Dictionary
+--------------------------------------------------------------
+Alocação e desalocação de objetos
+
+var1,var2 = val1,val2
+del var1,var2
+--------------------------------------------------------------
+Operações com strings "", listas [] e tuplas ()
+
+	Elemento
+		var[indice]
+	Concatenação
+		var1+var2
+	Repetição
+		var*vezes
+	Substring
+		var[inicio:]
+		var[inicio:fim]
+--------------------------------------------------------------
+Operações com dicionarios
+
+	Chaves
+		nomeLista.keys()
+	Valores
+		nomeLista.values()
+--------------------------------------------------------------
+Casting
+
+int()
+long()
+float()
+complex()
+str()
+repr()
+eval()
+tuple()
+list()
+set()
+dict()
+frozenset()
+chr()
+unichr()
+ord()
+hex()
+oct()
+--------------------------------------------------------------
+Operadores
+
+	Arithmetic
+		+, -, *, /, %, **, //
+	Relational
+		==, != (<>), >, <. >=, <=
+	Assignment
+		=, +=, -=, *=, /=, %=, **=, //=
+	Logical
+		and, or, not
+	Bitwise
+		&, |, ^, ~, >>, <<
+	Membership
+		in, not in
+	Identity
+		is, is not
+--------------------------------------------------------------
+Desvio
+
+if
+if-else
+
+Laço
+
+while
+for
+
+Controle de laço
+
+break
+continue
+pass (equivale a //TODO) 
+--------------------------------------------------------------
+Funções matemáticas
+
+abs()
+ceil()
+cmp()
+exp()
+fabs()
+floor()
+log()
+log10()
+max()
+min()
+modf()
+pow()
+round()
+sqrt()
+--------------------------------------------------------------
+Funções de aleatoriedade
+
+choice()
+randrange()
+random()
+seed()
+shuffle()
+uniform()
+--------------------------------------------------------------
+Funções trigonométricas
+
+acos()
+asin()
+atan()
+atan2()
+cos()
+hypot()
+sin()
+tan()
+degrees()
+radians()
+--------------------------------------------------------------
+Constantes matemáticas
+
+e, pi
+--------------------------------------------------------------
+Funções para strings
+
+capitalize()
+center()
+count()
+decode()
+encode()
+endswith()
+expandtabs()
+find()
+index()
+isalnum()
+isalpha()
+isdecimal()
+isdigit()
+islower()
+isnumeric()
+isspace()
+istitle()
+isupper()
+join()
+len()
+ljust()
+lower()
+lstrip()
+maketrans()
+max()
+min()
+replace()
+rfind()
+rindex()
+rjust()
+rstrip()
+split()
+splitlines()
+startswith()
+strip()
+swapcase()
+title()
+translate()
+upper()
+zfill()
+--------------------------------------------------------------
+Funções para strings
+
+cmp()
+len()
+max()
+min()
+list()
+nomeLista.append()
+nomeLista.count()
+nomeLista.extend()
+nomeLista.index()
+nomeLista.insert()
+nomeLista.pop()
+nomeLista.remove()
+nomeLista.reverse()
+nomeLista.sort()
+--------------------------------------------------------------
+Funções para tuplas
+
+cmp()
+len()
+max()
+min()
+tuple()
+--------------------------------------------------------------
+Funções para dicionários
+
+cmp()
+len()
+str()
+type()
+nomeDicionario.clear()
+nomeDicionario.copy()
+nomeDicionario.fromkeys()
+nomeDicionario.get()
+nomeDicionario.has_key()
+nomeDicionario.items()
+nomeDicionario.keys()
+nomeDicionario.setdefault()
+nomeDicionario.update()
+nomeDicionario.values()
+--------------------------------------------------------------
+Módulo time
+
+time.altzone
+time.asctime()
+time.clock()
+time.ctime()
+time.gmtime()
+time.localtime()
+time.mktime()
+time.sleep()
+time.strftime()
+time.strptime()
+time.time()
+time.timezone
+time.tzname
+time.tzset()
+--------------------------------------------------------------
+Módulo calendar
+
+calendar.calendar()
+calendar.firstweekday()
+calendar.isleap()
+calendar.leapdays()
+calendar.month()
+calendar.monthcalendar()
+calendar.monthrange()
+calendar.prcal()
+calendar.prmonth()
+calendar.setfirstweekday()
+calendar.timegm()
+calendar.weekday()
+--------------------------------------------------------------
+Função
+
+def nomeFuncao(parametros):
+parametros são passados por referência (valor troca)
+
+Required arguments
+	nomeFuncao(nomeParam)
+Keyword arguments
+	nomeFuncao(nomeParam=valor)
+Default arguments
+	def nomeFuncao(nomeParam=valor)
+Variable-length arguments
+	def nomeFuncao(arg1,*vartuple)
+		print arg1
+   		for var in vartuple:
+      			print var
+		return;
+
+sum = lambda arg1, arg2: arg1 + arg2;
+sum(10, 20)
+--------------------------------------------------------------
+Criar módulo
+
+nomeModulo.py
+import nomeModulo
+from nomeModulo import objeto
+--------------------------------------------------------------
+Usar variável global dentro de função
+
+var = 0
+def inc():
+   global var 
+   var = var + 1
+
+inc()
+--------------------------------------------------------------
+Listagem de conteúdo de módulo
+
+dir(nomeModulo)
+--------------------------------------------------------------
+Arquivos
+
+file nomeArquivo = open(nome, acesso, bufferizacao)
+
+	acesso
+		r, rb, r+, rb+, w, wb, w+, wb+, a, ab, a+, ab+
+	bufferizacao
+		<0, 0, 1, >1
+--------------------------------------------------------------
+Atributos de arquivos
+
+nomeArquivo.closed
+nomeArquivo.mode
+nomeArquivo.name
+nomeArquivo.softspace
+--------------------------------------------------------------
+Métodos para arquivos
+
+nomeArquivo.write(string)
+nomeArquivo.read(quantidade)
+nomeArquivo.tell()
+nomeArquivo.seek(offset, origem)
+nomeArquivo.close()
+--------------------------------------------------------------
+Módulo os
+
+os.rename(nome, novo)
+os.remove(nome)
+os.mkdir("nome")
+os.chdir("nome")
+os.getcwd()
+os.rmdir("nome")
+--------------------------------------------------------------
+Exceção
+
+try:
+	nomeArquivo = open("arquivo.txt", "w")
+	nomeArquivo .write("Escrita.")
+except IOError:, except, except (Exception1, ..., ExceptionN)
+	print "Falha."
+else:
+	print "Sucesso."
+	nomeArquivo.close()
+
+try:
+	nomeArquivo = open("arquivo.txt", "w")
+	nomeArquivo .write("Escrita.")
+except IOError:, except, except (Exception1, ..., ExceptionN)
+	print "Falha."
+finally:
+	print "Sempre executa."
+--------------------------------------------------------------
+Parâmetro de exceção
+
+def retornaNumero(var):
+	try:
+		return int(var)
+	except ValueError, Argument:
+		print "Nao eh numero\n", Argument
+
+# Call above function here.
+temp_convert("xyz");
+--------------------------------------------------------------
+Criação de exceção
+
+def nomeFuncao(var):
+   if var < 0:
+      raise "Negativo", var
+
+try:
+   #
+except "Negativo":
+   #
+else:
+   #
+--------------------------------------------------------------
+Exemplo de classe
+
+class Pessoa:
+	'Classe Pessoa'
+	contadorDePessoas = 0
+
+	def __init__(self, name, salary):
+		self.nome = name
+		self.sobrenome = salary
+		Pessoa.contadorDePessoas += 1
+   
+	def getContadorDePessoas(self):
+		print "Quantidade de pessoas: %d" % Employee.empCount
+
+	def mostrarInformacoes(self):
+		print "Nome: " + self.nome,self.sobrenome
+
+p = Pessoa("João", "Silva")
+--------------------------------------------------------------
+Acesso a atributo de classe
+
+class NomeClasse:
+	var = 0
+
+	def mudar(self,novo):
+		NomeClasse.var = novo
+
+	def mostrar(self):
+		print NomeClasse.var
+
+c = NomeClasse()
+c.mudar(10)
+print NomeClasse.var # não é OO
+NomeClasse.var = 5 # perigoso
+c.mostrar()
+print "%d" % NomeClasse.var
+--------------------------------------------------------------
+Adicionar, modificar e remover atributos dinamicamente
+
+class NomeClasse:
+	pass
+
+#print NomeClasse.var
+NomeClasse.var = 0
+print NomeClasse.var
+NomeClasse.var = 1
+print NomeClasse.var
+del NomeClasse.var
+#print NomeClasse.var
+c = NomeClasse
+#print c.var
+c.var = 2
+print c.var
+c.var = 3
+print c.var
+del c.var
+#print c.var
+--------------------------------------------------------------
+Funções de manipulação de atributos
+
+class NomeClasse:
+	var = 0
+
+c = NomeClasse
+h = hasattr(c, 'var')
+print h
+g = getattr(c, 'var')
+print g
+setattr(c, 'var', 1)
+delattr(c, 'var')
+--------------------------------------------------------------
+Atributos de classe 'built-in'
+
+class Employee:
+   'Common base class for all employees'
+   empCount = 0
+
+   def __init__(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print "Total Employee %d" % Employee.empCount
+
+   def displayEmployee(self):
+      print "Name : ", self.name,  ", Salary: ", self.salary
+
+print "Employee.__doc__:", Employee.__doc__ # String de documentação da classe ou None, se indefinida
+print "Employee.__name__:", Employee.__name__ # Nome da classe
+print "Employee.__module__:", Employee.__module__ # Nome do módulo onde a classe está definida. No modo interativo, é "__main__"
+print "Employee.__bases__:", Employee.__bases__ # Uma tupla, possivelmente vazia, contendo as classes base, na ordem de suas ocorrências na lista da classe base
+print "Employee.__dict__:", Employee.__dict__ # Dicionário contendo o namespace da classe
+--------------------------------------------------------------
+Documentação
+
+class NomeClasse:
+	'String opcional de documentação da classe com aspas simples'
+	'''String opcional de documentação da classe com aspas simples triplas'''
+	"String opcional de documentação da classe com aspas duplas"
+	"""String opcional de documentação da classe com aspas duplas triplas"""
+
+print NomeClasse.__doc__
+c = NomeClasse()
+print c.__doc__
+--------------------------------------------------------------
+Destrutor
+
+# Python tem um coletor de lixo automático que é acionado quando o contador de referências chega a 0 e chama o método __del__() logo que vai destruir a instância
+
+a = 1		# contador = 1
+b = a		# contador = 2
+c = [b]		# contador = 3
+
+del a		# contador = 2
+b = 100		# contador = 1
+c[0] = -1	# contador = 0
+
+class NomeClasse:
+	def __init(self):
+		pass
+	def __del__(self):
+		print "A classe",self.__class__.__name__, "foi destruída"
+
+pt1 = NomeClasse()
+pt2 = pt1
+pt3 = pt2
+print id(pt1), id(pt2), id(pt3) # prints the ids of the obejcts
+del pt1
+del pt2
+del pt3
+--------------------------------------------------------------
+class Pai:
+	def __init__(self):
+		nome = ""
+
+	def metodoPai(self):
+		print 'Método do pai'
+
+	def setAttr(self, nome, attr):
+		self.nome = "Pai"
+
+	def getAttr(self, nome):
+		print nome
+
+class Mae:
+	def __init__(self):
+		nome = ""
+
+	def metodoMae(self):
+		print 'Método da mãe'
+
+	def setAttr(self, nome, attr):
+		self.nome = "Mãe"
+
+	def getAttr(self, nome):
+		print nome
+
+class Filho(Parent): # define child class
+	def __init__(self):
+		nome = ""
+
+	def metodoFilho(self):
+		print 'Método do filho'
+
+f = Filho()
+c.metodoFilho()
+c.metodoPai()
+c.metodoMae()
+c.setAttr(200)
+c.getAttr()
+--------------------------------------------------------------
+Métodos issubclass e isinstance
+
+class Pai:
+	pass
+
+class Mae:
+	pass
+
+class Filho(Pai,Mae):
+	pass
+
+f = Filho()
+print(issubclass(Filho, Pai))
+print(issubclass(Filho, Mae))
+print(isinstance(f, Pai))
+print(isinstance(f, Mae))
+print(isinstance(f, Filho))
+--------------------------------------------------------------
+Sobrescrita de método
+
+class Pai:
+	def metodo(self):
+		print 'Pai'
+
+class Filho(Pai):
+	def metodo(self):
+		print 'Filho'
+
+f = Filho()
+f.metodo()
+--------------------------------------------------------------
+Métodos básicos que podem ser sobrescritos
+
+__init__(self, args)
+__del__(self)
+__repr__(self)			# o que deve acontecer quando usar print instancia
+__str__(self)			# equivalente a __repr__
+__cmp__(self, outraInstancia)
+--------------------------------------------------------------
+Sobrescrita de operador
+
+class Vetor:
+	def __init__(self, dx, dy):
+		self.dx = dx
+		self.dy = dy
+
+	def __repr__(self):
+		return 'Vetor (%d, %d)' % (self.dx, self.dy)
+   
+	def __add__(self,outroVetor):
+		return Vetor(self.dx + outroVetor.dx, self.dy + outroVetor.dy)
+
+v1 = Vetor(1,2)
+v2 = Vetor(3,4)
+print(v1)
+print(v2)
+print(v1+v2)
+--------------------------------------------------------------
+Encapsulamento de dados
+
+class NomeClasse:
+	__cont = 0
+  
+	def inc(self):
+		self.__cont += 1
+		print self.__cont
+
+c = NomeClasse()
+c.inc()
+c.inc()
+print c._NomeClasse__cont
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+http://www.tutorialspoint.com/python/python_reg_expressions.htm
+http://www.tutorialspoint.com/execute_python_online.php

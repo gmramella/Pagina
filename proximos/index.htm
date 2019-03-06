@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Página pessoal do Rex</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
+
+		<script type="text/javascript" src="../js/navegacao.js"></script>
+		<script type="text/javascript" src="../js/cabecalho.js"></script>
+		<script type="text/javascript" src="../js/footer.js"></script>
+		<script type="text/javascript" src="../js/script.js"></script>
+		<script type="text/javascript" src="../js/avisos.js"></script>
+	</head>
+	<div class="body">
+	<body>
+		<div id="hoverdiv"></div>
+		<section>
+<!--
+			<p style="color:blue;">Cursos na Target Trust</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="C# - Fundamentos da Linguagem" href="http://www.targettrust.com.br/curso/c-fundamentos-da-linguagem"><img class="icon" border="0" src="../img/csharp_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="C# - Desenvolvimento Web" href="http://www.targettrust.com.br/curso/c-desenvolvimento-web"><img class="icon" border="0" src="../img/csharp_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Marketing e Comunicação Digital" href="http://www.targettrust.com.br/curso/marketing-e-comunicacao-digital"><img class="icon" border="0" src="../img/seo_icon.png"></a></li>
+				<li><a class="hover" hovertext="SEO - Técnicas Avançadas de Otimização de Sites" href="http://www.targettrust.com.br/curso/seo-tecnicas-avancadas-de-otimizacao-de-sites"><img class="icon" border="0" src="../img/seo_icon.png"></a></li>
+				<li><a class="hover" hovertext="Testes de Software - Fundamentos" href="http://www.targettrust.com.br/curso/testes-de-software-fundamentos"><img class="icon" border="0" src="../img/teste_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Testes de Software - Planejamento e Execução" href="http://www.targettrust.com.br/curso/testes-de-software-planejamento-e-execucao"><img class="icon" border="0" src="../img/teste_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Ferramentas para Automação de Testes de Software" href="http://www.targettrust.com.br/curso/ferramentas-para-automacao-de-testes-de-software"><img class="icon" border="0" src="../img/teste_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Testes de Software para Equipes Ágeis" href="http://www.targettrust.com.br/curso/testes-de-software-para-equipes-ageis"><img class="icon" border="0" src="../img/teste_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="PHP - Orientado a Objetos" href="http://www.targettrust.com.br/curso/php-orientado-a-objetos"><img class="icon" border="0" src="../img/phpOO_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="PHP - Zend 2: Desenvolvendo aplicações MVC" href="http://www.targettrust.com.br/curso/php-zend-2-desenvolvendo-aplicacoes-mvc"><img class="icon" border="0" src="../img/phpOO_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Oracle Application Express – APEX 5" href="http://www.targettrust.com.br/curso/oracle-application-express-apex-5"><img class="icon" border="0" src="../img/oracle_icon.png"></a></li>
+				<li><a class="hover" hovertext="Oracle Otimização de Aplicativos em SQL e PL/SQL" href="http://www.targettrust.com.br/curso/oracle-otimizacao-de-aplicativos-em-sql-e-plsql"><img class="icon" border="0" src="../img/oracle_icon.png"></a></li>
+				<li><a class="hover" hovertext="Design Responsivo" href="http://www.targettrust.com.br/curso/design-responsivo"><img class="icon" border="0" src="../img/htmlcssjs_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="JavaScript Avançado" href="http://www.targettrust.com.br/curso/javascript-avancado"><img class="icon" border="0" src="../img/javascript_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="jQuery - Criando aplicações Web ricas" href="http://www.targettrust.com.br/curso/jquery-criando-aplicacoes-web-ricas"><img class="icon" border="0" src="../img/jquery_icon.png"></a></li>
+				<li><a class="hover" hovertext="AngularJS" href="http://www.targettrust.com.br/curso/angularjs"><img class="icon" border="0" src="../img/angularjs_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Node.js" href="http://www.targettrust.com.br/curso/node-js"><img class="icon" border="0" src="../img/nodejs_icon.png"></a></li>
+			</ul>
+			<p style="color:blue;">Testes de Nivelamento</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="Teste de nivelamento de Alemão" href="http://www.unisinos.br/unilinguas/alemao/presencial/sao-leopoldo"><img class="icon" border="0" src="../img/germany_icon.png"></a></li>
+				<li><a class="hover" hovertext="Teste de nivelamento de Francês" href="http://www.unisinos.br/unilinguas/frances/presencial/sao-leopoldo"><img class="icon" border="0" src="../img/france_icon.png"></a></li>
+				<li><a class="hover" hovertext="Teste de nivelamento de Italiano" href="http://www.unisinos.br/unilinguas/italiano/presencial/sao-leopoldo"><img class="icon" border="0" src="../img/italy_icon.png"></a></li>
+			</ul>
+			<p style="color:blue;">Testes de Certificação</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="Diploma DELE" href="https://examenes.cervantes.es/es/dele/que-es"><img class="icon" border="0" src="../img/spain_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Goethe-Zertifikat" href="https://www.goethe.de/ins/br/pt/sta/poa/prf.html"><img class="icon" border="0" src="../img/germany_icon.png"></a></li>
+				<li><a class="hover" hovertext="DELF – DALF" href="http://www.afpoa.com.br/wp/?page_id=14"><img class="icon" border="0" src="../img/france_icon.png"></a></li>
+			</ul>
+			<p style="color:blue;">Cursos no Unilinguas</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="Japonês Básico I" href="http://www.unisinos.br/unilinguas/japones/presencial/sao-leopoldo"><img class="icon" border="0" src="../img/japan_icon.png"></a></li>
+				<li><a class="hover" hovertext="Chinês Mandarim Básico I" href="http://www.unisinos.br/unilinguas/mandarim/presencial/sao-leopoldo"><img class="icon" border="0" src="../img/china_icon.png"></a></li>
+			</ul>
+-->
+			<p style="color:blue;">Cursos na Feevale</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="Tributação sobre Softwares" href="https://www.feevale.br/cursos-e-eventos/tributacao-sobre-softwares"><img class="icon" border="0" src="../img/feevale_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Animação 3D de Personagens para Jogos" href="https://www.feevale.br/cursos-e-eventos/animacao-3d-de-personagens-para-jogos"><img class="icon" border="0" src="../img/feevale_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Cisco CCNA1" href="https://www.feevale.br/cursos-e-eventos/cisco-ccna1"><img class="icon" border="0" src="../img/feevale_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Cisco CCNA2" href="https://www.feevale.br/cursos-e-eventos/cisco-ccna-2-principios-de-roteamento-e-switching"><img class="icon" border="0" src="../img/feevale_icon.jpg"></a></li>
+			</ul>
+			<p style="color:blue;">Cursos na PUCRS</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="Desenvolvimento Web com HTML5, CSS e Programação jQuery - 2ª EDIÇÃO" href="http://educon.pucrs.br/cursos/desenvolvimento-web/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Do Junit ao Selenium: Técnicas e Ferramentas de Teste de Software - 1ª EDIÇÃO" href="http://educon.pucrs.br/cursos/do-junit-ao-selenium/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Microsoft PowerBI – N1: Para Profissionais de Toda as Áreas - 1ª EDIÇÃO" href="http://educon.pucrs.br/cursos/microsoft-powerbi-n1/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Virtualização com Microsoft HyperV 2ª EDIÇÃO" href="http://educon.pucrs.br/cursos/virtualizacao-com-microsoft-hyperv/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Automação de Testes com Selenium 4ª EDIÇÃO" href="http://educon.pucrs.br/cursos/automacao-de-testes-com-selenium/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Gestão de Projetos usando Microsoft Project 29ª EDIÇÃO" href="http://educon.pucrs.br/cursos/gestao-de-projetos-usando-microsoft-project/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Introdução ao Desenvolvimento para Android com Kotlin 2ª EDIÇÃO" href="http://educon.pucrs.br/cursos/introducao-ao-desenvolvimento-para-android-com-kotlin/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Microsoft PowerBI – N2: Aprofundamento para Profissionais de TI - 1ª EDIÇÃO" href="http://educon.pucrs.br/cursos/microsoft-powerbi-n2/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Programação para web com ASP .NET MVC e C# 7ª EDIÇÃO" href="http://educon.pucrs.br/cursos/programacao-para-web-com-asp-net-mav-e-c/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+				<li><a class="hover" hovertext="Programação para Web com Java EE 2ª EDIÇÃO" href="http://educon.pucrs.br/cursos/programacao-para-web-com-java-ee/"><img class="icon" border="0" src="../img/pucrs_icon.png"></a></li>
+			</ul>
+<!--
+			<p style="color:blue;">Cursos na UFRGS</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="Programação em CUDA" href="http://www.cesup.ufrgs.br/cursos-e-audiovisual/cursos/CUDA"><img class="icon" border="0" src="../img/ufrgs_icon.png"></a></li>
+			</ul>
+-->
+			<p style="color:blue;">Cursos na Unisinos</p>
+			<ul class="courses">
+				<li><a class="hover" hovertext="Introdução à Língua Brasileira de Sinais" href="http://www.unisinos.br/cursos-de-extensao/introducao-a-lingua-brasileira-de-sinais-ex920081/28302"><img class="icon" border="0" src="../img/unisinos_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Introdução ao Raspberry Pi" href="http://www.unisinos.br/cursos-de-extensao/introducao-ao-raspberry-pi-ex123078/28306"><img class="icon" border="0" src="../img/unisinos_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Autocad 2D Fundamental" href="http://www.unisinos.br/cursos-de-extensao/autocad-2d-fundamental-ex120192/28238"><img class="icon" border="0" src="../img/unisinos_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="Oratória Técnica e Arte da Bela Expressão" href="http://www.unisinos.br/cursos-de-extensao/oratoria-tecnica-e-arte-da-bela-expressao-ex123260/28399"><img class="icon" border="0" src="../img/unisinos_icon.jpg"></a></li>
+				<li><a class="hover" hovertext="MATLAB para Cientistas e Engenheiros" href="http://www.unisinos.br/cursos-de-extensao/matlab-para-cientistas-e-engenheiros-ex123048/28246"><img class="icon" border="0" src="../img/unisinos_icon.jpg"></a></li>
+			</ul>
+		</section>
+	</body>
+	</div>
+</html>

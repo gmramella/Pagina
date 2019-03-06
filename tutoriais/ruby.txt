@@ -1,0 +1,264 @@
+$KCODE = a | e | n | u (ascii, EUC, none, UTF-8)
+
+puts "Programa principal"
+END {puts "Terminando programa 2"}
+END {puts "Terminando programa 1"}
+BEGIN {puts "Comecando programa 1"}
+BEGIN {puts "Comecando programa 2"}
+
+# comentario
+=begin
+comentario
+comentario
+=end
+
+__FILE__
+__LINE__
+
+0n octal, 0xn hex, 0bn binario, 1_234=1234, ?char = valor ascii
+123.4 float, 1.0e6 = 4E20 = 4e+20 notação científica
++ - * / % **
+== != > < >= <= <=> === .eql? .equal?
+= += -= *= /= %= **=
+& | ^ ~ <<n >>n
+&& || ! and or not
+a, b = 10, 20; a, b = b, a
+a ? b : c
+defined? var
+defined? metodo
+
+nomeVetor = Array.new
+nomeVetor = Array.new(tam)
+nomeVetor.size = nomeVetor.length
+nomeVetor = Array.new(tam,valInicial)
+nomeVetor = Array.new(5) {|i| i += 1} = Array.[](1, 2, 3, 4,5) = Array[1, 2, 3, 4,5] = Array(1..5)
+ultimoElemento = nomeVetor[-1], penultimoElemento = nomeVetor[-2]
+
+nomeHash = Hash.new
+nomeHash = Hash.new(valPadrao)
+nomeHash = Hash[chave => valor, chave => valor, ...]
+
+a..b = a,a+1,...,b
+a...b = a,a+1,...,b-1
+array = (1..5).to_a
+(0..9).include?(5)
+(0..9).min
+(0..9).max
+puts "Rejected values are #{(0..9).reject {|i| i < 5 }}"
+
+.each {|i| code}
+.collect {|i| code}
+
+putc
+puts
+print
+gets
+
+nomePonteiroArquivo = File.new("nomeArquivo", "modo")
+File.open("nomeArquivo", "modo") do |nomePonteiroArquivo| end
+nomePonteiroArquivo.close
+
+modo: r, r+, w, w+, a, a+ (read seek0, read-write seek0, write cria ou reescreve, read-write cria ou reescreve, write cria ou continua, read-write cria ou continua)
+
+nomePonteiroArquivo = File.new("nome.txt", "modo")
+if nomePonteiroArquivo
+   code
+else
+   code
+end
+nomePonteiroArquivo.close
+
+gets
+sysread
+syswrite
+
+nomePonteiroArquivo.each_byte {|c| putc c }
+nomeArray = IO.readlines("nomePonteiroArquivo")
+IO.foreach("nomePonteiroArquivo"){|i| puts i}
+File.rename("nomeVelho", "nomeNovo")
+File.delete("nomePonteiroArquivo")
+nomePonteiroArquivo = File.new("nomeArquivo", "w"); nomePonteiroArquivo.chmod(permissao)
+permissao: 0001, 0002, 0004, 0007, 0010, 0020, 0040, 0070, 0100, 0200, 0400, 0700, 1000, 2000, 4000
+File.open("nomeArquivo") if File::exists?( nome")
+File.file?("nomeArquivo")
+File::directory?( "/usr/local/bin" )
+File.readable?("nomeArquivo")
+File.writable?("nomeArquivo")
+File.executable?("nomeArquivo")
+File.zero?("nomeArquivo")
+File.size?("nomeArquivo")
+File::ftype("nomeArquivo") (file, directory, characterSpecial, blockSpecial, fifo, link, socket, unknown)
+File::ctime("nomeArquivo")
+File::mtime("nomeArquivo")
+File::atime("nomeArquivo")
+
+Dir.chdir("diretorio")
+Dir.pwd
+Dir.entries("diretorio")
+Dir.mkdir("diretorio")
+Dir.mkdir("diretorio", permissao)
+Dir.rmdir("diretorio")
+
+require 'tmpdir'; temp = File.new(File.join(Dir.tmpdir, "nomeArquivo"), "w"); temp.close; File.delete(temp)
+require 'tempfile'; temp = Tempfile.new("nomeArquivo"); temp.close; File.delete(temp)
+
+begin
+   code
+rescue E1
+   code
+rescue E2
+   code
+else
+   code
+ensure
+   code
+end
+
+begin
+rescue
+   retry
+end
+
+begin
+   raise "An error has occurred."
+rescue
+end
+
+begin
+  raise "A test exception."
+rescue Exception => e
+  puts e.message
+  puts e.backtrace.inspect
+end
+---------------------------------
+if cond then code
+[elsif cond then code]
+[else code]
+end
+
+code if cond
+
+unless cond then
+ code
+[else
+ code ]
+end
+
+code unless cond
+
+case expr
+ [when expr [, expression ...] then code ]
+ [else code ]
+end
+
+while cond
+ code
+end
+
+code while cond
+
+begin
+ code
+end while cond = do while
+
+until cond
+ code
+end
+
+code until cond
+
+begin
+ code
+end until cond = do until
+
+for var [, var ...] in expr
+ code
+end
+
+break, next, redo, retry
+---------------------------------
+def nomeMetodo
+  code
+end
+
+def nomeMetodo(vars)
+  code
+end
+
+def nomeMetodo(vars = vals)
+  code
+end
+
+def nomeMetodo
+  return vals
+end
+
+def nomeMetodo(*vars)
+end
+
+undef
+---------------------------------
+class NomeClasse
+   def Accounts.nomeMetodo
+   end
+end
+
+NomeClasse.nomeMetodo
+---------------------------------
+nomeBloco {|args| comandos}
+def nomeMetodoIgualAoNomeBloco
+   yield args
+end
+---------------------------------
+module NomeModulo
+   Constante = val
+   def NomeModulo.nomeMetodo(args)
+   end
+end
+
+$LOAD_PATH << '.'
+require 'nomeModulo.rb'
+
+var = NomeModulo.nomeMetodo(args)
+NomeModulo::Constante
+
+class NomeClasse
+include NomeModulo
+end
+
+module A
+   def a
+   end
+end
+module B
+   def b
+   end
+end
+
+class C
+include A
+include B
+   def c
+   end
+end
+
+obj = C.new
+obj.a
+obj.b
+obj.c
+---------------------------------
+$varGlobal
+Constante = valInicial
+Constante = novoVal
+class NomeClasse
+	def initialize(var)
+		@var=var
+	end
+	def nomeMetodo
+		varLocal # [a-z_][a-zA-Z_0-9]*
+	end
+	@varInstancia
+	@@varClasse
+end
+
+nomeObjeto = NomeClasse.new

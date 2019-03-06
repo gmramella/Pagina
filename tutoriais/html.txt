@@ -1,0 +1,227 @@
+Codigo HTML base
+
+DOCTYPE
+<html>
+	<head>
+		INFO_SOBRE_DOCUMENTO (meta dados)
+	</head>
+	<body>
+		CONTEUDO_VISIVEL
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------
+Exemplos de DOCTYPE
+
+HTML 4.01: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+XHTML 1.0: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+HTML5: <!DOCTYPE html>
+------------------------------------------------------------------------------------------------------------------------------------
+Exemplo de código HTML base
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>Título da pagina</title>
+	</head>
+	<body>
+		Codigo HTML
+	</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------
+Cabeçalhos
+
+<h1>Cabeçalho h1</h1>
+<h2>Cabeçalho  h2</h2>
+<h3>Cabeçalho  h3</h3>
+<h4>Cabeçalho  h4</h4>
+<h5>Cabeçalho  h5</h5>
+<h6>Cabeçalho  h6</h6>
+------------------------------------------------------------------------------------------------------------------------------------
+Parágrafo
+
+<p>Parágrafo</p>
+------------------------------------------------------------------------------------------------------------------------------------
+Links
+
+<a href="http://www.w3schools.com">Link</a>
+<a href="arquivo.txt" target="_blank">Link para arquivo com qualquer extensão</a>
+------------------------------------------------------------------------------------------------------------------------------------
+Imagens
+
+<img src="imagem.png" width="258" height="196"><br/>
+------------------------------------------------------------------------------------------------------------------------------------
+Atributos
+
+nome="valor"
+Fornecem informação adicional sobre um elemento.
+------------------------------------------------------------------------------------------------------------------------------------
+Atributo lang
+
+<html lang="en-US">
+Importante para aplicações (leitores e motores de busca).
+------------------------------------------------------------------------------------------------------------------------------------
+Atributo title
+
+<p title="Titulo">
+Se colocar o mouse em cima, vai aparecer um janela com Titulo.
+------------------------------------------------------------------------------------------------------------------------------------
+Outros atributos
+
+href
+src
+width
+height
+
+disabled
+id
+style
+valor
+------------------------------------------------------------------------------------------------------------------------------------
+Atributo alt
+
+<img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142"> 
+Especifica um texto alternativo a ser usado quando um elemento não pode ser exibido.
+O valor do atributo pode ser lido por "leitores de tela", de forma que alguém "ouvindo" a página, um cego, por exemplo, pode "ouvir" o elemento.
+------------------------------------------------------------------------------------------------------------------------------------
+Aspas
+
+<p title='John "ShotGun" Nelson'> 
+<p title="John 'ShotGun' Nelson">
+------------------------------------------------------------------------------------------------------------------------------------
+Linha horizontal
+
+<p>Parágrafo 1.</p>
+<hr>
+<p>Parágrafo 2.</p>
+------------------------------------------------------------------------------------------------------------------------------------
+HTML <title>
+
+<title>Título da página</title>
+------------------------------------------------------------------------------------------------------------------------------------
+HTML <meta>
+
+<meta charset="UTF-8">
+------------------------------------------------------------------------------------------------------------------------------------
+Outros HTML meta
+
+<style>
+Definir CSS interno.
+
+<link>
+Definir CSS externo.
+------------------------------------------------------------------------------------------------------------------------------------
+Quebra de linha
+
+Quebra<br>de<br>linha. 
+------------------------------------------------------------------------------------------------------------------------------------
+HTML <pre>
+
+<pre>
+	Linha 1 com tab.
+	Linha 2 com tab.
+	Linha 3 com tab.
+	Linha 4 com tab.
+</pre>
+------------------------------------------------------------------------------------------------------------------------------------
+Estilo
+
+style="propriedade:valor"
+
+<body style="background-color:lightblue">
+Define a cor de fundo do documento.
+
+<p style="color:blue">Parágrafo 1.</p>
+<p style="color:red">Parágrafo 2.</p>
+Define a cor de texto para o elemento.
+
+<p style="font-family:verdana">Parágrafo 1.</p>
+<p style="font-family:courier">Parágrafo 2.</p>
+Define a fonte para o elemento.
+
+<p style="font-size:200%">Parágrafo 1.</p>
+<p style="font-size:100%">Parágrafo 2.</p>
+Define o tamanho de texto para o elemento.
+
+<p style="text-align:center">Centro.</p>
+<p style="text-align:right">Direita.</p>
+Define o alinhamento horizontal para o elemento.
+------------------------------------------------------------------------------------------------------------------------------------
+Formatação de texto
+
+<p><b>Negrito</b>.</p>
+Negrito.
+
+<p><strong>Importante</strong>.</p>
+Importante.
+
+<p><i>Itálico</i>.</p>
+Itálico.
+
+<p><em>Enfatizado</em>.</p>
+Enfatizado.
+
+<p><mark>Marcado</mark>.</p>
+Marcado.
+
+<p><small>Pequeno</small>.</p>
+Pequeno.
+
+<p><del>Deletado</del>.</p>
+Deletado.
+
+<p><ins>Inserido</ins>.</p>
+Inserido.
+
+<p><u>Sublinhado</u>.</p>
+Sublinhado.
+
+<p><sub>Subscrito</sub>.</p>
+Subscrito.
+
+<p><sup>Sobrescrito</sup>.</p>
+Sobrescrito.
+------------------------------------------------------------------------------------------------------------------------------------
+Citação
+
+<p><q>Citação</q>.</p>
+Citação simples.
+
+<blockquote>
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.
+</blockquote>
+Citação identada.
+------------------------------------------------------------------------------------------------------------------------------------
+Abreviação
+
+<p><abbr title="Universidade Federal do Rio Grande do Sul">UFRGS</abbr></p>
+Útil para navegadores, sistemas de tradução e motores de busca.
+------------------------------------------------------------------------------------------------------------------------------------
+Informação de contato
+
+<address>
+Escrito por Fulano e Ciclano.<br>
+Visite-nos em:<br>
+Algum lugar<br>
+CEP 12345-678, Fulanolândia<br>
+Brasil
+</address>
+------------------------------------------------------------------------------------------------------------------------------------
+Título de obra
+
+<p><cite>O Grito</cite> por Edward Munch. Pintado em 1893.</p>
+------------------------------------------------------------------------------------------------------------------------------------
+Escrita da direita para a esquerda.
+
+<bdo dir="rtl">Texto ao contrário.</bdo>
+Se suportado pelo navegador.
+------------------------------------------------------------------------------------------------------------------------------------
+Definição
+
+<p><dfn>Brasil</dfn> é um país.</p>
+------------------------------------------------------------------------------------------------------------------------------------
+http://www.w3schools.com/html/html_computercode_elements.asp
+
+
+------------------------------------------------------------------------------------------------------------------------------------

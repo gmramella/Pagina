@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<script src="http://d3js.org/d3.v3.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<input type="button" value="Read" onclick="readElementsTSVs()">
+			<input type="button" value="Paste" onclick="pasteElementsTSVs()">
+		</form>
+		<script>
+		var elementsRead = [];
+		//http://learnjsdata.com/read_data.html
+		function readTSV(fileName, t) {
+			d3.tsv(fileName, function(data) {
+				for (var i = 0; i < data.length; i++) {
+					<!-- console.log(data[i]); -->
+					elementsRead.push({type: t, element: data[i]});
+				}
+				alert("File "+fileName+" has been read");
+			});
+		}
+		function readElementsTSVs() {
+			readTSV("objects.tsv", "object");
+			readTSV("morphisms.tsv", "morphisms");
+		}
+		function pasteElementsTSVs() {
+			for (var i = 0; i < elementsRead.length; i++) {
+				console.log(elementsRead[i]);
+			}
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+		<link rel="stylesheet" href="submenu.css">
+		<script src="./submenu.js"></script>
+	</head>
+	<body>
+		<span id="op">Demo</span>
+		<div id='cntnr'>
+			<ul id='items'>
+				<li id='op1' class='option'>Copy</li>
+					<ul id='op1subItems'>
+						<li id='op1s1' class='option'>Copy</li>
+						<li id='op1s2' class='option'>Paste</li>
+						<li id='op1s3' class='option'>Delete</li>
+					</ul>
+				<li id='op2' class='option'>Paste</li>
+					<ul id='op2subItems'>
+						<li id='op2s1' class='option'>Copy</li>
+						<li id='op2s2' class='option'>Paste</li>
+						<li id='op2s3' class='option'>Delete</li>
+					</ul>
+				<li id='op3' class='option'>Delete</li>
+					<ul id='op3subItems'>
+						<li id='op3s1' class='option'>Copy</li>
+						<li id='op3s2' class='option'>Paste</li>
+						<li id='op3s3' class='option'>Delete</li>
+					</ul>
+			</ul>
+		</div>
+		<script>
+		$(document).bind("contextmenu",function(e){
+			e.preventDefault();
+			console.log(e.pageX + "," + e.pageY);
+			$("#cntnr").css("left",e.pageX);
+			$("#cntnr").css("top",e.pageY);
+			// $("#cntnr").hide(100);				
+			$("#cntnr").fadeIn(200,startFocusOut());			
+		});
+
+		function startFocusOut(){
+			$(document).on("click",function(){
+			$("#cntnr").hide();				
+			$(document).off("click");
+			});
+		}
+
+		$("#items > li, #op1subItems > li, #op2subItems > li, #op3subItems > li").click(function(){
+		$("#op").text("You have selected "+$(this).text());
+		});
+		</script>
+	</body>
+</html>

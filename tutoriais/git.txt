@@ -1,0 +1,257 @@
+DADOS DO INSTRUTOR
+	otaviojacobi@gmail.com											(para envio de dúvidas)
+	https://github.com/otaviojacobi/curso_git								(onde está o material da primeira aula)
+	https://github.com/otaviojacobi/curso_git/tree/master/git						(onde está o material da segunda aula)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SITES DE HOSPEDAGEM PARA PROJETOS QUE USAM GIT
+	https://github.com
+	https://bitbucket.org
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+REPOSITÓRIOS USADOS NA AULA
+	github.com/bulenkov/2048
+	github.com/jesseadams/pacman
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PRIMEIROS PASSOS
+	Acessar www.github.com
+	Clicar em sign up
+	Criar conta
+	No linux:
+		Criar um diretório onde serão armazenados os arquivos de um projeto				(cd, cd .., mkdir, >, >>, cat, touch)
+	No Windows:
+		Instalar Git (http://git-scm.com/downloads, https://desktop.github.com/)
+		Criar uma pasta (diretório) onde serão armazenados os arquivos de um projeto
+		Abrir o prompt (tecla do windows, pesquisar por cmd)
+	Usar os comandos de configuração de nome, email e editor (git config -- global)
+	Iniciar o git (git init)
+	Usar comandos de git e do sistema operacional necessários
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+COMPARAÇÃO ENTRE GITHUB E BITBUCKET
+	Ambos têm versão grátis e paga.
+	No github grátis todos os repositórios são públicos.
+	No bitbucket grátis os repositórios podem ser privados.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NO WINDOWS
+	direito > git bash here
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+COMANDOS DO WINDOWS USADOS
+	dir													(listar arquivos do diretório atual)
+	cd diretório												(ir para diretório, ver observação *)
+	cd ..													(ir para diretório pai do atual, isto é, voltar)
+	md diretório												(criar novo diretório dentro do diretório atual, ver observação **)
+	rd diretório												(excluir diretório sem arquivos, sem mandar pra lixeira)
+	rd diretório /s												(excluir diretório contendo arquivos, perguntará se tem certeza)
+	rd diretório /s /q											(excluir diretório contendo arquivos, sem perguntar se tem certeza)
+	cd. > nome.extensão 											(criar novo arquivo vazio)
+	del nome.extensão											(excluir arquivo)
+	notepad													(abrir arquivo em branco no editor notepad)
+	notepad nome.extensão											(abrir arquivo no editor notepad)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+COMANDOS DO LINUX USADOS
+	ls													(listar arquivos do diretório atual)
+	dir													(quase equivalente ao comando "ls")
+	vdir													(quase equivalente ao comando "ls")
+	cd diretório												(ir para diretório, ver observação *)
+	cd ..													(ir para diretório pai do atual, isto é, voltar)
+	mkdir diretório												(criar novo diretório dentro do diretório atual, ver observação **)
+	rmdir diretório												(excluir diretório sem arquivos)
+	rm -r mydir												(excluir diretório contendo arquivos)
+	> nome.extensão												(criar novo arquivo vazio, perdendo conteúdo se este arquivo já existia)
+	touch nome.extensão											(criar novo arquivo ou atualizar data da última modificação se já existia)
+	>> nome.extensão											(criar arquivo se não existia)
+	cat > nome.extensão											(criar novo arquivo excluindo eventual existente,
+														 o terminal vai ficar esperando entrada de texto para colocar no novo arquivo,
+														 termine de escrever com enter e ctrl+c)
+	rm arquivo.extensão											(excluir arquivo)
+	editor													(abrir arquivo em branco no editor)
+	editor nome.extensão											(abrir arquivo no editor)
+	(exemplos de editores: emacs, vim, gedit, pluma)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PRINCIPAIS COMANDOS GIT EM ORDEM DE USO
+	COMANDOS DE AJUDA
+		git												(ver comandos git possíveis)
+		git help											(equivalente ao comando "git")
+		git help comando										(explica como usar o comando)
+	COMANDOS DE CONFIGURAÇÃO
+		git config --global user.name "Nome Sobrenome"							(configurar nome)
+		git config --global user.email "email@email.com"						(configurar email)
+		git config --global core.editor "editor"							(configurar editor)
+	COMANDO PARA INICIAR O GIT
+		git init											(iniciar staging)
+	COMANDO DE STATUS
+		git status											(status do staging, se ficar verde está certo)
+	COMANDO DE PULL
+		git pull link											(baixar repositório online de alguém, "https://github.com/gmramella/Teste")
+	COMANDOS PARA ADICIONAR ARQUIVOS À STAGING AREA
+		git add nome.extensão										(adicionar arquivo)
+		git add *											(adicionar todos arquivos)
+		git add nome.*											(adicionar todos arquivos com este nome)
+		git add *.extensão										(adicionar todos arquivos com esta extensão)
+	COMANDOS PARA REMOVER ARQUIVOS DA STAGING AREA
+		git reset											(remover arquivos adicionados após o último commit)
+		git reset nome.extensão										(remover arquivo)
+		git reset *											(remover todos arquivos)
+		git reset nome.*										(remover todos arquivos com este nome)
+		git reset *.extensão										(remover todos arquivos com esta extensão)
+	COMANDOS DE COMMIT
+		git commit											(abrirá editor configurado, ver observação ***)
+		git commit -m "comentario"									(commit com comentário em único comando, maneira mais simples)
+	COMANDOS PARA CORRIGIR COMENTÁRIO DO ÚLTIMO COMMIT
+		git commit --amend										(refazer último commit)
+		git commit --amend -m "comentario"								(refazer último commit)
+	COMANDOS DE PUSH
+		git push											()
+		git push --all											()
+		git push --force										()
+		git -u origin master
+	COMANDOS ADICIONAIS
+		git config --list										(tudo que foi feito)
+		git diff "nome.extensao"									(modificações feitas no arquivo após git add)
+		git mv "oldFileName" "newFileName"								(alterar nome)
+		git rm -cached "arquivo"									(retirar o último arquivo do staging)
+		git commit -a											(pular staging)
+		git commit -a -m "comentario"									()
+		git log												()
+		git log –pretty=format: "%h , %an , %ar , %s"							()
+		(início da key, autor, minutes ago ou data, commit log)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OBSERVAÇÕES
+	*:		para ir para um diretório sem precisar digitar todo o nome, use tab ou *
+			suponha que há dois diretórios, teste1 e teste2, e se deseje ir para teste2:
+				digite, por exemplo, cd tes
+				digite tab até que complete com teste2
+			suponha que há dois diretórios, testeAAA e testeBBB, e se deseje ir para testeBBB:
+				digite, por exemplo, cd testeB*
+	**:		para criar diretórios e arquivos com nomes contendo espaço
+			no Windows, use ""
+				md "diretório de teste"
+			no Linux, use \
+				digite mkdir diretório\ de\ teste
+				digite >> arquivo\ de\ teste.extensão
+	***:	ao usar o comando git commit, caso esteja configurado o editor vim:
+				digitar i para começar a escrever o comentário
+				escrever o comentário
+				encerrar digitando esc, seguido da seqüência de letras :wq, seguido por enter
+				(i+comentário+esq+:+w+q+enter)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FLUXO SEM BRANCHING
+            git add               git commmit             git push
+working dir -------> staging area -----------> repository --------> github
+                                                          git pull
+                                                         <--------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FLUXO COM BRANCHING
+            git add               git commmit             git push
+working dir -------> staging area -----------> repository --------> github
+|                                              ^          git pull
+|                                              |         <--------
+|git checkout                                  |git checkout[, git merge]
+|                                              |
+v           git add               git commmit  |          git push
+working dir -------> staging area -----------> repository --------> github
+                                                          git pull
+                                                         <--------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CRIAR NOVO REPOSITÓRIO
+	entrar no github, clicar no + no canto superior direito, clicar em new repository
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CRIAR ALIAS PARA URL DE REPOSITÓRIO ONLINE
+	git remote add origin https://github.com/conta/repositorio.git (exemplo https://github.com/gmramella/Curso-Git.git)
+	git remote set-url origin https://github.com/conta/repositorio.git
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VER A QUAL URL O ORIGIN ESTÁ LIGANDO
+	git remote -v
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MOSTRAR HISTÓRICO DE COMMITS
+	git log (no linux, para sair, digite q)
+	git log --pretty=oneline (mostra checksum e mensagem dos commits)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+LISTAR TAGS
+	git tag
+	git tag -l 'expressão regular' (exemplo git tag -l 'v1.8.5*' vai listar todas versões que começam com v1.8.5)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CRIAR TAG
+	git tag -a versão -m 'mensagem' (exemplo git tag -a v1.0 -m 'Primeira versão')
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MOSTRAR INFORMAÇÕES DE TAG
+	git show versão
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CRIAR TAG DE COMMIT JÁ FEITO
+	com o comando git log --pretty=oneline, procurar o commit desejado pela sua mensagem
+	git tag -a versão checksum (exemplo git tag -a v1.2 9fceb02d0ae598e95dc970b74767f19372d61af8)
+	geralmente os 6 primeiros caracteres do checksum já são suficientes (exemplo anterior git tag -a v1.2 9fceb0)
+	os 2 comandos anteriores abrirão o editor para adicionar a mensagem, isso pode ser evitado se usado o comando git tag -a versão checksum -m 'mensagem'
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DELETAR TAG
+	git tag -d versão
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ADICIONAR ARQUIVOS COMMITADOS AO REPOSITÓRIO ONLINE
+	git push -u https://github.com/conta/repositorio.git master
+	ou
+	git push -u origin master (se origin já tiver sido definido anteriormente, não necessitando digitar o URL toda vez)
+	git push origin branch
+
+	git push origin --all
+	git push origin versão
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CLONAR REPOSITÓRIO
+	ir na página do repositório de alguém e clicar em fork
+	no terminal, digitar git clone https://github.com/minhaconta/nomedorepositoriocopiado.git)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CRIAR BRANCH NO GITHUB
+	clicar em branch, escrever um nome novo e clicar fora
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ADICIONAR ARQUIVO TXT NO BRANCH CRIADO PELO GITHUB
+	clicar no botão + ao lado do nome do diretório
+	no terminal, digitar git add teste.txt
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ORDEM DOS COMANDOS
+	criar diretório para deixar organizado			(mkdir nomedodiretorio)
+	ir para este diretório					(cd nomedodiretorio)
+
+	fazer fork de repositório de alguém no github		(clicar em Fork no canto superior direito da página do repositório)
+	clonar página						(git clone https://github.com/minhaconta/repositorio.git)
+	ir para diretório do repositório			(cd repositorio/)
+
+	criar branch						(git checkout -b nomedobranch)
+	criar novos arquivos no diretório do repositorio	(>> nome.extensão)
+	adicionar novos arquivos no diretório do repositorio	(git add *)
+	ver o status						(git status)
+	executar commit						(git commit -m "mensagem")
+	verificar se remote está configurado corretamente	(git remote -v, tem que estar origin	https://github.com/minhaconta/repositorio.git (push))
+	executar push						(git push origin nomedobranch)
+	colocar usuário e senha da conta no github
+
+	ir para branch master					(git checkout master)
+	executar merge do branch para dentro do master		(git merge nomedobranch)
+	executar push do conteúdo atualizado do master		(git push origin master)
+	colocar usuário e senha da conta no github
+
+	deletar branch						(git branch -D nomedobranch)
+
+	alguns comandos são opcionais
+	pode-se escolher entre fazer o push do branch, do master, dos dois ou de nenhum
+	não é obrigatório colocar tag nem deletar branches
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TODOS COMANDOS GIT
+	add, add--interactive, am, annotate, apply, archive
+	bisect, bisect--helper, blame, branch, bundle
+	cat-file, check-attr, check-ignore, check-ref-format, checkout, checkout-index, cherry, cherry-pick, clean, clone, column, commit, commit-tree, config, count-objects, credential, 
+	credential-cache, credential-cache--daemon, credential-store
+	daemon, describe, diff, diff-files, diff-index, diff-tree, difftool, difftool--helper
+	fast-export, fast-import, fetch, fetch-pack, filter-branch, fmt-merge-msg, for-each-ref, format-patch, fsck, fsck-objects
+	gc, get-tar-commit-id, grep
+	hash-object, help, http-backend, http-fetch, http-push
+	imap-send, index-pack, init, init-db, instaweb
+	log, lost-found, ls-files, ls-remote, ls-tree
+	mailinfo, mailsplit, merge, merge-base, merge-file, merge-index, merge-octopus, merge-one-file, merge-ours, merge-recursive, merge-resolve, merge-subtree, merge-tree, mergetool, 
+	mktag, mktree, mv
+	name-rev, notes
+	p4, pack-objects, pack-redundant, pack-refs, patch-id, peek-remote, prune, prune-packed, pull, push
+	quiltimport
+	read-tree, rebase, receive-pack, reflog, relink, remote, remote-ext, remote-fd, remote-ftp, remote-ftps, remote-http, remote-https, remote-testpy, remote-testsvn, repack, replace, 
+	repo-config, request-pull, rerere, reset, rev-list, rev-parse, revert, rm
+	send-pack, sh-i18n--envsubst, shell, shortlog, show, show-branch, show-index, show-ref, stage, stash, status, stripspace, submodule, symbolic-ref
+	tag, tar-tree
+	unpack-file, unpack-objects, update-index, update-ref, update-server-info, upload-archive, upload-pack
+	var, verify-pack, verify-tag
+	web--browse, whatchanged, write-tree

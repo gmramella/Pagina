@@ -1,0 +1,11 @@
+observed behaviour
+expected behaviour
+steps to reproduce
+solutions tried
+solution
+
+pastebin.com
+gist.github.com
+stackoverflow.com/help/how-to-ask
+tinyurl.com/stack-hints
+tinyurl.com/smart-questions

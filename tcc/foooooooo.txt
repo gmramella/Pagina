@@ -1,0 +1,29 @@
+collider	d3, morphism, object
+config		0
+drawing		d3, config
+focus		d3, locale, view, morphism, object
+globals		d3, config, utils, view, morphism, object
+keyboard	d3, config, menu, drawing, state, globals, utils, view
+locale		0
+menu		d3, config, collider, state, globals, utils, view, morphism, object
+morphism	d3, config, globals, view
+mouse		d3, config, menu, collider, drawing, state, globals, utils, view, morphism, object
+object		config, globals, view
+state		d3, config, globals, utils, view, morphism, object
+utils		0
+view		d3, config, globals, utils, morphism, object
+
+config		0
+locale		0
+utils		0
+drawing		2
+collider	3
+object		3
+morphism	4
+focus		5
+globals		6
+view		6
+state		7
+keyboard	8
+menu		9
+mouse		11

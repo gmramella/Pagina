@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<script src="http://d3js.org/d3.v3.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	</head>
+	<body>
+		<script>
+		var objects = [];
+		objects.push({id: 0, label: "A", x: 192, y: 192, radius: 30, selected: false, visible: true, morphisms: [], endomorphisms: []});
+		objects.push({id: 1, label: "B", x: 320, y: 192, radius: 30, selected: true, visible: true, morphisms: [], endomorphisms: []});
+		
+		var canvasPtr = d3.select("body").append("svg").attr("width", 512).attr("height", 384);
+		canvasPtr.append("g").attr("id", "layer6").append("g").attr("id", "layer5").append("g").attr("id", "layer4").append("g").attr("id", "layer3").append("g").attr("id", "layer2").append("g").attr("id", "layer1").append("g").attr("id", "layer0");
+		
+		//https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer
+		//https://stackoverflow.com/questions/19281122/svg-circle-not-being-drawn-with-javascript
+		function createCircle(object) {
+			var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+			circle.setAttribute("cx", object.x);
+			circle.setAttribute("cy", object.y);
+			circle.setAttribute("r", object.radius);
+			if (!object.selected)
+				circle.setAttribute("fill", "red");
+			else
+				circle.setAttribute("fill", "blue");
+			if (object.visible)
+				circle.setAttribute("visibility", "visible");
+			else
+				circle.setAttribute("visibility", "hidden");
+			return circle;
+		}
+		
+		var circles = [];
+		for (var i = 0; i < objects.length; i++)
+			circles.push(createCircle(objects[i]));
+		
+		for (var i = 0; i < circles.length; i++)		
+			document.getElementById("layer6").insertAdjacentHTML('afterbegin', new XMLSerializer().serializeToString(circles[i]));
+		</script>
+	</body>
+</html>

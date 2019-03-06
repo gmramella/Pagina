@@ -1,0 +1,116 @@
+Objeto: representação de um objeto
+Exemplo: Pessoa
+
+Classe: equivale a uma versão melhorada de structs de C
+Exemplo: class Pessoa {}
+
+Atributo: equivale a variável de C
+Exemplo: class Pessoa {
+		string nome = "Joao Silva";
+	 }
+
+Método: equivale a função de C
+Exemplo: class Pessoa {
+		string nome = "Joao Silva";
+		void imprimirNome() {
+			/*imprime Joao Silva na tela*/
+		}
+	 }
+
+Instância: variável de tipo classe
+Exemplo: class Pessoa {
+		string nome = "Joao Silva";
+		void imprimirNome() {
+			/*imprime Joao Silva na tela*/
+		}
+	 }
+	 Pessoa p = new Pessoa();
+
+Encapsulamento: esconder variáveis e métodos e somente modificá-los e visualizá-los através de outros métodos
+Exemplo: class Pessoa {
+		private string nome;
+		public void setNome(string novoNome) {
+			nome = novoNome;
+		}
+		public string getNome() {
+			return nome;
+		}
+	 }
+	 Pessoa p = new Pessoa();
+	 p.setNome("Joao Silva");
+	 string nomeDaPessoa = p.getNome();
+
+Herança: uma classe tem atributos e métodos e a classe que a herda tem estes atributos e métodos e mais os que ela mesma tiver
+Exemplo: class Pessoa {
+		private string nome;
+		public void setNome(string novoNome) {
+			nome = novoNome;
+		}
+		public string getNome() {
+			return nome;
+		}
+	 }
+	 class Aluno {
+		private string curso;
+		public void setCurso(string novoCurso) {
+			curso= novoCurso;
+		}
+		public string getCurso() {
+			return curso;
+		}
+	 }
+	 Aluno a = new Aluno();
+	 a.setNome("Joao Silva");
+	 string nomeDoAluno = a.getNome();
+	 a.setCurso("CiC");
+	 string cursoDoAluno = a.getCurso();
+
+Polimorfismo:
+	Universal Inclusão: ponteiro para classe mãe aponta para uma instância de uma classe filha
+	Exemplo: Aluno a = new Pessoa();
+	Universal Paramétrico: templates e generics
+	Exemplo: ArrayList<Integer> li = new ArrayList<Integer>();
+		 ArrayList<Float> lf = new ArrayList<Float>();
+		 li.sort();
+		 lf.sort();
+	Ad-Hoc Sobrecarga: dois métodos com mesmo nome mas funcionam diferentemente
+	Exemplo: class Aluno {
+			private string nome;
+			public void setNome(string novoNome) {
+				nome = novoNome;
+			}
+		 }
+		 class Professor {
+			private string nome;
+			public void setNome(string novoNome) {
+				nome = "Dr. " + string novoNome;
+			}
+		 }
+		 Aluno a = new Aluno();
+		 Professor p = new Professor();
+		 a.setNome("Joaozinho");
+		 p.setNome("Dr. Joao");
+        Ad-Hoc Coerção: casting
+	Exemplo: class Pessoa {
+			private int idade;
+			public int getIdade() {
+				return idade;
+			}
+		 }
+		 Pessoa p = new Pessoa();
+		 string idadeDaPessoa = (string) p.getIdade();
+
+Abstração: uso de classes abstratas que são herdadas
+Exemplo: abstract class Veiculo {
+		void conduzir();
+	 }
+	 class Carro {
+		void conduzir() {
+			usarVolante();
+		}
+	 }
+	 class Aviao {
+		void conduzir() {
+			usarManche();
+		}
+	 }

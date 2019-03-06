@@ -1,0 +1,10 @@
+Sobre o Student 2 Business
+Ao ser sorteado, o candidato recebe um e-mail solicitando que responda avisando se fará a prova da fase 1.
+
+Conteúdo da prova da fase 1 do S2B
+Antes da prova, ocorre uma palestra que dura 2 horas, onde o curso é melhor apresentado, um palestrante discorre e os instrutores de cada curso explicam brevemente o que será aprendido em cada curso disponível.
+Antes de entrar no local da palestra, é entregue um pequeno papel com o número da sala onde o candidato fará a prova após a palestra.
+A prova contém 20 questões para cada opção de curso, num total de 80 questões.
+O tempo para realizá-la é de 1 hora, só podendo sair da sala após 20 minutos.
+Na sala ficam 2 fiscais, que entregam um papel que informa a data e horário em que o resultado estará disponível no site.
+Aos que passam na prova da fase 1 é enviado um e-mail solicitando uma foto recente e pedindo que responda se fará o curso.

@@ -1,0 +1,51 @@
+                                                                                          --------------
+                                                                                        *-|selectInside|
+                                                                                          --------------
+                                                                                                |
+                                                                                                | mouseup
+                                                                                                |
+                                                                                           ^ ------ -------------
+                                                                                mousemove < >|rect| |deselectAll|-*
+                                                                                           v ------ -------------
+                                                                                                 ^   ^
+                                                                                                 |   |
+                                                                                                 |   |
+                                                                                        mousemove \ / mouseup
+                                                                                                   v
+                                                                                      --- -------------------
+                                                                                    *-|?| |rectOrDeselectAll|
+                   mouseup                                                            --- -------------------
+                   already                                                             ^   ^
+  --------------  selected                *                                            |   |                            *
+*-|deselectThis|<----------               | mousemove                 canvas with ctrl |   | canvas without ctrl        |
+  --------------           \       --------------------------                           \ /                            ---
+                            >------|selectAlsoOrDeselectThis|<-----------------------    v     ----------------------->|?|-*
+    ------------           /       --------------------------  morphism with ctrl    \ ------ / multiple with ctrl     ---
+  *-|selectAlso|<----------                                                           >|IDLE|<
+    ------------   mouseup     --------  mouseup ------------  morphism without ctrl / ------ \ multiple without ctrl  ---
+                   not yet   *-|select|<---------|selectOnly|<-----------------------    ^     ----------------------->|?|-*
+                  selected     --------          ------------                           / \                            ---
+                                                      | mousemove     object with ctrl |   | object without ctrl        |
+                                                      *                                |   |                            *
+                                                                                       v   v
+                                                     mousemove -------------------------- ------------------------------------------------
+                                                   *-----------|selectAlsoOrDeselectThis| |selectThisOrCreateMorphismOrCreateAutomorphism|
+                                                               -------------------------- ------------------------------------------------
+                                                                                  ^                                                   ^
+                                                                                 / \                                                 / \
+                                                                        mouseup |   | mouseup                             mousemove |   | mouseup
+                                                                        already |   | not yet                                       |   |
+                                                                       selected |   | selected                                      |   |
+                                                                                v   v                                               v   v
+                                                                    -------------- ------------   ------------------------------------ ------------
+                                                                  *-|deselectThis| |selectAlso|-* |createMorphismOrCreateAutomorphism| |selectThis|-*
+                                                                    -------------- ------------   ------------------------------------ ------------
+                                                                                                                    ^
+                                                                                                                   / \
+                                                                                                          mouseup |   | mouseup
+                                                                                                             same |   | diff
+                                                                                                           object |   | object
+                                                                                                                  v   v
+                                                                                                -------------------- ----------------
+                                                                                              *-|createAutomorphism| |createMorphism|-*
+                                                                                                -------------------- ----------------

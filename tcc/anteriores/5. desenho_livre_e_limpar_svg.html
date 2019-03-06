@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+<style>
+. body {
+	background-color: #fff;
+}
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+</style>
+
+	<title>Teste com D3</title>
+	<script src="jquery-1.12.0.min.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<button type="button" onclick="completelyClearSVG()">Limpar SVG</button>
+<script>
+
+var svg = d3.select("body").append("svg").attr("width", 1500).attr("height", 768);
+
+function completelyClearSVG() {
+	svg.selectAll("*").remove();
+}
+
+function KeyPress(e) {
+	var evtobj = window.event? event : e;
+	if (evtobj.keyCode == 90 && evtobj.ctrlKey) {
+		alert("Ctrl+z");
+	}
+}
+
+document.onkeydown = KeyPress;
+
+var activeLine;
+
+var renderPath = d3.svg.line()
+    .x(function(d) { return d[0]; })
+    .y(function(d) { return d[1]; })
+    .interpolate("basis");
+
+var svg = d3.select("svg")
+    .call(d3.behavior.drag()
+      .on("dragstart", dragstarted)
+      .on("drag", dragged)
+      .on("dragend", dragended));
+
+function dragstarted() {
+  activeLine = svg.append("path").datum([]).attr("class", "line");
+}
+
+function dragged() {
+  activeLine.datum().push(d3.mouse(this));
+  activeLine.attr("d", renderPath);
+}
+
+function dragended() {
+  activeLine = null;
+}
+
+</script>	
+</body>
+</html>

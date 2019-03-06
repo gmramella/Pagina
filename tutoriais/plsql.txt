@@ -1,0 +1,576 @@
+PL/SQL permite:
+	condicionais
+	loops
+	constantes e variáveis
+	procedures
+	functions
+	variáveis do tipo procedure e function
+	triggers
+	packages
+	exceções
+	arrays, usando PL/SQL collections
+-------------------------------------------
+PL/SQL é uma linguagem procedural de banco de dados assim como a T-SQL usada no Microsoft SQL Server.
+É proprietária da Oracle para desenvolvimento de códigos de programação.
+Os códigos são escritos em blocos que podem ser combinados para formar programas maiores.
+Usada para integração entre sistemas, procedimentos automáticos de replicação de informações, atualização e log de processos e para processos complexos que ganham desempenho com seu uso.
+
+Neste curso, é usado o SQL Developer como ferramenta gráfica e o SQL*PLUS como interface de comandos de linha.
+É necessário criar uma conta system.
+
+Elementos PL/SQL
+	Identificadores
+		pode conter até 30 caracteres
+		se não estiver entre aspas
+			não permite espaços
+			deve começar com letra
+			aceita $,_,$
+			aceita maiúsculas e minúsculas
+			não pode ser igual a uma palavra reservada da linguagem
+		se estiver entre aspas
+			deve ser referenciado com as aspas
+		a linguagem é case sensitive para variáveis e insensitive para comandos e palavras reservadas
+	Literais
+		podem ser strings (case sensitives), números e booleanos
+		para representar aspas simples em strings, deve-se cercá-la entre outras aspas simples (exemplo: 'There'''s')
+	Delimitadores
+		:=	delimitador de atribuição (erro comum trocar por =)
+		;	delimitador de término de declarações e instruções
+		' '	delimitador de literal
+		,	delimitador de separação de itens
+		--	delimitador de comentário simples (compilador interpreta linhas em branco, por isso, deve-se comentar)
+		/* */	delimitador de comentário em múltiplas linhas
+		%	delimitador de atributo (%ROWTYPE, %TYPE)
+		:	delimitador de variáveis do sistema
+		||	delimitador de concatenação
+		=	delimitador de igualdade
+		!=	delimitador de diferença
+	Variáveis
+		se não tiverem atribuição, são null e não ocupam memória
+		sintaxe
+		nome tipo;
+		nome [CONSTANT] tipo [NOT NULL] := valor;
+		nome [CONSTANT] tipo [NOT NULL] DEFAULT valor;
+	Tipos de dados
+		escalares
+			números até 38 dígitos (number)
+			caracteres até (2^15)-1 bytes
+				char fixo até 4000 bytes
+				varchar2 variável até 4000 bytes
+			data e hora
+				date fixo (século, ano, mês, dia, hora, segundo)
+				timestamp valores inferiores a 1 segundo
+				interval
+			booleanos
+				true
+				false
+				null
+		compostas
+			registros e coleções
+		referência
+			posições de memória (ref e ref_cursor)
+		variáveis da linguagem
+			%TYPE coluna (nome tipo_da_coluna%TYPE)
+			%ROWTYPE registro
+			PLS_INTEGER
+			BINARY_INTEGER
+			BINARY_FLOAT
+			BINARY_DOUBLE
+		lobs
+			para variáveis que ocupam muita memória (até 4 GB)
+			BFILE
+				apontador de arquivos binários fora do BD
+			BLOB
+				objetos binários
+			CLOB
+				objetos de caracteres alfanuméricos
+			NCOB
+				objetos de caracteres nacionais
+
+Estrutura de bloco PL/SQL
+	DECLARE
+		-- declaração de variáveis, tipos, cursores, subprogramas locais
+	BEGIN
+		-- instruções procedurais e SQL
+	EXCEPTION
+		-- instruções de tratamento de erro
+	END;
+
+	Pode ter blocos aninhados.
+
+Exibição de informações, strings e conteúdo de variáveis, usa-se DBMS_OUTPUT
+	SET SERVEROUTPUT ON [SIZE tamanho];
+	DBMS_OUTPUT.PUT_LINE(mensagem);
+	DBMS_OUTPUT.GET_LINE(mensagem);
+	DBMS_OUTPUT.NEW_LINE(mensagem);
+
+	A mensagem pode ser string entre aspas, nome de variável ou a concatenação de ambos
+	A exibição de mensagens pode ser habilitada e desabilitada
+		DBMS_OUTPUT.ENABLE(tamanho);
+		DBMS_OUTPUT.DISABLE;
+
+Fluxo de programas
+	if
+		IF condição THEN
+			[comandos]
+		[ELSIF
+			comandos]
+		[ELSE
+			comandos]
+		END IF;
+	case (retorna null se nenhuma atendida)
+		CASE expressão
+			WHEN valor THEN
+				comandos
+			[ELSE
+				comandos]
+		END CASE;
+	goto (uso restrito)
+		GOTO <<label>>;
+		.
+		.
+		.
+		<<label>>
+		.
+		.
+		.
+	null
+		comando NULL sozinho equivale à instrução assembly NOP
+		var IS [NOT] NULL
+		IF var IS [NOT] NULL THEN ...
+		var := NULL;
+	loops
+		loop	
+			LOOP
+				comandos
+				EXIT WHEN condição;
+			END LOOP;
+			LOOP
+				IF condição THEN
+					EXIT;
+				END IF;
+			END LOOP;
+		while
+			WHILE condição LOOP
+				comandos
+			END LOOP;
+		for (o contador pode ser acessado dentro do laço mas não pode ter seu valor alterado)
+			FOR contador IN [REVERSE] inicio .. fim LOOP
+				comandos
+			END LOOP;
+			FOR indice IN cursor_ou_select LOOP
+				comandos
+			END LOOP;
+
+Identificação de loops
+	Quando há loop aninhados, fica difícil de ler, por isso, usa-se labels com nomes diferenciados.
+	<<label1>>
+	LOOP
+		comandos
+		<<label2>>
+		LOOP
+			comandos
+			EXIT label2;
+		END LOOP label2;
+		comandos
+		EXIT label1;
+	END LOOP label1;
+
+Estrutura de subprograma PL/SQL
+	Conjunto de blocos nomeados que poder ser chamados por outros programas.
+	Permite receber e retornar valores por parâmetros.
+	Procedures
+		geralmente usadas para executar ação determinada e podem ou não retornar um valor.
+		ficam armazenadas no servidor, por isso podem ser compiladas e podem usar a cache.
+		sintaxe
+			CREATE [OR REPLACE] PROCEDURE nome[(parâmetros)] IS (IS=AS)
+			[declaração de variáveis e cursores]
+			BEGIN
+				comandos
+			[EXCEPTION
+				comandos]
+			END [nome];
+			/ (se estiver criando no prompt, deve-se terminar com /)
+		parâmetros
+			sintaxe
+			nome [MODO] [NOCOPY] tipo [DEFAULT valor]
+				modo
+					IN (valor do parâmetro recebido não é alterado)
+					OUT (valor do parâmetro é definido durante a execução e é retornado)
+					IN OUT (valor do parâmetro recebido pode ser alterado e é retornado)
+				nocopy (instrui o compilador a usar um parâmetro OUT ou IN OUT muito pesado por referência, não usando memória adicional)
+		compilação
+			ALTER PROCEDURE nome COMPILE;
+		exibição dos erros
+			SHOW ERRORS; (em ferramentas gráficas, os erros são exibidos na tela)
+			SELECT * FROM USER_ERRORS (também existem ALL_ERRORS e DBA_ERRORS)
+		execução
+			EXEC nome[(parâmetros)]; (comando do SQL*PLUS)
+			CALL nome[(parâmetros)];
+			nome[(parâmetros)]; (execução dinâmica dentro de outro código)
+			necessário privilégio sobre a procedure e privilégio de EXECUTE
+		remoção
+			DROP PROCEDURE nome;
+	Functions
+		calculam ou validam valores e instruções e sempre retornam um valor.
+		se não conseguir retornar, ocorre erro.
+		o valor retornado deve ser armazenado em uma variável, mas se o retorno for booleano, pode ser usada em uma instrução condicional.
+		são usadas para coisas mais simples.
+		não aceitam parâmetros IN e IN OUT.
+		sintaxe
+			CREATE [OR REPLACE] FUNCTION nome[(parâmetros)] RETURN tipo IS (IS=AS)
+			[declaração de variáveis e cursores]
+			BEGIN
+				comandos
+			[EXCEPTION
+				comandos]
+			END [nome];
+			/ (se estiver criando no prompt, deve-se terminar com /)
+		compilação
+			ALTER FUNCTION nome COMPILE;
+		exibição dos erros
+			SHOW ERRORS; (em ferramentas gráficas, os erros são exibidos na tela)
+			SELECT * FROM USER_ERRORS (também existem ALL_ERRORS e DBA_ERRORS)
+		execução
+			EXEC nome[(parâmetros)]; (comando do SQL*PLUS)
+			CALL nome[(parâmetros)];
+			nome[(parâmetros)]; (execução dinâmica dentro de outro código)
+			necessário privilégio sobre a function e privilégio de EXECUTE
+		remoção
+			DROP FUNCTION nome;
+	Packages
+		agrupam procs, funcs e outros objetos para reaproveitamento.
+		contêm duas partes: especificação e corpo, a primeira é obrigatória e deve conter a definição de todos objetos públicos (objetos públicos são usados tanto pelos objetos do package quanto quem usa o package), a segunda contém o código dos objetos (procs, funcs etc)
+		sintaxe
+			CREATE [OR REPLACE] PACKAGE nome IS (IS=AS)
+			[declaração de objetos públicos]
+			END
+			/
+			CREATE [OR REPLACE] PACKAGE BODY nome IS (IS=AS)
+				comandos
+			END [nome];
+			/ (se estiver criando no prompt, deve-se terminar com /)
+		compilação
+			ALTER PACKAGE nome COMPILE;
+		exibição dos erros
+			SHOW ERRORS; (em ferramentas gráficas, os erros são exibidos na tela)
+			SELECT * FROM USER_ERRORS (também existem ALL_ERRORS e DBA_ERRORS)
+		execução de um objeto
+			EXEC [nome_do_schema].nome_do_package.nome_do_objeto[(parâmetros)]; (comando do SQL*PLUS)
+			CALL [nome_do_schema].nome_do_package.nome_do_objeto[(parâmetros)];
+			[nome_do_schema].nome_do_package.nome_do_objeto[(parâmetros)]; (execução dinâmica dentro de outro código)
+			necessário privilégio sobre os objetos referenciados e privilégio de EXECUTE
+		remoção
+			DROP PACKAGE nome; (remove especificação e corpo)
+			DROP PACKAGE BODY nome; (só remove corpo)
+	tabelas úteis
+		USER_SOURCE (contém info sobre código da proc/func/package)
+		USER_OBJECTS (contém status da proc/func/package, se tiver erro de compilação ou referir a objeto que teve alteração fica INVALID e precisa ser recompilada)
+		USER_DEPENDENCIES (informa objetos aos quais a proc/func/package se refere)
+		USER_PROCEDURES (contém descrição de todas procs do usuário)
+		USER_ERRORS (exibe erros de compilação)
+
+Triggers
+	códigos que executam automaticamente em decorrência de um evento.
+	usados para integração, restrição e auditoria.
+	são associados a tabela, view, schema ou instance.
+	têm limitações e requerem cuidado quando envolvem views, transações autônomas, comandos DDL ou tipos de dados LOBS.
+	existem 3 tipos de triggers quanto ao tipo de evento que as aciona: de DML, de banco e de DDL.
+	trigger de DML
+		acionada quando ocorre INSERT, UPDATE ou DELETE
+		sempre associadas a uma tabela ou view
+	trigger de banco
+		acionada quando ocorre STARTUP, SHUTDOWN, LOGON, LOGOFF, SUSPENDS ou SERVERERROR
+	trigger de DDL
+		acionada quando ocorre ALTER, DROP, TRUNCATE, RENAME, ANALYZE, GRANT, NOAUDIT, AUDIT
+	existem 3 tipos de triggers quanto ao momento do acionamento: before, after e instead of.
+	before
+		fazem leitura dos valores antes do evento e por isso podem desfazer
+		usadas para validação.
+		triggers de LOGOFF e SHUTDOWN só podem ser deste tipo.
+	after
+		não fazem leitura dos valores antes do evento e por isso não podem desfazer
+		triggers de LOGON, SERVERERROR e STARTUP só podem ser deste tipo.
+	instead of
+		usadas para comandos DML em views que não podem ser alteradas normalmente.
+		uma view não permite alteração de dados se contiver entre outros: funções de agregação, distinct, group by, union, union all e demais operadores e join.
+		triggers deste tipo substituem eventos de DML que não podem ser desfeitos
+	existem 2 tipos de triggers quanto ao seu nível: for each row e statement
+	for each row
+		a trigger é executada uma vez para cada linha afetada, não é disparada se nenhuma linha for afetada.
+		(a trigger em si é executada uma vez, mas o corpo dela é executado n vezes)
+	statement
+		a trigger é executada uma vez quando disparada, não importando se as linhas foram alteradas ou não
+	sintaxe
+		trigger DML
+			nível de comando
+				pág 65
+			nível de linha
+				pág 65
+		trigger DDL ou banco
+			a
+			a
+
+Lista de palavras reservadas da linguagem
+ALL, ALTER, AND, ANY, ARRAY, AS, ASC, AT, AUTHID, AVG
+BEGIN, BETWEEN, BINARY_INTEGER, BODY, BOOLEAN, BULK, BY
+CASE, CHAR, CHAR_BASE, CHECK, CLOSE, CLUSTER, COALESCE, COLLECT, COMMENT, COMMIT, COMPRESS, CONNECT, CONSTANT, CREATE, CURRENT, CURRVAL, CURSOR
+DATE, DAY, DECLARE, DECIMAL, DEFAULT, DELETE, DESC, DISTINCT, DO, DROP
+ELSE, ELSIF, END, EXCEPTION, EXCLUSIVE, EXECUTE, EXISTS, EXIT, EXTENDS, EXTRACT
+FALSE, FETCH, FLOAT, FOR, FORALL, FROM, FUNCTION
+GOTO, GROUP
+HAVING, HEAP, HOUR
+IF, IMMEDIATE, IN, INDEX, INDICATOR, INSERT, INTEGER, INTERFACE, INTERSECT, INTERVAL, INTO, IS, ISOLATION
+JAVA
+LEVEL, 
+LIKE, 
+LIMITED, 
+LOCK, 
+LONG, 
+LOOP
+MAX, MIN, MINUS, MINUTE, MLSLABEL, MOD, MODE, MONTH
+NATURAL, NATURALN, NEW, NEXTVAL, NOCOPY, NOT, NOWAIT, NULL, NULLIF, NUMBER, NUMBER_BASE
+OCIROWID, OF, ON, OPAQUE, OPEN, OPERATOR, OPTION, OR, ORDER, ORGANIZATION, OTHERS, OUT
+PACKAGE, PARTITION, PCTFREE, PLS_INTEGER, POSITIVE, POSITIVEN, PRAGMA, PRIOR, PRIVATE, PROCEDURE, PUBLIC
+RAISE, RANGE, RAW, REAL, RECORD, REF, RELEASE, RETURN, REVERSE, ROLLBACK, ROW, ROWID, ROWNUM, ROWTYPE
+SAVEPOINT, SECOND, SELECT, SEPARATE, SET, SHARE, SMALLINT, SPACE, SQL, SQLCODE, SQLERRM, START, STDDEV, SUBTYPE, SUCCESSFUL, SUM, SYNONYM, SYSDATE
+TABLE, THEN, TIME, TIMESTAMP, TIMEZONE_REGION, TIMEZONE_ABBR, TIMEZONE_MINUTE, TIMEZONE_HOUR, TO, TRIGGER, TRUE, TYPE
+UID, UNION, UNIQUE, UPDATE, USE, USER
+VALIDATE, VALUES, VARCHAR, VARCHAR2, VARIANCE, VIEW
+WHEN, WHENEVER, WHERE, WHILE, WITH, WORK, WRITE
+YEAR
+ZONE
+
+Exercícios
+	01. Desenvolver bloco anônimo para exibir mensagem.
+	SET SERVEROUTPUT ON;
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE('oi');
+	END;
+	/
+	02. Desenvolver bloco anônimo que retorna a descrição do curso conforme a sigla dele, usando CASE.
+	SET SERVEROUTPUT ON;
+	BEGIN
+		CASE 'curso'
+			WHEN 'ADM' THEN
+				DBMS_OUTPUT.PUT_LINE('AMD - Administrador');
+			WHEN 'MED' THEN
+				DBMS_OUTPUT.PUT_LINE('MED - Medicina');
+			WHEN 'PUB' THEN
+				DBMS_OUTPUT.PUT_LINE('PUB - Publicidade');
+			WHEN 'BIO' THEN
+				DBMS_OUTPUT.PUT_LINE('BIO - Biologia');
+			WHEN 'MAT' THEN
+				DBMS_OUTPUT.PUT_LINE('MAT - Matemática');
+		END CASE;
+	END;
+	/
+	03. Desenvolver código que exibe conteúdo de contador 10 vezes com condicional para interromper.
+	DECLARE
+		cont number(4);
+	BEGIN
+		cont:=0;
+		LOOP
+			cont:= cont + 1;
+			DBMS_OUTPUT.PUT_LINE('Contador : ' || cont);
+			EXIT WHEN cont > 10; 
+		END LOOP;
+	END;
+	/
+
+	04. Criar proc que aumenta valor de cada produto da tabela ger_produto em 30%.
+	CREATE OR REPLACE PROCEDURE reaj_prod IS
+	BEGIN
+		BEGIN
+			UPDATE ger_produto SET vl_produto = vl_produto * 1.30;
+		END;  
+	END;
+	/
+	05. Criar proc que atualiza quantidade de cada produto da tabela ger_est_prod a partir de percentual recebido por parâmetro.
+	CREATE OR REPLACE PROCEDURE reaj_prod_param (p_perc NUMBER) IS
+	BEGIN
+		BEGIN
+			UPDATE ger_est_prod SET qtd_produto = (qtd_produto * p_perc);
+		END;     
+	END;
+	/
+	06. Criar proc que cadastra 3 novos estados na tabela ger_estado recebendo código e nome do estado (default 'RS') por parâmetro e devolvendo mensagem de erro ou sucesso.
+	CREATE OR REPLACE PROCEDURE insere(p_cod IN ger_estado.cod_pais%TYPE, p_est IN ger_estado.cod_estado%TYPE default 'RS', p_nome IN ger_estado.des_estado%TYPE) IS
+	BEGIN
+		BEGIN
+			INSERT INTO ger_estado(cod_pais,cod_estado,des_estado) VALUES (p_cod,p_est,p_nome);
+			DBMS_OUTPUT.PUT_LINE('Estado inserido OK');
+		END;
+	END;
+	/
+	07. Criar proc que inclui novo produto por parâmetro na tabela GER_PRODUTO ou retorna mensagem informando que produto já existe.
+	CREATE OR REPLACE PROCEDURE cad_prod(p_prod IN ger_produto.cod_produto%TYPE, p_nome IN ger_produto.des_produto%TYPE, p_valor IN ger_produto.vl_produto%TYPE) IS
+	v_prod ger_produto.cod_produto%TYPE;
+	BEGIN
+		BEGIN
+			SELECT cod_produto  
+				INTO v_prod 
+				FROM ger_produto
+				WHERE cod_produto = p_prod;
+			EXCEPTION
+			WHEN NO_DATA_FOUND THEN
+			BEGIN 
+				INSERT INTO ger_produto(cod_produto,des_produto,vl_produto) VALUES (p_prod,p_nome,p_valor);
+				DBMS_OUTPUT.PUT_LINE('Produto incluido');
+			END;
+		END;
+		IF v_prod IS NOT NULL THEN 
+			BEGIN
+				DBMS_OUTPUT.PUT_LINE('Produto ja existe');
+			END; 
+		END IF;
+	END;
+	/
+	08. Criar proc que retorna quantidade de produto no estoque na tabela GER_PRODUTO ou retorna mensagem informando se produto existe ou não.
+	CREATE OR REPLACE PROCEDURE busca_qtd(p_prod IN ger_est_prod.cod_produto%TYPE, p_qtd OUT ger_est_prod.qtd_produto%TYPE) IS
+	v_qtd ger_est_prod.qtd_produto%TYPE;
+	BEGIN
+		v_qtd:=0;
+		BEGIN
+		SELECT qtd_produto
+			INTO v_qtd
+			FROM ger_est_prod
+			WHERE cod_produto = p_prod;
+		EXCEPTION
+			WHEN NO_DATA_FOUND THEN
+			BEGIN
+				DBMS_OUTPUT.PUT_LINE('Produto nao existe');
+			END;
+		END;
+		DBMS_OUTPUT.PUT_LINE('Qtde Produto:' || v_qtd);
+	END;
+	/
+
+	09. Desenvolver function que valida existência de produto na tabela GER_PRODUTO e devolve descrição dele.
+	CREATE OR REPLACE FUNCTION BUSCA_P(P_PROD IN GER_PRODUTO.COD_PRODUTO%TYPE) RETURN VARCHAR2 IS
+		V_DESC_PROD GER_PRODUTO.DES_PRODUTO%TYPE;
+		BEGIN
+			BEGIN
+				SELECT DES_PRODUTO INTO V_DESC_PROD FROM GER_PRODUTO WHERE COD_PRODUTO = p_prod;
+			EXCEPTION
+				WHEN NO_DATA_FOUND THEN 
+					v_desc_prod := 'Produto Nao Existe';
+			END;
+		RETURN (V_DESC_PROD);                       
+	END;
+
+	ou
+
+	CREATE OR REPLACE FUNCTION valida(cod_procurado IN GER_PRODUTO.COD_PRODUTO%TYPE) RETURN VARCHAR2 IS
+		temp1 VARCHAR2(15);
+		temp2 VARCHAR2(100);
+		BEGIN
+			SELECT cod_produto INTO temp1 FROM ger_produto WHERE cod_produto = cod_procurado;
+			DBMS_OUTPUT.ENABLE();
+			IF temp1 IS NOT NULL THEN
+				SELECT des_produto INTO temp2 FROM ger_produto WHERE cod_produto = cod_procurado;
+				DBMS_OUTPUT.PUT_LINE('des_produto: ' || temp2);
+			ELSE
+				DBMS_OUTPUT.PUT_LINE('codigo nao encontrado');
+			END IF;
+		RETURN temp2;
+	END valida;
+	10. Desenvolver function que retorna estado a que pertence determinada cidade informada por parâmetro.
+	CREATE OR REPLACE FUNCTION BUSCA_E(P_CIDADE IN GER_CIDADE.COD_CIDADE%TYPE) RETURN VARCHAR2 IS
+		V_EST GER_CIDADE.COD_ESTADO%TYPE;
+		BEGIN
+			BEGIN
+				SELECT COD_ESTADO INTO V_EST FROM GER_CIDADE WHERE COD_CIDADE = p_cidade;
+			EXCEPTION
+				WHEN NO_DATA_FOUND THEN 
+					v_est := 'Cidade Nao Existe';
+			END;
+		RETURN (V_EST);                       
+	END;
+	11. Desenvolver function que apura se valor informado é numérico.
+	CREATE OR REPLACE  FUNCTION E_NUMERO(V_NUM IN VARCHAR2) RETURN BOOLEAN IS
+		v_indice  number;
+		v_retorno boolean;
+		BEGIN
+			v_indice :=0 ;
+			v_retorno :=TRUE;
+			begin
+				loop
+					IF TO_CHAR(SUBSTR(v_num, 1 + v_indice, 1)) NOT BETWEEN '0' AND '9' THEN
+						v_retorno :=FALSE;
+					END IF;
+					v_indice := v_indice + 1;
+					exit when v_indice > length(v_num);
+				end loop;
+			return v_retorno;
+		end;
+	end;
+	12. Desenvolver function para retornar se número informado é par.
+	????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+
+	13. Criar package com duas procs, um valida existência de produto recebido por parâmetro na tabela ???.
+		Se este produto tenha vendas registradas, a segunda proc aumenta valor do produto na tabela ??? em 10%.
+		Senão, a segunda proc diminui valor do produto na tabela ??? em 15%.
+		Se produto não existir, devolve mensagem de erro.
+-------------------------------------------
+user=schema=owner
+
+Criaschema
+ORACriaTab
+ORACriaChaves
+ORACriaRelac
+ORAPopula
+
+@ C:\Users\Administrador\Desktop\PLSQL\Criaschema.sql
+conn AULASQL (senha é AULASQL)
+@ C:\Users\Administrador\Desktop\PLSQL\ORACriaTab.sql
+@ C:\Users\Administrador\Desktop\PLSQL\ORACriaChaves.sql
+@ C:\Users\Administrador\Desktop\PLSQL\ORACriaRelac.sql
+@ C:\Users\Administrador\Desktop\PLSQL\ORAPopula.sql
+(para cada @ ..., copiar o comando daqui e no prompt, clicar com o botão direito 
+
+no Oracle SQL Developer:
+Clicar no +
+Nome da Conexão: ADMIN
+Nome do Usuário: SYSTEM
+Senha: unisinos
+Testar, se funcionar, Conectar
+Clicar no +
+Nome da Conexão: AULA
+Nome do Usuário: AULASQL
+Senha: AULASQL
+Testar, se funcionar, Conectar
+
+Conexões > AULA > Tabelas (Filtrado)
+
+grant all on tabela to usuario;
+alter user usuario account unlock;
+alter user usuario identified by usuario;
+conn HR (senha HR)
+select table_name from user_tables;
+select table_name from user_tables;
+
+Procedures > botão direito > Novo Procedure
+sintaxe na página 31 da apostila e exemplo na 32
+procedures podem ter comandos SQL e PL/SQL
+
+compilar serve pra não ficar sempre fazendo "create or replace"
+limpar tela do sqlplus: cl scr
+/ executa o último comando
+ED edita último comando
+para chamar uma proc por uma linguagem, usar call nome
+na gráfica é call ou só o nome porque execute é do sqlplus
+
+show user
+desc user_procedures
+desc user_objects
+select object_name, status from user_objects where object_name = 'proc_1';
+select object_name from user_objects where object_type = 'procedure';
+
+set line 100
+set pages 500
+spool nome_do_arquivo
+só system desbloqueia usuário
+
+proc pode ter out ou não, func sempre tem out
+varchar é alfanumérico, varchar2 é pra unicode

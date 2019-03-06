@@ -1,0 +1,97 @@
+<!--Code based on: http://koyamatch.com/d3js/d3js11.html-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+	</head>
+	<body>
+		<script>
+			//var nodes = [{id:2, x:3, y:4},{id:1, x:3, y:4},{id:3, x:3, y:4}];
+			var n1 = {id:1, x:50, y:50};
+			var n2 = {id:2, x:100, y:50};
+			var n3 = {id:3, x:150, y:50};
+			var ns = [n1, n2, n3];
+
+			var e1 = {id:1, src:1, tgt:2};
+			var e2 = {id:2, src:2, tgt:2};
+			var e3 = {id:3, src:2, tgt:3};
+			var es = [e1, e2, e3];
+			
+			function Graph(ns, es) {
+				var g = {
+					nodes : ns,
+					edges : es,
+					newNode : function () {
+						var max = -1;
+						for(var i=0;i<nodes.length;i++) {
+							if(nodes[i].id > max) {
+								max = nodes[i].id;
+							}
+						}
+						return max;
+					},
+					newEdge : function () {
+						var max = -1;
+						for(var i=0;i<edges.length;i++) {
+							if(edges[i].id > max) {
+								max = edges[i].id;
+							}
+						}
+						return max;
+					},
+					createNode : function (a,b) {
+						var n = {id : this.newNode, x : a, y : b};
+						var ns = this.nodes;
+						ns.push(n);
+						return this;
+					},
+					createEdge : function (a,b) {
+						var n = {id : this.newNode, src : a, tgt : b};
+						var es = this.edges;
+						es.push(n);
+						return this;
+					}
+				};
+				return g;
+			}
+			
+			function describe(g) {
+				var output = "";
+				output = output + "nodes" + "\n";
+				for(var i=0;i<g.nodes.length;i++) {
+					output = output + "(";
+					output = output + "id: " + g.nodes[i].id + ", ";
+					output = output + "x: " + g.nodes[i].x + ", ";
+					output = output + "y: " + g.nodes[i].y + ")";
+					output = output + "\n";
+				}
+				output = output + "edges" + "\n";
+				for(var i=0;i<g.edges.length;i++) {
+					output = output + "(";
+					output = output + "id: " + g.edges[i].id + ", ";
+					output = output + "x: " + g.edges[i].src + ", ";
+					output = output + "y: " + g.edges[i].tgt + ")";
+					output = output + "\n";
+				}
+				//output = output + "newNode: " + g.newNode + "\n";
+				//output = output + "newEdge: " + g.newEdge + "\n";
+				alert(output);
+			}
+			
+			var graph1 = Graph(ns, es);
+			describe(graph1);
+			
+			var graph2 = graph1.createNode(1,1);
+			describe(graph2);
+			
+			alert(graph1.createNode(3,3));
+			
+			/*
+			alert(nodes[0].id);
+			alert(n1.id);
+			alert(ns[2].id);
+			*/
+		</script>
+	</body>
+</html>

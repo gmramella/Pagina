@@ -1,0 +1,243 @@
+using nome;
+
+/* */
+//
+
+bool, char, int, long, decimal, float, double
+tipo? var = null;
+var3 = var1 ?? var2; (if var1 == null, var3=var2, else var3=var1))
+dynamic var = val;
+string var = "val";
+tipo1 var1 = (tipo2)var2;
+var.ToTipo()
+Console.Write("{0},{1}", var1,var2)
+Console.WriteLine("{0},{1}", var1,var2)
+Console.ReadKey()
+var = Convert.ToTipo(Console.ReadLine())
+"string \
+em varias \
+linhas"
+const tipo var = val;
++ - * / % ++ --
+== != > < >= <=
+&& || !
+& | ^ ~ << >>
+= += -= *= /= %= <<= >>= &= ^= |=
+sizeof(tipo)
+typeof(Classe)
+tipo* var;
+&var
+bool ? comando1 : comando2;
+var is classe
+as
+if, if else, if aninhado, switch, switch aninhado
+while, for, do while, loop aninhado
+break, continue
+tipo[] nome = new tipo[tam];
+tipo[] nome = {vals}
+tipo[] vetor2 = vetor1; (alias)
+tipo[,] vetor2d = int[tam1,tam2] = {{,...,},...,{,...,}}
+tipo[][] vetor2dDinamico = new int[val][];// usar for
+tipo[][] vetor2dDinamico = new int[2][]{new int[]{1,2,3},new int[]{4,5,6}}; (pode usar foreach)
+tipo[,,] vetor3d;
+foreach(int indice in nomeVetor){comando}
+
+char[] var1 = {vals};
+string var2 = new string(var1);
+
+string s3 = s1+s2;
+string[] s1 = {vals};
+string msg = String.Join(" ",s1);
+
+DateTime data = new DateTime(2012, 10, 10, 17, 58, 1);
+string chat = String.Format("Message sent at {0:t} on {0:D}", data);
+
+acesso tipo nome(params){}, obj.nome(params);
+acesso tipo nome(ref params){}, obj.nome(ref params);
+acesso tipo nome(out params){params = val}, obj.nome(params);
+acesso tipo nome(tipo[] param){}, obj.nome(param)
+IsFixedSize
+IsReadOnly
+Length
+LongLength
+Rank
+Clear
+Copy(Array, Array, Int32)
+CopyTo(Array, Int32)
+GetLength
+GetLongLength
+GetLowerBound
+GetType
+GetUpperBound
+GetValue(Int32)
+IndexOf(Array, Object)
+Reverse(Array)
+SetValue(Object, Int32)
+Sort(Array)
+ToString
+
+Length
+int Compare(string strA, string strB)
+int Compare(string strA, string strB, bool ignoreCase )
+string Concat(string str0, string str1, string str2, string str3)
+bool Contains(string value)
+string Copy(string str)
+void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count)
+bool EndsWith(string value)
+bool Equals(string value)
+bool Equals(string a, string b)
+string Format(string format, Object arg0)
+int IndexOf(char value)
+int IndexOf(char value, int startIndex)
+int IndexOf(string value)
+int IndexOf(string value, int startIndex)
+string Insert(int startIndex, string value)
+bool IsNullOrEmpty(string value)
+string Join(string separator, params string[] value)
+string Join(string separator, string[] value, int startIndex, int count)
+int LastIndexOf(char value)
+int LastIndexOf(string value)
+string Remove(int startIndex)
+string Remove(int startIndex, int count)
+string Replace(char oldChar, char newChar)
+string Replace(string oldValue, string newValue)
+string[] Split(params char[] separator)
+bool StartsWith(string value)
+char[] ToCharArray()
+char[] ToCharArray(int startIndex, int length)
+string ToLower()
+string ToUpper()
+string Trim()
+
+public, protected, private, internal, protected internal
+
+acesso tipo nome(parametros){corpo}
+
+struct nome{campos,funções};
+nome var;
+var.campo = val
+
+enum nome{lista};
+
+acesso class Nome{}
+Nome var = new Nome();
+Nome(){}
+~Nome(){}
+class Derivada : Base{}
+Nome(params1) : Base(params2)
+acesso interface Nome{}
+acesso class Nome : Base, ListaDeInterfaces
+abstract class Nome{acesso abstract tipo metodo();}
+class Derivada : Base{acesso override tipo metodo(){}}
+
+class A{acesso virtual tipo nome;acesso virtual tipo funcao(){}}
+class B : A{acesso override tipo nome;acesso override tipo funcao(){}}
+
+acesso static tipo operator op (tipo1 var1, tipo2 var2){}
+op pertence a {+,-,*,/,%,&,|,^,!,~,++,--,<,<=,==,!=,>=,>,&&,||}
+
+namespace nome{item}
+nome.item;
+namespace nome1{namespace nome2{item}}
+nome1.nome2.item;
+
+bool IsMatch(string input)
+bool IsMatch(string input, int startat)
+bool IsMatch(string input, string pattern)
+MatchCollection Matches(string input)
+string Replace(string input, string replacement)
+string[] Split(string input)
+
+try{}
+catch( ExceptionName e1 ){}
+catch( ExceptionName e2 ){}
+catch( ExceptionName eN ){}
+finally{}
+System.Exception
+System.ApplicationException : System.Exception
+System.SystemException : System.Exception
+System.IO.IOException : System.SystemException
+System.IndexOutOfRangeException : System.SystemException
+System.ArrayTypeMismatchException : System.SystemException
+System.NullReferenceException : System.SystemException
+System.DivideByZeroException : System.SystemException
+System.InvalidCastException : System.SystemException
+System.OutOfMemoryException : System.SystemException
+System.StackOverflowException : System.SystemException
+public class MyException : ApplicationException
+{public MyException(string message) : base(message){}}
+throw (new MyException("Erro"));
+try{} catch(MyException e){}
+
+using System.IO;
+BinaryReader
+BinaryWriter
+BufferedStream
+Directory
+DirectoryInfo
+DriveInfo
+File
+FileInfo
+FileStream
+MemoryStream
+Path
+StreamReader
+StreamWriter
+StringReader
+StringWriter
+FileStream var = new FileStream(nomeArquivo,FileMode,FileAccess,FileShare);
+FileMode: {Append, Create, CreateNew, Open, OpenOrCreate, Truncate}
+FileAccess: {Read, ReadWrite, Write}
+FileShare: {Inheritable, None, Read, ReadWrite, Write}
+StreamReader.Close()
+StreamReader.Peek()
+StreamReader.Read()
+StreamWriter.Close()
+StreamWriter.Flush()
+StreamWriter.Write(tipo val)
+StreamWriter.WriteLine()
+BinaryReader.Close()
+BinaryReader.Read()
+BinaryReader.ReadBoolean()
+BinaryReader.ReadByte()
+BinaryReader.ReadBytes(int count)
+BinaryReader.ReadChar()
+BinaryReader.ReadChars(int count)
+BinaryReader.ReadDouble()
+BinaryReader.ReadInt32()
+BinaryReader.ReadString()
+BinaryWriter.Close()
+BinaryWriter.Flush()
+BinaryWriter.Seek(int offset, SeekOrigin origin)
+BinaryWriter.Write(tipo val)
+DirectoryInfo.Attributes
+DirectoryInfo.CreationTime
+DirectoryInfo.Exists
+DirectoryInfo.Extension
+DirectoryInfo.FullName
+DirectoryInfo.LastAccessTime
+DirectoryInfo.Name
+DirectoryInfo.Create()
+DirectoryInfo.CreateSubdirectory(string path)
+DirectoryInfo.Delete()
+DirectoryInfo.GetDirectories()
+DirectoryInfo.GetFiles()
+FileInfo.Attributes
+FileInfo.CreationTime
+FileInfo.Directory
+FileInfo.Exists
+FileInfo.Extension
+FileInfo.FullName
+FileInfo.LastAccessTime
+FileInfo.LastWriteTime
+FileInfo.Length
+FileInfo.Name
+FileInfo.AppendText()
+FileInfo.Create()
+FileInfo.Delete()
+FileInfo.MoveTo(string destFileName)
+FileInfo.Open(FileMode mode)
+FileInfo.Open(FileMode mode, FileAccess access)
+FileInfo.Open(FileMode mode, FileAccess access, FileShare share)
+FileInfo.OpenRead()
+FileInfo.OpenWrite()

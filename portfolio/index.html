@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Portfolio</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<style>
+			body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+			.w3-row-padding img {margin-bottom: 12px}
+			/* Set the width of the sidebar to 120px */
+			.w3-sidebar {width: 120px;background: #222;}
+			/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+			#main {margin-left: 120px}
+			/* Remove margins from "page content" on small screens */
+			@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+		</style>
+		<script type="text/javascript">
+			function onHover(idx) {$("#game"+idx).attr('src', './w3images/game'+idx+'_2.jpg');}
+			function offHover(idx) {$("#game"+idx).attr('src', './w3images/game'+idx+'_1.jpg');}
+		</script>
+	</head>
+	<body class="w3-black">
+
+		<!-- Icon Bar (Sidebar - hidden on small screens) -->
+		<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+			<!-- Avatar image in top left corner -->
+			<img src="../img/cara.jpg" style="width:100%">
+			<a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+				<i class="fa fa-home w3-xxlarge"></i>
+				<p>HOME</p>
+			</a>
+			<a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+				<i class="fa fa-user w3-xxlarge"></i>
+				<p>SOBRE</p>
+			</a>
+			<a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+				<i class="fa fa-eye w3-xxlarge"></i>
+				<p>PORTFOLIO</p>
+			</a>
+			<a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+				<i class="fa fa-envelope w3-xxlarge"></i>
+				<p>CONTATO</p>
+			</a>
+		</nav>
+
+		<!-- Navbar on small screens (Hidden on medium and large screens) -->
+		<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+			<div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+				<a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+				<a href="#about" class="w3-bar-item w3-button" style="width:25% !important">SOBRE</a>
+				<a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PORTFOLIO</a>
+				<a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTATO</a>
+			</div>
+		</div>
+
+		<!-- Page Content -->
+		<div class="w3-padding-large" id="main">
+			<!-- Header/Home -->
+			<header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+				<h1 class="w3-jumbo">Giuseppe Moroni Ramella</h1>
+				<p>Game Programmer</p>
+			</header>
+
+			<!-- About Section -->
+			<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+			<h2 class="w3-text-light-grey">Giuseppe Moroni Ramella</h2>
+			<hr style="width:200px" class="w3-opacity">
+			<p>Possuo grande conhecimento prático em C, tendo em vista seu uso em trabalhos prático-educacionais para a UFRGS na primeira metade da graduação. Já na metade final, passei a utilizar Java com mais freqüência. Por um breve período fui bolsista de um projeto envolvendo a linguagem Java e os softwares Moodle e Weka para aprendizado de máquina. Atualmente, faço uso de C++ e C# na graduação em Jogos Digitais, onde venho tendo contato com GameMaker: Studio e sua linguagem de script GML, o motor Unity e o Autodesk Maya. Lá também aprendi sobre criação de documentação e game design, além de desenvolvimento de narrativas e balanceamento. No momento planejo desenvolver um jogo em OpenGL, um web com AngularJS e Node.js e outro alternativo usando Arduino e Unity, ao passo que realizo monitoria pelo segundo semestre consecutivo. Devido às graduações, cursos de extensão e cursos online que realizei nos últimos anos, venho ganhando conhecimento em diferentes áreas.</p>
+			<h3 class="w3-padding-16 w3-text-light-grey">Habilidades</h3>
+			<p class="w3-wide">C</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:90%"></div></div>
+			<p class="w3-wide">C++</p>
+			<div class="w3-white"> <div class="w3-dark-grey" style="height:28px;width:80%"></div></div>
+			<p class="w3-wide">C#</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">Java</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:60%"></div></div>
+			<p class="w3-wide">Python</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">Ruby</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">Android</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">OpenGL</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:5%"></div></div>
+			<p class="w3-wide">Arduino</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:5%"></div></div>
+			<p class="w3-wide">SQL</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">SGBD Oracle</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">PL/SQL</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">Microsoft SQL Server</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">T-SQL</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">Linux</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">HTML</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">CSS</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">JavaScript</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:60%"></div></div>
+			<p class="w3-wide">PHP</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:20%"></div></div>
+			<p class="w3-wide">jQuery</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:40%"></div></div>
+			<p class="w3-wide">AngularJS</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:10%"></div></div>
+			<p class="w3-wide">Node.js</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:5%"></div></div>
+			<p class="w3-wide">Laravel</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:5%"></div></div>
+			<p class="w3-wide">Git</p>
+			<div class="w3-white"><div class="w3-dark-grey" style="height:28px;width:20%"></div></div>
+			<br>
+
+			<!-- Portfolio Section -->
+			<div class="w3-padding-64 w3-content" id="photos">
+				<h2 class="w3-text-light-grey">Portfolio</h2>
+				<hr style="width:200px" class="w3-opacity">
+
+				<!-- Grid for photos -->
+				<div class="w3-row-padding" style="margin:0 16px">
+					<div class="w3-half">
+						<img src="./w3images/game10_1.jpg" id="game10" style="width:100%" onmouseover="onHover(10);" onmouseout="offHover(10);">
+						<a href="./game10/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game7_1.jpg" id="game7" style="width:100%" onmouseover="onHover(7);" onmouseout="offHover(7);">
+						<a href="./game7/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game3_1.jpg" id="game3" style="width:100%" onmouseover="onHover(3);" onmouseout="offHover(3);">
+						<a href="./game3/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game1_1.jpg" id="game1" style="width:100%" onmouseover="onHover(1);" onmouseout="offHover(1);">
+						<a href="./game1/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game6_1.jpg" id="game6" style="width:100%" onmouseover="onHover(6);" onmouseout="offHover(6);">
+						<a href="./game6/index.html">Descri&ccedil;&atilde;o</a>
+					</div>
+
+					<div class="w3-half">
+						<img src="./w3images/game8_1.jpg" id="game8" style="width:100%" onmouseover="onHover(8);" onmouseout="offHover(8);">
+						<a href="./game8/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game5_1.jpg" id="game5" style="width:100%" onmouseover="onHover(5);" onmouseout="offHover(5);">
+						<a href="./game5/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game2_1.jpg" id="game2" style="width:100%" onmouseover="onHover(2);" onmouseout="offHover(2);">
+						<a href="./game2/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game4_1.jpg" id="game4" style="width:100%" onmouseover="onHover(4);" onmouseout="offHover(4);">
+						<a href="./game4/index.html">Descri&ccedil;&atilde;o</a>
+						<img src="./w3images/game9_1.jpg" id="game9" style="width:100%" onmouseover="onHover(9);" onmouseout="offHover(9);">
+						<a href="./game9/index.html">Descri&ccedil;&atilde;o</a>
+					</div>
+					<!-- End photo grid -->
+				</div>
+				<!-- End Portfolio Section -->
+			</div>
+
+			<!-- Contact Section -->
+			<div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+				<h2 class="w3-text-light-grey">Contato</h2>
+				<hr style="width:200px" class="w3-opacity">
+
+				<div class="w3-section">
+					<p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>São Leopoldo, Brazil</p>
+					<p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>Phone: 5551997422239</p>
+					<p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>Email: norandram@hotmail.com</p>
+				</div><br>
+				<!-- End Contact Section -->
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+	</body>
+</html>

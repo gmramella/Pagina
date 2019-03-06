@@ -1,0 +1,452 @@
+AULA 01
+
+lab604
+feevale2015
+senha laravel
+C:\Wamp\www\CursoLaravel
+http://localhost/cursolaravel/
+namespaces
+packagist.org
+getcomposer.org
+
+touch composser.json
+sublime composer.json
+
+{
+	"require": {
+		"illuminate/support": "5.0"
+	}
+}
+
+composer install
+
+ehkasper@gmail.com
+------------------------------------------------------------------------------------
+AULA 02
+
+curiosidades:
+
+documentação: laravel.com/docs/5.1
+forge.laravel.com ($10/mÃªs)
+
+git commit -m "app para producao"
+git push producao
+------------------------------------------------------------------------------------
+convenções:
+
+namespace começando em maiúsculo
+arquivo php de model e controller começando em maiúsculo no singular
+------------------------------------------------------------------------------------
+arquivos olhados/mexidos/editados:
+
+namespace = projeto1 = *
+
+CAMINHO								ALIAS
+*/app/Http/routes.php						routes
+*/resources/views/index.blade.php				index.blade
+*/resources/views/create.blade.php				create.blade
+*/.env								env
+*/database/migrations/yyyy_mm_dd_hhmmss_create_table_users.php	users
+*/php/Http/Controllers/UserController.php			usercontroller
+*/app/User.php							user
+------------------------------------------------------------------------------------
+comandos:
+
+CRIAR PROJETO LARAVEL
+cd Á*
+laravel new projeto1
+cd projeto1
+---------------------
+LIGAR O SERVIDOR MYSQL
+php artisan serve
+localhost:8000
+---------------------
+ENTRAR NO MYSQL
+mysql -u root -p
+secret
+create database projeto1
+---------------------
+MUDAR O NOME DO NAMESPACE
+php artisan app:name projeto1
+(php artisan make:migration help)
+(php artisan make:migration create_table_users)
+---------------------
+CRIAR ARQUIVO users
+php artisan make:migration create_table_users --create=users
+php artisan migrate
+php artisan migrate:rollback (se tiver errado na tabela)
+---------------------
+ADICIONAR ROTA CRIAR
+criar create.blade
+acrescentar no final do routes.php:
+---------------------
+ADICIONAR VIEWS no routes
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/criar', function () {
+    return view('create');
+});
+---------------------
+ADICIONAR LINK NO index.blade
+acrescentar no final do index.blade.php:
+
+<a href="/criar">
+---------------------
+ADICIONAR FORM COM CAMPOS NOME, CPF E EMAIL NO create.blade
+
+<form action="/" method="post">
+  <div>
+    Nome:
+    <input type="text" name="nome">
+  </div>
+  <br>
+  <div>
+    CPF:
+    <input type="text" name="cpf">
+  </div>
+  <br>
+  <div>
+    E-mail:
+    <input type="text" name="email">
+  </div>
+
+  <input type="submit" value="Enviar">
+</form>
+---------------------
+ADICIONAR ROTA PRO FORM NO routes, encaminhando pro usercontroller
+
+Route::post('/', 'UserController@store');
+---------------------
+CRIAR usercontroller
+
+php artisan make::controller UserController
+
+<?php
+
+namespace projeto1\Http\Controllers;
+
+use Input;
+use projeto1\User;
+
+class UserController extends Controller
+{
+    public function store()
+    {
+        $user = new User;
+        $user->nome = Input::get('nome');
+        $user->cpf = Input::get('cpf');
+        $user->email = Input::get('email');
+        $user->save();
+        dd($user);
+    }
+}
+
+---------------------
+ADICIONAR hidden no create.blade
+
+<input type="hidden" name="_token" value="{{csrf_token()}}">
+---------------------
+CRIAR user
+
+<?php
+
+namespace projeto1;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model {
+
+}
+---------------------
+REINICIAR servidor
+
+ir no terminal que está executando o servidor
+ctrl+c
+php artisan serve
+---------------------
+ALTERAR routes
+
+Route::get('/', 'UserController@store');
+---------------------
+ALTERAR usercontroller
+
+<?php
+
+namespace projeto1\Http\Controllers;
+
+use Input;
+use projeto1\User;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        $users = User::all();
+        $nome = 'Giuseppe';
+
+        return view('index', [
+            'usuarios' => $users,
+            'meuNome' => $nome
+        ]);
+    }
+
+    public function store()
+    {
+        $user = new User;
+        $user->nome = Input::get('nome');
+        $user->cpf = Input::get('cpf');
+        $user->email = Input::get('email');
+        $user->save();
+
+        return redirect('/')->with('message', 'Usuário salvo com sucesso.');
+    }
+}
+
+---------------------
+ALTERAR index.blade
+
+{{ Session::get('message')}}
+{{ $meuNome}}
+
+<table>
+    <tr>
+      <th>
+        titulo
+      </th>
+      <th>
+        texto
+      </th>
+    </tr>
+    @foreach ($usuarios as $usuario)
+    <tr>
+      <td>{{$usuario->nome}}</td>
+      <td>{{$usuario->cpf}}</td>
+      <td>{{$usuario->email}}</td>
+    </tr>
+    @endforeach
+</table>
+<a href="/criar">
+criar
+</a>
+---------------------
+ALTERAR routes
+
+Route::get('/', 'UserController@index');
+------------------------------------------------------------------------------------
+AULA 02
+
+curiosidades:
+
+documentação: laravel.com/docs/5.1
+forge.laravel.com ($10/mÃªs)
+
+git commit -m "app para producao"
+git push producao
+------------------------------------------------------------------------------------
+convenções:
+
+namespace começando em maiúsculo
+arquivo php de model e controller começando em maiúsculo no singular
+------------------------------------------------------------------------------------
+arquivos olhados/mexidos/editados:
+
+namespace = projeto1 = *
+
+CAMINHO								ALIAS
+*/app/Http/routes.php						routes
+*/resources/views/index.blade.php				index.blade
+*/resources/views/create.blade.php				create.blade
+*/.env								env
+*/database/migrations/yyyy_mm_dd_hhmmss_create_table_users.php	users
+*/php/Http/Controllers/UserController.php			usercontroller
+*/app/User.php							user
+------------------------------------------------------------------------------------
+comandos:
+
+CRIAR PROJETO LARAVEL
+cd Á*
+laravel new projeto1
+cd projeto1
+---------------------
+LIGAR O SERVIDOR MYSQL
+php artisan serve
+localhost:8000
+---------------------
+ENTRAR NO MYSQL
+mysql -u root -p
+secret
+create database projeto1
+---------------------
+MUDAR O NOME DO NAMESPACE
+php artisan app:name projeto1
+(php artisan make:migration help)
+(php artisan make:migration create_table_users)
+---------------------
+CRIAR ARQUIVO users
+php artisan make:migration create_table_users --create=users
+php artisan migrate
+php artisan migrate:rollback (se tiver errado na tabela)
+---------------------
+ADICIONAR ROTA CRIAR
+criar create.blade
+acrescentar no final do routes.php:
+---------------------
+ADICIONAR VIEWS no routes
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/criar', function () {
+    return view('create');
+});
+---------------------
+ADICIONAR LINK NO index.blade
+acrescentar no final do index.blade.php:
+
+<a href="/criar">
+---------------------
+ADICIONAR FORM COM CAMPOS NOME, CPF E EMAIL NO create.blade
+
+<form action="/" method="post">
+  <div>
+    Nome:
+    <input type="text" name="nome">
+  </div>
+  <br>
+  <div>
+    CPF:
+    <input type="text" name="cpf">
+  </div>
+  <br>
+  <div>
+    E-mail:
+    <input type="text" name="email">
+  </div>
+
+  <input type="submit" value="Enviar">
+</form>
+---------------------
+ADICIONAR ROTA PRO FORM NO routes, encaminhando pro usercontroller
+
+Route::post('/', 'UserController@store');
+---------------------
+CRIAR usercontroller
+
+php artisan make::controller UserController
+
+<?php
+
+namespace projeto1\Http\Controllers;
+
+use Input;
+use projeto1\User;
+
+class UserController extends Controller
+{
+    public function store()
+    {
+        $user = new User;
+        $user->nome = Input::get('nome');
+        $user->cpf = Input::get('cpf');
+        $user->email = Input::get('email');
+        $user->save();
+        dd($user);
+    }
+}
+
+---------------------
+ADICIONAR hidden no create.blade
+
+<input type="hidden" name="_token" value="{{csrf_token()}}">
+---------------------
+CRIAR user
+
+<?php
+
+namespace projeto1;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model {
+
+}
+---------------------
+REINICIAR servidor
+
+ir no terminal que está executando o servidor
+ctrl+c
+php artisan serve
+---------------------
+ALTERAR routes
+
+Route::get('/', 'UserController@store');
+---------------------
+ALTERAR usercontroller
+
+<?php
+
+namespace projeto1\Http\Controllers;
+
+use Input;
+use projeto1\User;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        $users = User::all();
+        $nome = 'Giuseppe';
+
+        return view('index', [
+            'usuarios' => $users,
+            'meuNome' => $nome
+        ]);
+    }
+
+    public function store()
+    {
+        $user = new User;
+        $user->nome = Input::get('nome');
+        $user->cpf = Input::get('cpf');
+        $user->email = Input::get('email');
+        $user->save();
+
+        return redirect('/')->with('message', 'Usuário salvo com sucesso.');
+    }
+}
+
+---------------------
+ALTERAR index.blade
+
+{{ Session::get('message')}}
+{{ $meuNome}}
+
+<table>
+    <tr>
+      <th>
+        titulo
+      </th>
+      <th>
+        texto
+      </th>
+    </tr>
+    @foreach ($usuarios as $usuario)
+    <tr>
+      <td>{{$usuario->nome}}</td>
+      <td>{{$usuario->cpf}}</td>
+      <td>{{$usuario->email}}</td>
+    </tr>
+    @endforeach
+</table>
+<a href="/criar">
+criar
+</a>
+---------------------
+ALTERAR routes
+
+Route::get('/', 'UserController@index');
+------------------------------------------------------------------------------------

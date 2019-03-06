@@ -1,0 +1,5 @@
+Como aumentar o tamanho de uma máquina virtual no Virtual box
+
+Dispositivos > Inserir imagem de CD dos Adicionais para Convidado...
+Colocar a senha do root e esperar instalar
+Reiniciar a VM
