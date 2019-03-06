@@ -1,0 +1,17 @@
+var cursos = TAFFY();
+
+//cursos.insert({nome:"Tributação sobre Softwares",							dias:["03/07"],										horario:"19:30-22:00",			carga:"03h",		local:"Feevale auditório da Reitoria (sala 404 – prédio Lilás)",	preco:"R$ 000,00"});
+//cursos.insert({nome:"Introdução ao Raspberry Pi",							dias:["09/07","10/07","11/07","12/07"],							horario:"18:30-22:30",			carga:"16h",		local:"Unisinos",									preco:"R$ 498,00"});
+//cursos.insert({nome:"Autocad 2D Fundamental",								dias:["16/07","17/07","18/07","19/07","20/07"],						horario:"18:30-22:30",			carga:"20h",		local:"Unisinos C08 100I",							preco:"R$ 498,00"});
+//cursos.insert({nome:"Desenvolvimento Web com HTML5, CSS e Programação jQuery - 2ª EDIÇÃO",		dias:["16/07","17/07","18/07","19/07","20/07"],						horario:"18:45-22:00",			carga:"20h",		local:"PUCRS Prédio 32 Sala 418",						preco:"R$ 648,00"});
+//cursos.insert({nome:"Do Junit ao Selenium: Técnicas e Ferramentas de Teste de Software - 1ª EDIÇÃO",	dias:["16/07","17/07","18/07","19/07","20/07"],						horario:"18:45-22:00",			carga:"20h",		local:"PUCRS Prédio 32 Sala 310",						preco:"R$ 445,00"});
+//cursos.insert({nome:"Microsoft PowerBI – N1: Para Profissionais de Toda as Áreas - 1ª EDIÇÃO",		dias:["16/07","17/07","18/07","19/07"],							horario:"18:45-22:00",			carga:"16h",		local:"PUCRS Prédio 32 Sala 401",						preco:"R$ 364,00"});
+//cursos.insert({nome:"Virtualização com Microsoft HyperV 2ª EDIÇÃO",					dias:["16/07","17/07","18/07","19/07"],							horario:"18:45-22:00",			carga:"16h",		local:"PUCRS Prédio 32 Sala 111",						preco:"R$ 364,00"});
+//cursos.insert({nome:"Automação de Testes com Selenium 4ª EDIÇÃO",					dias:["23/07","24/07","25/07","26/07","27/07"],						horario:"18:45-22:00",			carga:"20h",		local:"PUCRS Prédio 32 Sala 309",						preco:"R$ 445,00"});
+//cursos.insert({nome:"Gestão de Projetos usando Microsoft Project 29ª EDIÇÃO",				dias:["23/07","24/07","25/07","26/07","27/07"],						horario:"18:45-22:00",			carga:"20h",		local:"PUCRS Prédio 32 Sala 418",						preco:"R$ 455,00"});
+//cursos.insert({nome:"Introdução ao Desenvolvimento para Android com Kotlin 2ª EDIÇÃO",			dias:["23/07","24/07","25/07","26/07","27/07"],						horario:"18:45-22:00",			carga:"20h",		local:"PUCRS Prédio 32 Sala 310",						preco:"R$ 570,00"});
+//cursos.insert({nome:"Microsoft PowerBI – N2: Aprofundamento para Profissionais de TI - 1ª EDIÇÃO",	dias:["23/07","24/07","25/07","26/07"],							horario:"18:45-22:00",			carga:"16h",		local:"PUCRS Prédio 32 Sala 401",						preco:"R$ 364,00"});
+//cursos.insert({nome:"Oratória Técnica e Arte da Bela Expressão",					dias:["23/07","24/07","26/07","27/07"],							horario:"18:30-22:30",			carga:"16h",		local:"Unisinos",									preco:"R$ 324,00"});
+//cursos.insert({nome:"Programação para web com ASP .NET MVC e C# 7ª EDIÇÃO",				dias:["23/07","24/07","25/07","26/07","27/07"],						horario:"18:45-22:00",			carga:"20h",		local:"PUCRS Prédio 32 Sala 411",						preco:"R$ 648,00"});
+//cursos.insert({nome:"Programação para Web com Java EE 2ª EDIÇÃO",					dias:["23/07","24/07","25/07","26/07","27/07"],						horario:"18:45-22:00",			carga:"20h",		local:"PUCRS Prédio 32 Sala 309",						preco:"R$ 648,00"});
+//cursos.insert({nome:"MATLAB para Cientistas e Engenheiros",						dias:["30/07","31/07","01/08","02/08","03/08"],						horario:"18:30-22:30",			carga:"20h",		local:"Unisinos C08 100M",							preco:"R$ 390,00"});

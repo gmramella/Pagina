@@ -1,0 +1,1 @@
+alert("Como em breve estarei me formando, eventualmente perderei o acesso ao servidor FTP do Instituto de Informática. Tenho que decidir para onde tentarei portar este site. As opções atuais são Wix, WordPress e GitHub. Se souber de algum servidor bom e grátis, mande-me um e-mail (norandram@hotmail.com).");
