@@ -1,0 +1,15 @@
+#include <iostream>
+
+int main() {
+	char varc;
+	int vari;
+	float varf;
+	double vard;
+	string vars;
+
+	std::cout << varc << std::endl;
+	std::cout << vari << std::endl;
+	std::cout << varf << std::endl;
+	std::cout << vard << std::endl;
+	std::cout << vars << std::endl;
+}

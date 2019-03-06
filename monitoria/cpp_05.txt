@@ -1,0 +1,74 @@
+ClasseMae.h:
+
+#include <string>
+class ClasseMae {
+	public:
+		std::string variavelPublicaMae = "variavelPublicaMae";
+		std::string getVariavelPrivadaMae();
+		void setVariavelPrivadaMae(std::string novoValorPraVariavelPrivadaMae);
+	protected:
+		std::string variavelProtegidaMae = "variavelProtegidaMae";
+	private:
+		std::string variavelPrivadaMae = "variavelPrivadaMae";
+};
+
+ClasseMae.cpp
+
+#include "ClasseMae.h"
+#include <string>
+std::string ClasseMae::getVariavelPrivadaMae() {return variavelPublicaMae;}
+void ClasseMae::setVariavelPrivadaMae(std::string novoValorPraVariavelPrivadaMae) {variavelPublicaMae = novoValorPraVariavelPrivadaMae;}
+
+ClasseFilha.h:
+
+#include <string>
+class ClasseFilha : public ClasseMae {
+	public:
+		std::string variavelPublicaFilha = "variavelPublicaFilha";
+		std::string getVariavelPrivadaFilha();
+		void setVariavelPrivadaFilha(std::string novoValorPraVariavelPrivadaFilha);
+		std::string getVariavelProtegidaDaMae();
+		void setVariavelProtegidaDaMae(std::string novoValorPraVariavelProtegidaDaMae);
+	protected:
+		std::string variavelProtegidaFilha = "variavelProtegidaFilha";
+	private:
+		std::string variavelPrivadaFilha = "variavelPrivadaFilha";
+};
+
+ClasseFilha.cpp:
+
+#include "ClasseFilha.h"
+#include <string>
+std::string getVariavelPrivadaFilha() {return variavelPrivadaFilha;}
+void setVariavelPrivadaFilha(std::string novoValorPraVariavelPrivadaFilha) {variavelPrivadaFilha = novoValorPraVariavelPrivadaFilha;}
+std::string getVariavelProtegidaDaMae() {return variavelProtegidaMae;}
+void setVariavelProtegidaDaMae(std::string novoValorPraVariavelProtegidaDaMae) {variavelProtegidaMae = novoValorPraVariavelProtegidaDaMae;}
+
+main.cpp:
+
+#include "ClasseMae.h"
+#include "ClasseFilha.h"
+#include <iostream>
+//#include <string>
+
+int main() {
+	ClasseMae objetoSimplesMae;
+	std::string valorNovoMae = "valorNovoMae";
+	std::cout << objetoSimplesMae.variavelPublicaMae << std::endl;
+	objetoSimplesMae.setVariavelPrivadaMae(valorNovoMae);
+	std::cout << objetoSimplesMae.getVariavelPrivadaMae() << std::endl;
+	//std::cout << objetoSimplesMae.variavelProtegidaMae << std::endl; não pode
+	//std::cout << objetoSimplesMae.variavelPrivadaMae << std::endl; não pode
+
+	ClasseFilha objetoSimplesFilha;
+	std::string valorNovoFilha = "valorNovoFilha";
+	std::cout << objetoSimplesFilha.variavelPublicaFilha << std::endl;
+	objetoSimplesFilha.setVariavelPrivadaFilha(valorNovoFilha);
+	std::cout << objetoSimplesFilha.getVariavelPrivadaFilha() << std::endl;
+	objetoSimplesFilha.setVariavelProtegidaDaMae(valorNovoMae);
+	std::cout << objetoSimplesFilha.getVariavelProtegidaDaMae() << std::endl;
+	//std::cout << objetoSimplesFilha.variavelProtegidaFilha << std::endl; não pode
+	//std::cout << objetoSimplesFilha.variavelPrivadaFilha << std::endl; não pode
+
+	return 0;
+}

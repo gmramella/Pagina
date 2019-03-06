@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+int main () {
+	int variavelEscrita = 5;
+	std::string linhaLida;
+	std::fstream arquivoUsado;
+	arquivoUsado.open("nome.extensao");
+	if (arquivoUsado.is_open()) {
+		arquivoUsado << variavelEscrita << "\r\n";
+		arquivoUsado.close();
+		arquivoUsado.open("nome.extensao");
+		while (getline(arquivoUsado, linhaLida)) {
+	        int variavelLida = atoi(linhaLida.c_str());
+			std::cout << variavelLida << "\r\n";
+		}
+		arquivoUsado.close();
+	}
+
+	return 0;
+}

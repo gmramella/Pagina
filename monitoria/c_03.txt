@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+	char varc;
+	int vari;
+	float varf;
+	double vard;
+
+	printf("%c\r\n", varc);
+	printf("%d\r\n", vari);
+	printf("%f\r\n", varf);
+	printf("%lf\r\n", vard);
+}

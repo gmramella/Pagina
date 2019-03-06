@@ -1,0 +1,28 @@
+//Comentário em uma linha
+//Comentário em outra linha
+/*
+Comentário
+em
+várias
+linhas
+*/
+
+int main() {
+	//Comentário em uma linha
+	//Comentário em outra linha
+	/*
+	Comentário
+	em
+	várias
+	linhas
+	*/
+}
+
+//Comentário em uma linha
+//Comentário em outra linha
+/*
+Comentário
+em
+várias
+linhas
+*/
