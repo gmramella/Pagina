@@ -1,0 +1,39 @@
+//Explicacao
+//T ::= bool | char | double | float | int
+//-------------------------------------
+//pre-processamento
+#include <iostream>
+#define T bool
+
+int main() {
+	//-------------------------------------
+	//declaracao
+	int nlinhas = 3, ncolunas = 4;
+	T **matriz;
+	//-------------------------------------
+	//alocacao
+	matriz = new T*[nlinhas];
+	for (int l=0; l<nlinhas; l++)
+		matriz[l] = new T[ncolunas];
+	//-------------------------------------
+	//definicao
+	for (int l=0; l<nlinhas; l++)
+		for (int c=0; c<ncolunas; c++) {
+			matriz[l][c] = ((l+c) % 2) == 1;	//bool
+			//matriz[l][c] = 'A' + ((l+c) % 2);	//char
+			//matriz[l][c] = l+c;			//double
+			//matriz[l][c] = l+c;			//float
+			//matriz[l][c] = l+c;			//int
+		}
+	//-------------------------------------
+	//utilizacao
+	for (int l=0; l<nlinhas; l++)
+		for (int c=0; c<ncolunas; c++)
+			std::cout << "Valor em [" << l << "," << c << "] = " << matriz[l][c] << std::endl;
+	//desalocao
+	for (int l=0; l<nlinhas; l++)
+		delete matriz[l];
+	delete[][] matriz;
+	
+	return 0;
+}

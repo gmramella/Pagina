@@ -1,0 +1,10 @@
+#semestre1, #semestre2									{color:green;}
+#semestre3										{color:blue;}
+#semestre4, #semestre5, #semestre6, #semestre7						{color:red;}
+
+.lecture										{color:red; text-decoration:none; cursor:pointer;}
+
+#lectures #cor1										{color:green;}
+#lectures #cor2										{color:blue;}
+#lectures #cor3										{color:red;}
+#lectures #cor4										{color:yellow;}

@@ -1,0 +1,19 @@
+05/10 revisao GA
+10/10 prova GA
+12/10 feriado
+17/10 entrega e apresentação do trabalho GA
+02/11 feriado
+28/11 revisao GB
+30/11 prova GB
+05/12 entrega e apresentação do trabalho GB
+07/12 comunicação de grau
+12/12 revisao GC
+14/12 GC
+
+free music
+themushroomkingdom.net
+
+paint.net > quarta ferramenta da esquerda > clicar no fundo > aumentar tolerância se tirar parte da algum sprite > clicar onde faltar tirar fundo > salvar como png
+carregarSpirteSheet(nome, caminho, animações, quadros)
+
+free sound effects

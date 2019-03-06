@@ -1,0 +1,11 @@
+project > add class
+
+Classe obj(parametros);
+-----------------------
+projetos > copiar projeto base_VS2015 e renomear > abrir base.cln > clicar 2 vezes em base no solution explorer
+private: Sprite fundo em Jogo.h
+criar pasta bin > imagens e colocar fundo.png lá
+paint.net pra mudar resolução e recortar
+gRecursos.carregarSpriteSheet("fundo", imagens/fundo.png, 1, 1);//qntdSprites, qntdFrames
+fundo.setSpriteSheet("fundo");
+fundo.desenhar(512, 384);

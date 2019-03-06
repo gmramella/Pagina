@@ -1,0 +1,3 @@
+gTempo tem função pra contar tempo decorrido
+internacionalização
+	https://github.com/GuilhermeAlanJohann/libUnicornio/blob/master/projetos/exemplos_VS2015/Exemplos/Strings/Jogo.h

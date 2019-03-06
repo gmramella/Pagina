@@ -1,0 +1,7 @@
+padding no printf
+
+%10c, %-10c
+%010d
+
+notação científica
+%E

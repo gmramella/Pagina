@@ -1,0 +1,6 @@
+getc(stdin) ao invés de fflush(stdin)
+
+para pegar duas letras e imprimir cada vez, usar getc(stdin) para limpar o buffer
+para pegar 3 letras e imprimir só uma vez, usar getc(stdin) em cada e printf("%c %c %c\r\n", a, b, c)
+para pegar n letras e imprimir só uma vez sem getc(stdin), usar scanf("%c\n", &a) nas n-1 primeiras, scanf("%c", &c) na última e printf("%c %c %c\r\n", a, b, c)
+para somar 2 números com 1 scanf, usar scanf("%d %d", &a, &b)

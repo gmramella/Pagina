@@ -1,0 +1,11 @@
+string palavras[5], *p = &palavras
+for i=0;i<5;i++
+	p[i].... = (*(p+i)).... = (p+i)->...
+
+char **matriz;
+int tc = 4, tl = 4;
+matriz = new char*[tc];
+for (int i=0;i<4;i++) {
+	matriz[i] = new char[tl];
+}
+matriz[0][0] = 'a';

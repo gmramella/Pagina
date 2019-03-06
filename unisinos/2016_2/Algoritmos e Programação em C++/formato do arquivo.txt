@@ -1,0 +1,20 @@
+2
+1 blocoBranco.png
+2 blocoVerde.png
+6 10
+20 20
+0 0 0 0 0 0 0 0 0 0
+1 1 1 1 1 1 1 1 1 1
+2 2 2 2 2 2 2 2 2 2
+0 0 0 0 0 0 0 0 0 0
+1 1 1 1 1 1 1 1 1 1
+2 2 2 2 2 2 2 2 2 2
+
+qntd sprites
+...
+linhas colunas
+espaçamento
+ids
+
+Tijolo *tijolosDaFase;
+tijolosDaFase = new Tijolo[6 * 10];

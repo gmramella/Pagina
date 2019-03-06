@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+// main() is where program execution begins.
+
+int main()
+{
+   cout << "Hello World"; // prints Hello World
+   return 0;
+}
+
+debug f9,f10
+
+libUnicornio-master/projetos/exemplos_vs2015
+set as startup project
+
+ctrl+k, ctrl+c: comentar
+ctrl+k, ctrl+U: descomentar
+ctrl+k, ctrl+D: identar corretamente
+
+fixed, precision
+
+
+eXcript no youtube

@@ -1,0 +1,55 @@
+arrumar
+	gTempo tem função pra contar tempo decorrido
+	internacionalização
+		https://github.com/GuilhermeAlanJohann/libUnicornio/blob/master/projetos/exemplos_VS2015/Exemplos/Strings/Jogo.h
+	bolas como vetor, qntdBolas por referência
+		http://www.learncpp.com/cpp-tutorial/73-passing-arguments-by-reference/
+	powerups mto rápidos (aumentar velocidade do jogador)
+	powerups
+		gruda
+		3 bolas
+		aumenta
+		laser
+		vida
+		velocidade
+		fim
+	jogador começa rodadas sem powerups (1 bola)
+	tela de configurações
+		que teclas usar
+		idioma
+	arrumar switches em Jogo::desenharTelaJogo() e Gerenciador::atualizar
+	Jogo::inicializar()	temJogoSalvo = false;// arquivoSaveGameExiste();
+	escrever/ler savegame
+		PowerUp.caminhoDaSprite desnecessario
+		Bola.caminhoDaSprite desnecessario
+
+fazer
+	colocar na compilação release
+
+bugs
+	se crescer quando está próximo às laterais, pode ficar grudado
+	bola segue pra cima se encosta no canto inferior direito do tijolo
+	TALVEZ a bola possa colar nas paredes laterais
+
+faltou
+	tiros laser
+	sons
+		3	tiro laser
+		5	atinge boss final
+		11	entra na direita
+		12	mata boss final
+	melhorar o sorteio de power ups
+		reduzir chance (de 2 em 2?)
+		menos chance pra uns (power up fim)
+	animação da explosão do jogador
+	adicionar inimigos
+		assets/sprites/enemies.png
+		morrem se encostarem no jogador
+	mais mapas
+	fazer todas funções inline?
+
+links
+	http://peggle.wikia.com/wiki/Magic_Power
+	http://www.nesmaps.com/maps/Arkanoid/ArkanoidBG.html
+	https://www.youtube.com/watch?v=6pawY8ZNFJM
+	http://stackoverflow.com/questions/1931218/c-allocating-dynamic-memory-in-a-function-newbie-question

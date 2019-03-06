@@ -1,0 +1,26 @@
+c:\temp\visual studio 2015\Projects
+colocar no F
+file > new > project > clicar em visual C++ na esquerda > clicar em empty project > nomear
+solution explorer contém todos arquivos do projeto
+direito no nome do projeto > add > new item > escolher cpp ou h > nomear
+abrir .sln na pasta do projeto
+ctrl+shift+b = compilar
+F5 = executar
+exibir console: _getch() com conio.h ou system("pause") com stdlib.h
+#define _CRT_SECURE_NO_WARNINGS
+
+char			8	%c	-128		127
+unsigned char		8	%c	0		255
+signed char		8	%c	-128		127
+int			16	%i	-32768		32767
+unsigned int		16	%u	0		65535
+signed int		16	%i	-32768		32767
+sort int		16	%hi	-32768		32767
+unsigned short int	16	%hu	0		65535
+signed short int	16	%hi	-32768		32767
+long int		32	%li	-21		2147483647
+unsigned long int	32	%lu	0		4294967295
+signed long int		32	%li	-2147483648	2147483647
+float			32	%f	3,40E-38	3.4E38
+double			64	%lf	1,70E-308	1,70E308
+long double		80	%Lf	3,4E-4932	3,4E4932
