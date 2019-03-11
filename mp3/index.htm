@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Página pessoal do Rex</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
+
+		<script type="text/javascript" src="../js/navegacao.js"></script>
+		<script type="text/javascript" src="../js/cabecalho.js"></script>
+		<script type="text/javascript" src="../js/footer.js"></script>
+		<script type="text/javascript" src="../js/script.js"></script>
+		<script type="text/javascript" src="./mp3.js"></script>
+	</head>
+	<div class="body">
+	<body>
+		<div style="background-color: green;border-radius:10px;">
+		<div>
+			<audio id="myAudio" controls></audio>
+		</div>
+		<div>
+			Seleção direta da música
+			<select id=selecao onChange="playSelected(this);"></select>
+		</div>
+		<div>
+			<button id="previous" onClick="previous();">Previous</button>
+			<button id="restart" onClick="restart();">Restart</button>
+			<button id="play" onClick="play();">Play</button>
+			<button id="stop" onClick="stop();">Stop</button>
+			<button id="next" onClick="next();">Next</button>
+			<button id="increase" onClick="increase();">Volume Up</button>
+			<button id="decrease" onClick="decrease();">Volume Down</button>
+			<input type="checkbox" id="random" value="random" color="white">Random
+			<input type="checkbox" id="repeat" value="repeat" color="white">Repeat
+		</div>
+
+		<script>
+			var musicas = [];
+			musicas.push("3 Doors Down - Here Without You");
+			musicas.push("10cc - I'm Not in Love");
+			musicas.push("A Flock Of Seagulls - I Ran");
+			musicas.push("Ace of Base - All That She Wants");
+			musicas.push("Aerosmith - Angel");
+			musicas.push("Aerosmith - Sweet Emotion");
+			musicas.push("A-ha - Crying In The Rain");
+			musicas.push("A-ha - Hunting High And Low");
+			musicas.push("A-ha - Stay On These Roads");
+			musicas.push("A-ha - There's Never A Forever Thing");
+			musicas.push("Air Supply - Making Love Out Of Nothing At All");
+			musicas.push("Al Green - Let's Stay Together");
+			musicas.push("Al Stewart - Time Passages");
+			musicas.push("Al Stewart - Year Of The Cat");
+			musicas.push("Amedeo Minghi - Cantare è d'Amore");
+			musicas.push("Amedeo Minghi - La Vita Mia");
+			musicas.push("America - A Horse with No Name");
+			musicas.push("America - Tin Man");
+			musicas.push("America - You Can Do Magic");
+			musicas.push("Annie Lennox - No More I Love You's");
+			musicas.push("Baltimora - Tarzan Boy");
+			musicas.push("Bee Gees - How Deep Is Your Love");
+			musicas.push("Bee Gees - Massachusetts");
+			musicas.push("Bee Gees - Night Fever");
+			musicas.push("Bee Gees - Stayin' Alive");
+			musicas.push("Bee Gees - Too Much Heaven");
+			musicas.push("Belinda Carlisle - Heaven Is A Place On Earth");
+			musicas.push("Ben E. King - Stand By Me");
+			musicas.push("Berlin - Take My Breath Away");
+			musicas.push("Billy Joel - Uptown Girl");
+			musicas.push("Billy Joel - We Didn't Start the Fire");
+			musicas.push("Billy Ocean - Caribbean Queen");
+			musicas.push("Black - Wonderful Life");
+			musicas.push("Blondie - Call Me");
+			musicas.push("Blondie - Maria");
+			musicas.push("Blondie - The Tide Is High");
+			musicas.push("Blue Oyster Cult - (Don't Fear) The Reaper");
+			musicas.push("Blue Swede - Hooked on a Feeling");
+			musicas.push("Bob Marley - Could You Be Loved");
+			musicas.push("Bob Marley - Is This Love");
+			musicas.push("Bob Marley - No Woman No Cry");
+			musicas.push("Bob Marley - One Love");
+			musicas.push("Bob Marley - Three Little Birds");
+			musicas.push("Bob Seger - Against the Wind");
+			musicas.push("Bob Sinclar - Love Generation");
+			musicas.push("Boney M - Rivers Of Babylon");
+			musicas.push("Bonnie Tyler - It's a Heartache");
+			musicas.push("Boston - More Than A Feeling");
+			musicas.push("Bread - Guitar Man");
+			musicas.push("Brenda Lee - Weep No More My Baby");
+			musicas.push("Brian Mcknight - Back at One");
+			musicas.push("Bronski Beat - Smalltown Boy");
+			musicas.push("Bruce Springsteen - Glory Days");
+			musicas.push("Bruce Springsteen - Streets of Philadelphia");
+			musicas.push("Bryan Adams - Run To You");
+			musicas.push("Bryan Ferry - Don't Stop The Dance");
+			musicas.push("Bryan Ferry - Slave To Love");
+			musicas.push("Carly Simon - Nobody Does It Better");
+			musicas.push("Carly Simon - You're So Vain");
+			musicas.push("Century - Lover Why");
+			musicas.push("Chicago - Hard to Say I'm Sorry");
+			musicas.push("Chicago - If You Leave Me Now");
+			musicas.push("Chicago - You're the Inspiration");
+			musicas.push("Chris De Burgh - The Lady In Red");
+			musicas.push("Chris Isaak - Wicked Game");
+			musicas.push("Christopher Cross - All Right");
+			musicas.push("Christopher Cross - Arthur's Theme");
+			musicas.push("Christopher Cross - Sailing");
+			musicas.push("Colin Hay Band - Into My Life");
+			musicas.push("Corona - Rhythm of the Night");
+			musicas.push("Creedence Clearwater Revival - Lookin' Out My Back Door");
+			musicas.push("Crowded House - Don't Dream it's Over");
+			musicas.push("Cutting Crew - I Just Died in Your Arms Tonight");
+			musicas.push("Daft Punk - Get Lucky");
+			musicas.push("Dan Hartman - I Can Dream About You");
+			musicas.push("Daniel Powter - Bad Day");
+			musicas.push("Dead Or Alive - You Spin Me Round (Like a Record)");
+			musicas.push("Debbie Gibson - Foolish Beat");
+			musicas.push("Def Leppard - Hysteria");
+			musicas.push("Def Leppard - Love Bites");
+			musicas.push("Depeche Mode - Enjoy the Silence");
+			musicas.push("Depeche Mode - Personal Jesus");
+			musicas.push("Depeche Mode - Policy Of Truth");
+			musicas.push("Dire Straits - Brothers In Arms");
+			musicas.push("Dire Straits - Money For Nothing");
+			musicas.push("Dire Straits - So Far Away");
+			musicas.push("Don McLean - American Pie");
+			musicas.push("Donna Summer - Hot Stuff");
+			musicas.push("Double - The Captain Of Her Heart");
+			musicas.push("Dr Hook - Sharing The Night Together");
+			musicas.push("Duffy - Mercy");
+			musicas.push("Duran Duran - Ordinary World");
+			musicas.push("Duran Duran - Rio");
+			musicas.push("Dusty Springfield - Son of a Preacher Man");
+			musicas.push("Eagles - Hotel California");
+			musicas.push("Earth, Wind & Fire - Let's Groove");
+			musicas.push("Earth, Wind & Fire - September");
+			musicas.push("Eddy Grant - Electric Avenue");
+			musicas.push("Electric Light Orchestra - Four Little Diamonds");
+			musicas.push("Electric Light Orchestra - Last Train to London");
+			musicas.push("Elton John - Empty Garden (Hey Hey Johnny)");
+			musicas.push("Elton John - Rocket Man");
+			musicas.push("Elton John - Sacrifice");
+			musicas.push("Enya - Only If");
+			musicas.push("Erasure - A Little Respect");
+			musicas.push("Erasure - Oh l'Amour");
+			musicas.push("Eric Carmen - All By Myself");
+			musicas.push("Eric Carmen - Hungry Eyes");
+			musicas.push("Eric Clapton - Wonderful Tonight");
+			musicas.push("Erika - I Don't Know");
+			musicas.push("Eros Ramazzotti - Cose Della Vita");
+			musicas.push("Eurythmics - Here Comes The Rain Again");
+			musicas.push("Fleetwood Mac - Dreams");
+			musicas.push("Fleetwood Mac - Everywhere");
+			musicas.push("Fleetwood Mac - Go Your Own Way");
+			musicas.push("Fleetwood Mac - Gypsy");
+			musicas.push("Fleetwood Mac - Little Lies");
+			musicas.push("Fleetwood Mac - Seven Wonders");
+			musicas.push("Foghat - Slow Ride");
+			musicas.push("Foreigner - Waiting for a Girl Like You");
+			musicas.push("Foster The People - Pumped up Kicks");
+			musicas.push("Free - All Right Now");
+			musicas.push("Gerry Rafferty - Baker Street");
+			musicas.push("Gigi D'Agostino - L'Amour Toujours");
+			musicas.push("Glass Tiger - Don't Forget Me When I'm Gone");
+			musicas.push("Glenn Frey - The Heat Is On");
+			musicas.push("Glenn Medeiros - Nothing's Gonna Change My Love for You");
+			musicas.push("Gloria Estefan - Don't Wanna Lose You");
+			musicas.push("Gloria Estefan - Reach");
+			musicas.push("Gloria Gaynor - Be Soft With Me Tonight");
+			musicas.push("Gloria Gaynor - Can't Take My Eyes Off You");
+			musicas.push("Hall & Oates - Kiss on My List");
+			musicas.push("Hall & Oates - Maneater");
+			musicas.push("Hall & Oates - Out of Touch");
+			musicas.push("Harry Nilsson - Without You");
+			musicas.push("Heart - Alone");
+			musicas.push("Hot Chocolate - It Started With A Kiss");
+			musicas.push("Howard Carpendale - Hello again");
+			musicas.push("Huey Lewis and The News - Stuck With You");
+			musicas.push("Huey Lewis and The News - The Power Of Love");
+			musicas.push("Icehouse - Electric Blue");
+			musicas.push("Icehouse - No promises");
+			musicas.push("Imagination - Just An Illusion");
+			musicas.push("Information Society - Repetition");
+			musicas.push("INXS - Beautiful Girl");
+			musicas.push("INXS - By My Side");
+			musicas.push("INXS - Never Tear Us Apart");
+			musicas.push("Jack Johnson & Donavon Frankenreiter - Free");
+			musicas.push("Jan Hammer - Crockett's Theme");
+			musicas.push("Jim Diamond - I Should Have Known Better");
+			musicas.push("Jimmy Cliff - Reggae Night");
+			musicas.push("Jimmy Ruffin - What Becomes of the Brokenhearted");
+			musicas.push("Joe Cocker & Jennifer Warnes - Up Where We Belong");
+			musicas.push("Joe Cocker - While You See a Chance");
+			musicas.push("John Parr - St Elmo's Fire (Man In Motion)");
+			musicas.push("Jon Anderson - Hold On To Love");
+			musicas.push("Jon Secada - Just Another Day");
+			musicas.push("Juice Newton - Queen of Hearts");
+			musicas.push("Jules Shear - Steady");
+			musicas.push("k.d. lang - Constant Craving");
+			musicas.push("Kansas - Carry On Wayward Son");
+			musicas.push("Kasino - Can't Get Over");
+			musicas.push("KC & The Sunshine Band - Give It Up");
+			musicas.push("KC & The Sunshine Band - Please Don't Go");
+			musicas.push("KC & The Sunshine Band - Shake Your Booty");
+			musicas.push("KC & The Sunshine Band - That's The Way (I Like It)");
+			musicas.push("Keane - Everybody's Changing");
+			musicas.push("Keane - Somewhere Only We Know");
+			musicas.push("Kenny Loggins - Footloose");
+			musicas.push("Kenny Loggins - Meet Me Half Way");
+			musicas.push("Kenny Rogers & Dolly Parton - Islands in the Stream");
+			musicas.push("Khaled - El Arbi");
+			musicas.push("Kool & the Gang - Celebration");
+			musicas.push("Kool & The Gang - Cherish");
+			musicas.push("Kool & the Gang - Get Down on It");
+			musicas.push("Laura Pausini - La Solitudine");
+			musicas.push("Laura Pausini - Non c'è");
+			musicas.push("Laura Pausini - Strani Amori");
+			musicas.push("Leo Sayer - More Than I Can Say");
+			musicas.push("Lighthouse Family - High");
+			musicas.push("Lighthouse Family - Lovin' Every Minute");
+			musicas.push("Limahl - Never Ending Story");
+			musicas.push("Lionel Richie - All Night Long");
+			musicas.push("Lionel Richie - Hello");
+			musicas.push("Lionel Richie - Say you, Say me");
+			musicas.push("Lipps Inc - Funkytown");
+			musicas.push("Little Richard - Long Tall Sally");
+			musicas.push("Little Richard - Tutti Frutti");
+			musicas.push("Living In A Box - Room In Your Heart");
+			musicas.push("Lobo - I’d Love You To Want Me");
+			musicas.push("Lynyrd Skynyrd - Free Bird");
+			musicas.push("Lynyrd Skynyrd - Simple Man");
+			musicas.push("Madonna - Like a Prayer");
+			musicas.push("Madonna - Material Girl");
+			musicas.push("Madonna - True Blue");
+			musicas.push("Martika - Toy Soldiers");
+			musicas.push("Martin Solveig & Dragonette - Hello");
+			musicas.push("Mattafix - Living Darfur");
+			musicas.push("Men at Work - It's a Mistake");
+			musicas.push("Men at Work - Overkill");
+			musicas.push("Michael Sembello - Maniac");
+			musicas.push("Midnight Oil - Beds Are Burning");
+			musicas.push("Mike + The Mechanics - Taken In");
+			musicas.push("Morcheeba - Undress Me Now");
+			musicas.push("Mr. Mister - Broken Wings");
+			musicas.push("Nazareth - Love Hurts");
+			musicas.push("Nena - 99 Luftballons");
+			musicas.push("New Radicals - Someday We'll Know");
+			musicas.push("Noel - Silent Morning");
+			musicas.push("Norah Jones - Happy Pills");
+			musicas.push("Otis Redding - (Sittin' On) The Dock Of The Bay");
+			musicas.push("Patrick Hernandez - Born to Be Alive");
+			musicas.push("Paul Young - Everytime You Go Away");
+			musicas.push("Pearl Jam - Alive");
+			musicas.push("Pearl Jam - Black");
+			musicas.push("Pearl Jam - Even Flow");
+			musicas.push("Pearl Jam - Jeremy");
+			musicas.push("Pet Shop Boys - Opportunities");
+			musicas.push("Peter Cetera - Even A Fool Can See");
+			musicas.push("Peter Cetera - Glory of Love");
+			musicas.push("Peter Frampton - Baby I Love Your Way");
+			musicas.push("Petula Clark - Downtown");
+			musicas.push("Ph.D. - I Won't Let You Down");
+			musicas.push("Phil Collins - Do You Remember");
+			musicas.push("Phil Collins - One More Night");
+			musicas.push("Pink Floyd - Wish You Were Here");
+			musicas.push("Player - Baby Come Back");
+			musicas.push("Propaganda - Duel");
+			musicas.push("REO Speedwagon - Can't Fight This Feeling");
+			musicas.push("REO Speedwagon - Keep on Loving You");
+			musicas.push("Ric Ocasek - Emotion In Motion");
+			musicas.push("Richard Marx - Angelia");
+			musicas.push("Richard Marx - Hazard");
+			musicas.push("Rick James - Super Freak");
+			musicas.push("Robbie Williams - Angels");
+			musicas.push("Robbie Williams - She's Madonna");
+			musicas.push("Roberta Flack - Killing Me Softly");
+			musicas.push("Roxette - Joyride");
+			musicas.push("Roxette - Spending My Time");
+			musicas.push("Roxette - The Look");
+			musicas.push("Roy Orbison - Oh, Pretty Woman");
+			musicas.push("Rupert Holmes - Escape (The Piña Colada Song)");
+			musicas.push("Rupert Holmes - Him");
+			musicas.push("Sade - No Ordinary Love");
+			musicas.push("Sade - Smooth Operator");
+			musicas.push("Sade - The Sweetest Taboo");
+			musicas.push("Seal - Crazy");
+			musicas.push("Seal - Kiss From A Rose");
+			musicas.push("Shania Twain - From This Moment On");
+			musicas.push("Shania Twain - You're Still the One");
+			musicas.push("Simple Minds - Alive And Kicking");
+			musicas.push("Simple Minds - Don't You (Forget About Me)");
+			musicas.push("Simply Red - Stars");
+			musicas.push("Sissel - Better Off Alone");
+			musicas.push("Soul Asylum - Runaway Train");
+			musicas.push("Spandau Ballet - True");
+			musicas.push("Starship - Sara");
+			musicas.push("Starship - Nothing's Gonna Stop Us Now");
+			musicas.push("Starship - We Built This City");
+			musicas.push("Supertramp - Free As A Bird");
+			musicas.push("Supertramp - The Logical Song");
+			musicas.push("Survivor - Eye of the Tiger");
+			musicas.push("Suzanne Vega - Luka");
+			musicas.push("Tears For Fears - Advice For The Young At Heart");
+			musicas.push("Tears For Fears - Shout");
+			musicas.push("Tears For Fears - Sowing The Seeds Of Love");
+			musicas.push("The Alan Parsons Project - Eye in the Sky");
+			musicas.push("The Alan Parsons Project - Time");
+			musicas.push("The Animals - The House of the Rising Sun");
+			musicas.push("The Bangles - Eternal Flame");
+			musicas.push("The Bangles - Manic Monday");
+			musicas.push("The Beach Boys - Kokomo");
+			musicas.push("The Cardigans - Lovefool");
+			musicas.push("The Carpenters - Top Of The World");
+			musicas.push("The Cars - Drive");
+			musicas.push("The Commodores - Easy");
+			musicas.push("The Cranberries - Dreams");
+			musicas.push("The Housemartins - Build");
+			musicas.push("The Human League - Human");
+			musicas.push("The Pretenders - Back On The Chain Gang");
+			musicas.push("The Pretenders - Don't Get Me Wrong");
+			musicas.push("The Outfield - All The Love In The World");
+			musicas.push("The Outfield - Say It Isn't So");
+			musicas.push("The Outfield - Since You've Been Gone");
+			musicas.push("The Proclaimers - 500 Miles (I gonna be)");
+			musicas.push("The Smashing Pumpkins - 1979");
+			musicas.push("The Stylistics - You Make Me Feel Brand New");
+			musicas.push("The Traveling Wilburys - End Of The Line");
+			musicas.push("Tom Petty - Free Fallin'");
+			musicas.push("U2 - Pride (In the Name of Love)");
+			musicas.push("UB40 - Red Red Wine");
+			musicas.push("Umberto Tozzi - Gloria");
+			musicas.push("Wang Chung - Dance Hall Days");
+			musicas.push("Wet Wet Wet - Love Is All Around");
+			musicas.push("Wet Wet Wet - Sweet Surrender");
+			musicas.push("When In Rome - The Promise");
+			musicas.push("Yes - Owner Of A Lonely Heart");
+			musicas.push("ZZ Top - Gimme All Your Lovin'");
+			musicas.push("ZZ Top - Sharp Dressed Man");
+
+			var buttons = document.getElementsByTagName('button');
+			$.fn.widest = function() {return this.length ? this.width(Math.max.apply(Math, this.map(function() {return $(this).width()+1;}))) : this;};
+			$(buttons).widest();
+
+			var audio = document.getElementById('myAudio');
+			var botaoPlay = document.getElementById('play');
+			var ra = document.getElementById('random');
+			var re = document.getElementById('repeat');
+			var atual = 0;
+
+			var s = document.getElementById("selecao");
+			for(var i=0;i<musicas.length;i++) {
+				var option = document.createElement("option");
+				option.id = i;
+				option.value = musicas[i]+".mp3";
+				option.text = musicas[i];
+				s.add(option);
+			}
+
+			function playSelected(sel) {
+				atual = sel.selectedIndex;
+				audio.src = sel.value;
+				audio.play();
+				botaoPlay.textContent = "Pause";
+			}
+
+			function previous() {
+				if (ra.checked) {
+					atual = randoms[randomsIndex()-1];
+				} else {
+					atual = (atual-1) % musicas.length;
+				}
+				audio.src = musicas[atual]+".mp3";
+				audio.play();
+				botaoPlay.textContent = "Pause";
+				$('#selecao option:contains(' + musicas[atual] + ')').prop({selected: true});
+			}
+			function restart() {
+				audio.src = musicas[atual]+".mp3";
+				audio.play();
+				botaoPlay.textContent = "Pause";
+			}
+			function play() {
+				if (audio.paused) {
+					audio.play();
+					botaoPlay.textContent = "Pause";
+				}
+				else {
+					audio.pause();
+					botaoPlay.textContent = "Play";
+				}
+			}
+			function stop() {
+				audio.pause();
+				audio.currentTime = 0;
+				botaoPlay.textContent = "Play";
+			}
+			function next() {
+				if (ra.checked) {
+					atual = randoms[randomsIndex()+1];
+				} else {
+					atual = (atual+1) % musicas.length;
+				}
+				audio.src = musicas[atual]+".mp3";
+				audio.play();
+				botaoPlay.textContent = "Pause";
+				$('#selecao option:contains(' + musicas[atual] + ')').prop({selected: true});
+			}
+			function increase() {
+				audio.volume+=0.1;
+			}
+			function decrease() {
+				audio.volume-=0.1;
+			}
+
+			var randoms = [];
+			for (var i=0;i<musicas.length;i++) randoms[i]=i;
+			function shuffle(array) {
+				var tmp, current, top = array.length;
+				if(top) while(--top) {
+					current = Math.floor(Math.random() * (top + 1));
+					tmp = array[current];
+					array[current] = array[top];
+					array[top] = tmp;
+				}
+			}
+			for (var i=0;i<musicas.length;i++) shuffle(randoms);
+			function randomsIndex() {
+				for (var i=0;i<randoms.length;i++) {
+					if (randoms[i] == atual) return i;
+				}
+			}
+
+			atual = randoms[atual];
+			audio.src = musicas[atual]+".mp3";
+			audio.play();
+			$('#selecao option:contains(' + musicas[atual] + ')').prop({selected: true});
+
+			audio.addEventListener("ended", function() {
+				if (!re.checked) {
+					if (ra.checked) {
+						atual = randoms[atual];
+					} else {
+						atual = (atual + 1) % musicas.length;
+					}
+				}
+				audio.src = musicas[atual]+".mp3";
+				audio.play();
+				$('#selecao option:contains(' + musicas[atual] + ')').prop({selected: true});
+			});
+		</script>
+	</body>
+	</div>
+</html>
